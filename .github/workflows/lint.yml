@@ -2,9 +2,9 @@ name: Lint # name of the action (displayed in the github interface)
 run-name: Lint code for possible warnings/errors
 
 on:
-  push:
-    branches-ignore: [master, main]
-    # Remove the line above to run when pushing to master
+  # Uncomment "push" below to test/debug actions on all pushes
+  # push:
+  #   branches-ignore: [master, main]
   pull_request:
     branches: [master, main]
 

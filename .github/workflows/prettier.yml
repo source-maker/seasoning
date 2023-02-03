@@ -2,9 +2,9 @@ name: Prettier # name of the action (displayed in the github interface)
 run-name: Check if style in accordance with '.prettierrc.json'
 
 on:
-  push:
-    branches-ignore: [master, main]
-    # Remove the line above to run when pushing to master
+  # Uncomment "push" below to test/debug actions on all pushes
+  # push:
+  #   branches-ignore: [master, main]
   pull_request:
     branches: [master, main]
 
