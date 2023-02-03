@@ -1,5 +1,5 @@
 name: Lint # name of the action (displayed in the github interface)
-run-name: Lint code for any warnings/errors
+run-name: Lint code for possible warnings/errors
 
 on:
   push:
