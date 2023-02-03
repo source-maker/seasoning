@@ -41,15 +41,6 @@ export function LoginForm({
       password: data.password,
       callbackUrl: callBackPath,
     });
-    // try {
-    //   await login(data, isBizLogin);
-    //   mutate('/api/me/');
-    //   router.push(callBackPath);
-    //   setError('');
-    // } catch (err) {
-    //   console.log('login error', err);
-    //   setError('Incorrect login or password.');
-    // }
   };
 
   if (status === 'authenticated')

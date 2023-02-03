@@ -23,7 +23,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Examples', 'Showcase', 'Components'],
+      order: ['Introduction', 'Showcase', 'Components'],
     },
   },
   backgrounds: { disable: true },

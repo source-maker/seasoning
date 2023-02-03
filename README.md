@@ -7,13 +7,15 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h1 align="center">Broth NextJS Boilerplate</h1>
+  <h1 align="center">Seasoning NextJS Boilerplate</h1>
 
   <strong align="center">
-A NextJS boilerplate for jumpstarting your next project using a standardized workflow using reliable and tested technology.
+A NextJS boilerplate for jumpstarting your project using a standardized workflow using reliable and tested technology.
 <br/><br/>
-   <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Request Feature</a>・
-   <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Report Bug</a>
+<a href="https://playground.broth.ninja/">Live Demo</a>・
+<a href="https://storybook.broth.ninja/">Online Documentation</a>・
+   <a href="https://github.com/source-maker/seasoning/issues">Request Feature</a>・
+   <a href="https://github.com/source-maker/seasoning/issues">Report Bug</a>
   </strong>
 </div>
 <hr />
@@ -56,14 +58,13 @@ This ensures that the features are reliable and secure.
 
 ## Live Demo
 
-We provide a growing list of common pages and components that serve as great starting points for any project.<br />You can preview these pages and components in a live preview [here](https://broth-nextjs-boilerplate.vercel.app/).
+We provide a growing list of common pages and components that serve as great starting points for any project.<br />You can preview these pages and components in a live preview [here](https://playground.broth.ninja/).
 
 # Starting a New Project
 
 ## System Requirements
 
 Node.js 12.22.0 or later
-TODO 運用環境と合わせる
 
 ## How to Get Started
 
@@ -79,15 +80,22 @@ Create the following `.env.local` file for storing sensitive keys and credential
 touch .env.local
 ```
 
-you can copy/paste the following template for your `.env.local` file:
+you can copy/paste the following template for your `.env.local` file. Make sure to update it appropriately for your project and environment:
 
 ```
-# Django Backend Base URL for the swaggerClient
-# default for local is http://127.0.0.1:8888/
+ENV=local
+
+# Change this to your own server URL
 NEXT_PUBLIC_BACKEND_DOMAIN=http://127.0.0.1:8888/
+
+# location for client-side calls
+NEXTAUTH_URL=http://127.0.0.1:3000
+
+# secret key to be used with nextAuth jwt token
+NEXTAUTH_SECRET=ReplaceWithAnyRandomString
 ```
 
-\_Note: `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
+Note: `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
 
 ## Starting The Local Servers
 
@@ -298,17 +306,17 @@ This project is licensed under the terms of the [3-Clause BSD License](./LICENSE
 
 # Contact
 
-- Source Maker - https://www.source-maker.co.jp/contact
+- SourceMaker - broth@source-maker.co.jp
 - Jesse Alvarado - contact@jessealvarado.com
 
 [contributors-shield]: https://img.shields.io/github/contributors/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[contributors-url]: https://github.com/source-maker/nextjs-boilerplate/graphs/contributors
+[contributors-url]: https://github.com/source-maker/seasoning/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[forks-url]: https://github.com/source-maker/nextjs-boilerplate/network/members
+[forks-url]: https://github.com/source-maker/seasoning/network/members
 [stars-shield]: https://img.shields.io/github/stars/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[stars-url]: https://github.com/source-maker/nextjs-boilerplate/stargazers
+[stars-url]: https://github.com/source-maker/seasoning/stargazers
 [issues-shield]: https://img.shields.io/github/issues/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[issues-url]: https://github.com/source-maker/nextjs-boilerplate/issues
+[issues-url]: https://github.com/source-maker/seasoning/issues
 [license-shield]: https://img.shields.io/github/license/source-maker/nextjs-boilerplate.svg?style=for-the-badge
 [license-url]: https://github.com/source-maker/source-maker/nextjs-boilerplate/blob/master/LICENSE.txt
 [screenshot]: preview.png
