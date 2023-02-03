@@ -7,11 +7,13 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h1 align="center">Broth NextJS Boilerplate</h1>
+  <h1 align="center">Seasoning NextJS Boilerplate</h1>
 
   <strong align="center">
-A NextJS boilerplate for jumpstarting your next project using a standardized workflow using reliable and tested technology.
+A NextJS boilerplate for jumpstarting your project using a standardized workflow using reliable and tested technology.
 <br/><br/>
+<a href="https://playground.broth.ninja/">Live Demo</a>・
+<a href="http://127.0.0.1:6006/?path=/docs/introduction--page">Online Documentation</a>・
    <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Request Feature</a>・
    <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Report Bug</a>
   </strong>
@@ -79,15 +81,22 @@ Create the following `.env.local` file for storing sensitive keys and credential
 touch .env.local
 ```
 
-you can copy/paste the following template for your `.env.local` file:
+you can copy/paste the following template for your `.env.local` file. Make sure to update it appropriately for your project and environment:
 
 ```
-# Django Backend Base URL for the swaggerClient
-# default for local is http://127.0.0.1:8888/
+ENV=local
+
+# Change this to your own server URL
 NEXT_PUBLIC_BACKEND_DOMAIN=http://127.0.0.1:8888/
+
+# location for client-side calls
+NEXTAUTH_URL=http://127.0.0.1:3000
+
+# secret key to be used with nextAuth jwt token
+NEXTAUTH_SECRET=ReplaceWithAnyRandomString
 ```
 
-\_Note: `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
+Note: `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
 
 ## Starting The Local Servers
 
@@ -298,7 +307,7 @@ This project is licensed under the terms of the [3-Clause BSD License](./LICENSE
 
 # Contact
 
-- Source Maker - https://www.source-maker.co.jp/contact
+- SourceMaker - broth@source-maker.co.jp
 - Jesse Alvarado - contact@jessealvarado.com
 
 [contributors-shield]: https://img.shields.io/github/contributors/source-maker/nextjs-boilerplate.svg?style=for-the-badge
