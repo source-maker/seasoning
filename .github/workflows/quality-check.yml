@@ -1,10 +1,11 @@
+---
 name: Quality Check
 run-name: Checking quality of code for possible warnings/errors
 on: [push]
 jobs:
   run_lint:
     name: Lint Action
-    uses: wearerequired/lint-action@v2.3.0
+    uses: ./linter.yml
   # check_urls:
   #   name: 404 Links
   #   uses: atalent-labs/404-links@3.1.4
