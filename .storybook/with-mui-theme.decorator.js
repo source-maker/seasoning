@@ -4,8 +4,9 @@ import { themes } from '../styles/initStoryThemes';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import ja from 'date-fns/locale/ja';
+import { SessionProvider } from 'next-auth/react';
 
-export const withMuiTheme = (Story, context) => {
+export const withMuiTheme = (Story, context, session) => {
   const { theme: themeKey } = context.globals;
 
   // only recompute the theme if the themeKey changes
@@ -26,7 +27,9 @@ export const withMuiTheme = (Story, context) => {
         }}
       >
         <CssBaseline />
-        <Story />
+        <SessionProvider session={session}>
+          <Story />
+        </SessionProvider>
       </LocalizationProvider>
     </ThemeProvider>
   );
