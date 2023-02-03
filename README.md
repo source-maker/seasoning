@@ -58,14 +58,13 @@ This ensures that the features are reliable and secure.
 
 ## Live Demo
 
-We provide a growing list of common pages and components that serve as great starting points for any project.<br />You can preview these pages and components in a live preview [here](https://broth-nextjs-boilerplate.vercel.app/).
+We provide a growing list of common pages and components that serve as great starting points for any project.<br />You can preview these pages and components in a live preview [here](https://playground.broth.ninja/).
 
 # Starting a New Project
 
 ## System Requirements
 
 Node.js 12.22.0 or later
-TODO 運用環境と合わせる
 
 ## How to Get Started
 
