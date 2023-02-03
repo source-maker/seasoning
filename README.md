@@ -13,7 +13,7 @@
 A NextJS boilerplate for jumpstarting your project using a standardized workflow using reliable and tested technology.
 <br/><br/>
 <a href="https://playground.broth.ninja/">Live Demo</a>・
-<a href="http://127.0.0.1:6006/?path=/docs/introduction--page">Online Documentation</a>・
+<a href="https://storybook.broth.ninja/">Online Documentation</a>・
    <a href="https://github.com/source-maker/seasoning/issues">Request Feature</a>・
    <a href="https://github.com/source-maker/seasoning/issues">Report Bug</a>
   </strong>
