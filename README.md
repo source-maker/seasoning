@@ -14,8 +14,8 @@ A NextJS boilerplate for jumpstarting your project using a standardized workflow
 <br/><br/>
 <a href="https://playground.broth.ninja/">Live Demo</a>・
 <a href="http://127.0.0.1:6006/?path=/docs/introduction--page">Online Documentation</a>・
-   <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Request Feature</a>・
-   <a href="https://github.com/source-maker/nextjs-boilerplate/issues">Report Bug</a>
+   <a href="https://github.com/source-maker/seasoning/issues">Request Feature</a>・
+   <a href="https://github.com/source-maker/seasoning/issues">Report Bug</a>
   </strong>
 </div>
 <hr />
@@ -310,13 +310,13 @@ This project is licensed under the terms of the [3-Clause BSD License](./LICENSE
 - Jesse Alvarado - contact@jessealvarado.com
 
 [contributors-shield]: https://img.shields.io/github/contributors/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[contributors-url]: https://github.com/source-maker/nextjs-boilerplate/graphs/contributors
+[contributors-url]: https://github.com/source-maker/seasoning/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[forks-url]: https://github.com/source-maker/nextjs-boilerplate/network/members
+[forks-url]: https://github.com/source-maker/seasoning/network/members
 [stars-shield]: https://img.shields.io/github/stars/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[stars-url]: https://github.com/source-maker/nextjs-boilerplate/stargazers
+[stars-url]: https://github.com/source-maker/seasoning/stargazers
 [issues-shield]: https://img.shields.io/github/issues/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[issues-url]: https://github.com/source-maker/nextjs-boilerplate/issues
+[issues-url]: https://github.com/source-maker/seasoning/issues
 [license-shield]: https://img.shields.io/github/license/source-maker/nextjs-boilerplate.svg?style=for-the-badge
 [license-url]: https://github.com/source-maker/source-maker/nextjs-boilerplate/blob/master/LICENSE.txt
 [screenshot]: preview.png
