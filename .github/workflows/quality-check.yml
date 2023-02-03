@@ -1,3 +1,6 @@
+name: Quality Check
+run-name: Checking quality of code for possible warnings/errors
+on: [push]
 jobs:
   run_lint:
     name: Lint Action
