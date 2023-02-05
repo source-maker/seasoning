@@ -2,8 +2,8 @@ import { create } from '@storybook/theming';
 
 export default create({
   base: 'light',
-  brandTitle: 'Broth',
+  brandTitle: 'Seasoning',
   brandUrl: '/?path=/docs/introduction--page',
-  brandImage: './broth_logo@4x.png',
+  brandImage: './SeasoningLogoBanner.png',
   brandTarget: '_target',
 });
