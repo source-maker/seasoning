@@ -25,7 +25,7 @@ export function PasswordResetForm() {
           id="username"
           name="username"
           type="email"
-          label="メールアドレス"
+          label="email"
           control={control}
           fullWidth
           margin="normal"
