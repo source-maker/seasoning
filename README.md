@@ -309,14 +309,14 @@ This project is licensed under the terms of the [3-Clause BSD License](./LICENSE
 - SourceMaker - broth@source-maker.co.jp
 - Jesse Alvarado - contact@jessealvarado.com
 
-[contributors-shield]: https://img.shields.io/github/contributors/source-maker/nextjs-boilerplate.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/source-maker/seasoning.svg?style=for-the-badge
 [contributors-url]: https://github.com/source-maker/seasoning/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/source-maker/nextjs-boilerplate.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/source-maker/seasoning.svg?style=for-the-badge
 [forks-url]: https://github.com/source-maker/seasoning/network/members
-[stars-shield]: https://img.shields.io/github/stars/source-maker/nextjs-boilerplate.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/source-maker/seasoning.svg?style=for-the-badge
 [stars-url]: https://github.com/source-maker/seasoning/stargazers
-[issues-shield]: https://img.shields.io/github/issues/source-maker/nextjs-boilerplate.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/source-maker/seasoning.svg?style=for-the-badge
 [issues-url]: https://github.com/source-maker/seasoning/issues
-[license-shield]: https://img.shields.io/github/license/source-maker/nextjs-boilerplate.svg?style=for-the-badge
-[license-url]: https://github.com/source-maker/source-maker/nextjs-boilerplate/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/source-maker/seasoning.svg?style=for-the-badge
+[license-url]: https://github.com/source-maker/source-maker/seasoning/blob/master/LICENSE.txt
 [screenshot]: preview.png
