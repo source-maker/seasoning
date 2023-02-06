@@ -39,6 +39,5 @@ yarn-error.log*
 *.tsbuildinfo
 .idea
 
-# Sentry
-.sentryclirc
+
 .env.local
