@@ -53,7 +53,6 @@ This ensures that the features are reliable and secure.
 - [Storybook](https://storybook.js.org/) - UI component development environment
 - [React Hook Form](https://react-hook-form.com/) - React-centric Form Library
 - [YUP](https://github.com/jquense/yup) - Form validation via object schemas
-- [Sentry](https://docs.sentry.io/platforms/javascript/guides/nextjs/) - automatic reporting of errors and exceptions
 - [Prettier](https://prettier.io/) - An opinionated code formatter
 
 ## Live Demo
