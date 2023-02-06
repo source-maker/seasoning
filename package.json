@@ -1,7 +1,14 @@
 {
-  "name": "broth",
+  "name": "seasoning",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13",
+    "yarn": "please use npm",
+    "pnpm": "please use npm",
+    "pn": "please use npm"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "test & lint & next build",
