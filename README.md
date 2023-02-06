@@ -288,7 +288,7 @@ Once executed, the types will be generated. Endpoints can be accessed by importi
 
 ## Package Management
 
-By default, Seasoning enforces the use of `npm` for package management, restricting other managers from being used. This is to ensure that all developers are using the same package versions, and to avoid any potential issues with package lock files.
+By default, Seasoning enforces the use of `npm` for package management, restricting other managers from being used. This is to ensure that all developers are using the same package manager, and to avoid any potential issues with package lock files.
 
 If your team would like to opt for another package manager, please update the engine lock requirements in the `package.json` file.
 
