@@ -13,14 +13,13 @@ const PasswordResetSuccess: NextPage = () => {
         justifyContent="center"
       >
         <BrandLogo />
-        <Typography variant="h6" textAlign={'center'}>
-          パスワードをリセットするためのアドレスをメールで送信しました。
-          <br />
-          受信ボックスを確認してください。
+        <Typography variant="h5" textAlign={'center'}>
+          We&apos;ve emailed you an address to reset your password. <br />
+          Please check your inbox.
         </Typography>
 
         <Button href="/login" variant="contained" fullWidth type="submit">
-          ログイン画面へ
+          Return to Login
         </Button>
       </Box>
     </Container>

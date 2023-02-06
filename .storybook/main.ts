@@ -14,6 +14,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@a110/storybook-expand-all',
+    '@tomfreudenberg/next-auth-mock/storybook',
     {
       name: 'storybook-addon-next',
       options: {

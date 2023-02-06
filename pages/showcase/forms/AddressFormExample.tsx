@@ -77,17 +77,18 @@ export default function AddressFormExample() {
     <Container maxWidth="md">
       <Box py={8}>
         <BrothTypography variant="h3" component="h1">
-          発送先住所
+          Shipping Address
         </BrothTypography>
         <BrothTypography>
-          日本の郵便番号を入力すると、一部の項目が自動入力されます。
+          Enter a Japanese postal code (eg: 1640001), and some fields will be
+          filled in automatically.
         </BrothTypography>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container direction="row" spacing={2}>
             <Grid item xs={12} md={12}>
               <BrothTextField
-                label="郵便番号"
+                label="Zipcode (郵便番号)"
                 name="zip_code"
                 control={control}
                 placeholder="例：8191116"
@@ -96,7 +97,7 @@ export default function AddressFormExample() {
             </Grid>
             <Grid item xs={12} md={6}>
               <BrothTextField
-                label="都道府県"
+                label="Prefecture (都道府県)"
                 name="state"
                 control={control}
                 placeholder="例：福岡県"
@@ -105,7 +106,7 @@ export default function AddressFormExample() {
             </Grid>
             <Grid item xs={12} md={6}>
               <BrothTextField
-                label="市区町村"
+                label="City (市区町村)"
                 name="city"
                 control={control}
                 placeholder="例：福岡市"
@@ -114,7 +115,7 @@ export default function AddressFormExample() {
             </Grid>
             <Grid item xs={12} md={6}>
               <BrothTextField
-                label="町域・番地"
+                label="Street (町域・番地)"
                 name="block"
                 control={control}
                 placeholder="例：1-2-3"
@@ -123,7 +124,7 @@ export default function AddressFormExample() {
             </Grid>
             <Grid item xs={12} md={6}>
               <BrothTextField
-                label="マンション名・号室"
+                label="Building Number (マンション名・号室)"
                 name="building"
                 control={control}
                 placeholder="例：◯◯マンション 201号室"
