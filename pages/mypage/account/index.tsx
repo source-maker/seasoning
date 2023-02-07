@@ -3,8 +3,8 @@ import { useAuth } from 'hooks/useAuth';
 import { Box } from '@mui/system';
 import type { NextPage } from 'next';
 import { Loading } from '@/components/asset/Loading';
-import Link from '@/components/link/Link';
 import { BrothTypography } from '@/components/typography/BrothTypography';
+import BrothLink from '@/components/link/BrothLink';
 
 const Account: NextPage = () => {
   const { currentUser } = useAuth();
@@ -36,7 +36,7 @@ const Account: NextPage = () => {
 
         <Button
           href={'/mypage/account/personal-details'}
-          component={Link}
+          component={BrothLink}
           variant="contained"
         >
           Edit Account

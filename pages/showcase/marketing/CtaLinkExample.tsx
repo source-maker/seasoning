@@ -1,5 +1,5 @@
+import BrothLink from '@/components/link/BrothLink';
 import CtaLink from '@/components/link/CtaLink';
-import Link from '@/components/link/Link';
 import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 
 export default function CtaLinkExample() {
@@ -19,7 +19,7 @@ export default function CtaLinkExample() {
               Please Login. If you do not have acount, please sign up. When you
               have logged in, you can go to our Home.
             </Typography>
-            <Link href="/">Learn about Broth</Link>
+            <BrothLink href="/">Learn about Broth</BrothLink>
           </Box>
         </Grid>
         <Grid item xs={6}>

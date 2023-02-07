@@ -8,8 +8,7 @@ import {
 import { useAuth } from '../../../hooks/useAuth';
 import type { NextPage } from 'next';
 import { Loading } from '../../../components/asset/Loading';
-
-import Link from '@/components/link/Link';
+import BrothLink from '@/components/link/BrothLink';
 
 const LoginDetails: NextPage = () => {
   const { currentUser } = useAuth();
@@ -33,7 +32,7 @@ const LoginDetails: NextPage = () => {
 
       <Button
         href={'/mypage/account/password-change'}
-        component={Link}
+        component={BrothLink}
         variant="contained"
         fullWidth
         color="primary"
@@ -43,11 +42,11 @@ const LoginDetails: NextPage = () => {
         パスワードを変更する
       </Button>
 
-      <Link href="/mypage/account/unsubscribe">
+      <BrothLink href="/mypage/account/unsubscribe">
         <Typography align="center">
           <MuiLink>アカウントを削除する</MuiLink>
         </Typography>
-      </Link>
+      </BrothLink>
     </Container>
   );
 };

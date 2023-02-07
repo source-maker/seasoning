@@ -1,5 +1,5 @@
 import { ListItemButton, ListItemText, Typography } from '@mui/material';
-import Link from '../link/Link';
+import BrothLink from '../link/BrothLink';
 
 export interface IToggleListItemProps {
   text: string;
@@ -10,7 +10,7 @@ export function ToggleListItem({ text, href }: IToggleListItemProps) {
   return (
     <ListItemButton
       href={href}
-      component={Link}
+      component={BrothLink}
       sx={{ padding: '0 0 0.5em 0', margin: '0' }}
     >
       <ListItemText
