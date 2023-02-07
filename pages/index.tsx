@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import { Stack, Typography } from '@mui/material';
 import { BrandLogo } from '@/components/asset/BrandLogo';
-import { useAuth } from '../services/hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import { BrothButton } from '@/components/button/BrothButton';
 import BrothLink from '@/components/link/BrothLink';
 

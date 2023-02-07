@@ -3,7 +3,7 @@ import { Box, Button, Container, Divider, Grid, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import yup from '@/lib/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { BrothImageArrayButton } from '../../../components/button/BrothImageArrayButton';
 import { BrothTypography } from '@/components/typography/BrothTypography';

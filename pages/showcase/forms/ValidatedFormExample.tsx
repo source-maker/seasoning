@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form';
 import { RHFSelect } from '@/components/select/RHFSelect';
 import yup from '@/lib/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 
 interface formTypes {

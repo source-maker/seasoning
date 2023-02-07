@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/hooks/*": ["./services/hooks/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/repositories/*": ["services/repositories/*"],
       "@/services/*": ["services/*"],
       "@/features/*": ["features/*"],

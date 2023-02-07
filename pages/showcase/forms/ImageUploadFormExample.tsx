@@ -5,7 +5,7 @@ import yup from '@/lib/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { getMime } from 'helpers/fileHelpers';
 
