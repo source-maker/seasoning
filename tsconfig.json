@@ -24,7 +24,7 @@
       "@/services/*": ["services/*"],
       "@/features/*": ["features/*"],
       "@/lib/*": ["lib/*"],
-      "@/helpers/*": ["services/helpers/*"]
+      "@/helpers/*": ["helpers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

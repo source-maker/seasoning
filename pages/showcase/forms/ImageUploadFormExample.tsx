@@ -7,7 +7,7 @@ import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton
 import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
-import { getMime } from '@/services/helpers/fileHelpers';
+import { getMime } from 'helpers/fileHelpers';
 
 interface formTypes {
   profileImg: string;
