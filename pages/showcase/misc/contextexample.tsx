@@ -1,9 +1,6 @@
 import { BrothButton } from '@/components/button/BrothButton';
 import { BrothTypography } from '@/components/typography/BrothTypography';
-import {
-  ExampleContext,
-  ExampleProvider,
-} from '@/services/context/ExampleProvider';
+import { ExampleContext, ExampleProvider } from '@/providers/ExampleProvider';
 import { Box, Stack } from '@mui/material';
 import { NextPage } from 'next';
 import { useContext } from 'react';
