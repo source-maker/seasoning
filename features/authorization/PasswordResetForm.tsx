@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import {
   PasswordResetType,
   PasswordResetResolver,
-} from '../../services/schemas/PasswordResetSchema';
+} from '../../schemas/PasswordResetSchema';
 import { Button } from '@mui/material';
 import { BrothTextField } from '../../components/textfield/BrothTextField';
 import BrothLink from '@/components/link/BrothLink';
