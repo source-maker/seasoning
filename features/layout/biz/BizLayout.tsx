@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactElement } from 'react';
 import { BizFooter } from './BizFooter';
-import { NextPageWithLayout, PageMeta } from '@/services/types/types';
+import { NextPageWithLayout, PageMeta } from 'types/types';
 
 // eslint-disable-next-line import/no-default-export
 function Layout({

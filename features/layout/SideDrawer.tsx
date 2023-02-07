@@ -1,4 +1,4 @@
-import { useAuth } from '@/services/hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
 import {
   Box,
   Button,

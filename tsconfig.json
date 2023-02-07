@@ -19,12 +19,12 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/hooks/*": ["./services/hooks/*"],
-      "@/repositories/*": ["services/repositories/*"],
-      "@/services/*": ["services/*"],
+      "@/providers/*": ["providers/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/lib/*": ["lib/*"],
-      "@/helpers/*": ["services/helpers/*"]
+      "@/helpers/*": ["helpers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

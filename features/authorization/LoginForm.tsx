@@ -1,8 +1,5 @@
 import { useForm } from 'react-hook-form';
-import {
-  LoginPost,
-  LoginPostResolver,
-} from '../../services/schemas/LoginSchema';
+import { LoginPost, LoginPostResolver } from '../../schemas/LoginSchema';
 import {
   Alert,
   Box,

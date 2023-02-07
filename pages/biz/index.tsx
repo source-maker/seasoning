@@ -1,9 +1,9 @@
 import { Container, Typography } from '@mui/material';
 import bizLayout from '@/features/layout/biz/BizLayout';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
 
-import { NextPageWithLayout } from '@/services/types/types';
+import { NextPageWithLayout } from 'types/types';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 
 const Biz: NextPageWithLayout = () => {

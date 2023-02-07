@@ -8,10 +8,10 @@ import {
   Pagination,
 } from '@mui/material';
 
-import { generateFakerData } from '@/services/helpers/fakerHelpers';
+import { generateFakerData } from 'helpers/fakerHelpers';
 import BrothImage from '../../../components/image/BrothImage';
 import { BrothTypography } from '@/components/typography/BrothTypography';
-import { limitLength } from '@/services/helpers/textHelpers';
+import { limitLength } from 'helpers/textHelpers';
 import { ChangeEvent, useMemo, useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
