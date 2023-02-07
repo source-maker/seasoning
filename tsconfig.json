@@ -19,9 +19,9 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/providers/*": ["providers/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/repositories/*": ["services/repositories/*"],
-      "@/services/*": ["services/*"],
+      "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/lib/*": ["lib/*"],
       "@/helpers/*": ["helpers/*"]
