@@ -27,7 +27,10 @@
     "swagger": "openapi --input http://localhost:8888/swagger/ --output ./lib/swagger/ --client axios --name SwaggerClient",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "serve-storybook": "serve storybook-static"
+    "serve-storybook": "serve storybook-static",
+    "push": "npm version patch && git push",
+    "push-minor": "npm version minor && git push",
+    "push-major": "npm version major && git push"
   },
   "dependencies": {
     "@date-io/dayjs": "^2.14.0",
