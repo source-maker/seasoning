@@ -101,7 +101,7 @@ NEXT_PUBLIC_VERSION=$npm_package_version
 Notes:
 
 - `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
-- You can access the application version in your code by using `process.env.NEXT_PUBLIC_VERSION` and `process.env.NEXT_PUBLIC_NAME` in your code.
+- The application name and version is set within `package.json` as dynamic environment variables, accessible with `process.env.NEXT_PUBLIC_NAME` and `process.env.NEXT_PUBLIC_VERSION`.
 
 ## Starting The Local Servers
 
