@@ -8,20 +8,16 @@ jobs: # list of things to do
   version-increment:
     name: semanticversioning # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
+
     steps: # list of steps
-      - name: Bump version
-        uses: PaulHatch/semantic-version@v4.0.2
-        id: tag_version_develop
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_prefix: 'v'
-          major_pattern: 'MAJOR'
-          minor_pattern: 'MINOR'
-          format: '${major}.${minor}.${patch}'
-          namespace: develop
-          change_path: '.'
-          short_tags: false
-          bump_each_commit: true
-      - name: Tag Release (vX.Y.Z)
-        run: |
-          git tag ${{ steps.tag_version_develop.outputs.version_tag }}
-          git push origin ${{ steps.tag_version_develop.outputs.version_tag }}
+          minor-wording: 'add,Adds,new, MINOR'
+          major-wording: 'MAJOR,cut-major'
+          patch-wording:
+            'patch,fixes' # Providing patch-wording will override commits
+            # defaulting to a patch bump.
+          rc-wording: 'RELEASE,alpha'
