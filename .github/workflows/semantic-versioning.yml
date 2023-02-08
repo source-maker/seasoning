@@ -1,8 +1,11 @@
 name: 'Semantic Version Bump'
 
-push:
-  branches:
-    - 'main'
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
 jobs:
   bump-version:
     name: 'Bump Version on main'
