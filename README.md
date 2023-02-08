@@ -148,21 +148,17 @@ The following describes how the directories and files are organized within this 
 
 - <b>public/</b> - stores publicly accessible files, typically static images, for quick serving to clients on request.
 
-- <b>services/</b> - stores code that assists with the operations and logistics of the application. Organized into the following categories:
+- <b>providers/</b> - contains providers to wrap components, providing state management via ContextAPI.
 
-  - <b>services/context</b> - contains wrapper components to provide state management via ContextAPI.
+- <b>helpers/</b> - contains reusable functions to assist throughout the project. Some common functions have been included for convenience. (eg: arrayHelpers, fileHelpers, dateHelpers, etc).
 
-  - <b>services/helpers</b> - contains reusable functions to assist throughout the project. Some common functions have been included for convenience. (eg: arrayHelpers, fileHelpers, dateHelpers, etc).
+- <b>hooks/</b> - contains custom React hooks for reusable state logic.
 
-  - <b>services/hooks</b> - contains custom React hooks for reusable state logic.
+- <b>schemas/</b> - Stores YUP schema code for form validation.
 
-  - <b>services/repositories</b> - a directory for defining API requests.
+- <b>types/</b> - Contains any Typescript interfaces, types, and enums.
 
-  - <b>services/schemas</b> - Stores schema code for form validation.
-
-  - <b>services/types</b> - Contains any Typescript interfaces, types, and enums.
-
-- <b>stories</b> - contains stories developed for consumption by the storybook server to generate previews of the components.
+- <b>stories/</b> - contains stories developed for consumption by the storybook server to generate previews of the components.
 
 - <b>styles/</b> - contains global css styles, MUI theme configuration files, and initialization of the MUi theme for the NextJS project.
 
@@ -245,6 +241,14 @@ The file organization structure for this boilerplate was inspired by the Atomic 
 - `components/` directory contains what would be atomic elements
 - `features/` directory contains the molecules/organisms
 - `pages/` contains the final pages that put everything together to be rendered to the client
+
+## Semantic Versioning
+
+Seasoning automatically handles the version number of the project based on the commit messages. This is achieved by using the following Github action: [Git-Semantic-Version](https://github.com/marketplace/actions/git-semantic-version
+
+Use the words `MAJOR` or `MINOR` in your commit message to bump the version number accordingly.
+
+Patches are applied on each commit.
 
 ## File Naming Conventions
 
