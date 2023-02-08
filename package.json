@@ -10,8 +10,8 @@
     "pn": "please use npm"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "test & lint & next build",
+    "dev": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version next dev",
+    "build": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version test & lint & next build ",
     "start": "next start",
     "lint": "npm-run-all -p -l -c --aggregate-output lint:*",
     "lint:eslint": "eslint . --ext \".js,.ts,.jsx,.tsx\"",
