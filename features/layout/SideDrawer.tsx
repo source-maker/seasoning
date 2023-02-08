@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { DrawerItems, DrawerItem } from '@/components/drawer/DrawerItems';
-import Link from '@/components/link/Link';
+import BrothLink from '@/components/link/BrothLink';
 
 export interface ISideDrawerProps {
   open: boolean;
@@ -94,7 +94,7 @@ export function SideDrawer({ open, setOpen }: ISideDrawerProps) {
             <Button
               variant="contained"
               href={'/login'}
-              component={Link}
+              component={BrothLink}
               onClick={handleDrawerClose}
             >
               Login
@@ -102,7 +102,7 @@ export function SideDrawer({ open, setOpen }: ISideDrawerProps) {
             <Button
               variant="outlined"
               href={'/signup'}
-              component={Link}
+              component={BrothLink}
               onClick={handleDrawerClose}
               sx={{
                 backgroundColor: 'white',

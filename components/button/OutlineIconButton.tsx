@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
-import Link from '@/components/link/Link';
 import { ReactNode } from 'react';
+import BrothLink from '../link/BrothLink';
 
 export interface IOutlineIconButton {
   children: ReactNode;
@@ -16,7 +16,7 @@ export const OutlineIconButton = ({
   return (
     <IconButton
       href={{ pathname, query }}
-      component={Link}
+      component={BrothLink}
       aria-label="test"
       size="small"
       sx={{

@@ -11,8 +11,6 @@ export function BrothButton(props: BrothButtonProps) {
   // match the height of the mui default textfield height
   const inputHeight = textfieldHeight ? { height: '3.4rem' } : {};
 
-  // TODO: add icons as control props into storybook somehow
-
   return (
     <Button variant={variant} sx={{ ...sx, ...inputHeight }} {...rest}>
       {props.children}

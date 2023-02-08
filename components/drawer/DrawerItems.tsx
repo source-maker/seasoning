@@ -9,7 +9,6 @@ import {
   SxProps,
 } from '@mui/material';
 import { Fragment } from 'react';
-import Link from '../link/Link';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -26,6 +25,7 @@ import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import BrothLink from '../link/BrothLink';
 
 export interface DrawerItem {
   title: string;
@@ -79,14 +79,14 @@ export function DrawerItems(props: Props) {
               </ListItemButton>
             </ListItem>
           ) : (
-            <Link href={item.href}>
+            <BrothLink href={item.href}>
               <ListItem key={item.title}>
                 <ListItemButton>
                   <ListItemIcon>{getIcon(item.icon)}</ListItemIcon>
                   <ListItemText primary={item.title} />
                 </ListItemButton>
               </ListItem>
-            </Link>
+            </BrothLink>
           )}
           <Divider />
         </Fragment>

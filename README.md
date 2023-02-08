@@ -92,9 +92,16 @@ NEXTAUTH_URL=http://127.0.0.1:3000
 
 # secret key to be used with nextAuth jwt token
 NEXTAUTH_SECRET=ReplaceWithAnyRandomString
+
+# App Public Details
+NEXT_PUBLIC_NAME=$npm_package_name
+NEXT_PUBLIC_VERSION=$npm_package_version
 ```
 
-Note: `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
+Notes:
+
+- `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
+- You can access the application version in your code by using `process.env.NEXT_PUBLIC_VERSION` and `process.env.NEXT_PUBLIC_NAME` in your code.
 
 ## Starting The Local Servers
 

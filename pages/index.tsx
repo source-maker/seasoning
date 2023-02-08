@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { BrandLogo } from '@/components/asset/BrandLogo';
 import { useAuth } from '../hooks/useAuth';
 import { BrothButton } from '@/components/button/BrothButton';
 import BrothLink from '@/components/link/BrothLink';
+import { BrothTypography } from '@/components/typography/BrothTypography';
 
 // Add this line to the top of a nextJS page to pass props to the page
 // export async function getStaticProps() {
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
 
   return (
     <Container
+      maxWidth="md"
       sx={{
         textAlign: 'center',
         justifyContent: 'center',
@@ -25,35 +27,50 @@ const Home: NextPage = () => {
       }}
     >
       <BrandLogo />
-      <Typography variant="h3">
+      <BrothTypography variant="h1" baseline>
         <strong>Seasoning</strong>
-      </Typography>
-      <Typography variant="h4">
+      </BrothTypography>
+      <BrothTypography variant="h3">
         A NextJS MUI Boilerplate
         <br /> for Production-Ready Web Apps
-      </Typography>
+      </BrothTypography>
 
-      <Stack direction="row" spacing={2} marginY={2} justifyContent="center">
+      <Stack
+        direction={{
+          xs: 'column',
+          sm: 'row',
+        }}
+        spacing={2}
+        justifyContent={'space-evenly'}
+      >
         {isLogin() ? (
           <>
-            <BrothLink href="/mypage" sx={{ textDecoration: 'none' }}>
-              <BrothButton>Client Dashboard</BrothButton>
-            </BrothLink>
+            <BrothButton LinkComponent={BrothLink} href="/mypage">
+              My Dashboard
+            </BrothButton>
           </>
         ) : (
-          <BrothLink href="/login" sx={{ textDecoration: 'none' }}>
-            {/* Not logged in */}
-            <BrothButton>Login</BrothButton>
-          </BrothLink>
+          <BrothButton LinkComponent={BrothLink} href="/login" fullWidth>
+            Login
+          </BrothButton>
         )}
 
-        <BrothLink
-          href="https://broth-nextjs-boilerplate.vercel.app/?path=/docs/introduction--page"
-          sx={{ textDecoration: 'none' }}
-          target="_blank"
+        <BrothButton
+          variant="contained"
+          LinkComponent={BrothLink}
+          href="/signup"
+          fullWidth
         >
-          <BrothButton variant="outlined">Documentation</BrothButton>
-        </BrothLink>
+          Create Account
+        </BrothButton>
+        <BrothButton
+          variant="outlined"
+          LinkComponent={BrothLink}
+          href="https://broth-nextjs-boilerplate.vercel.app/?path=/docs/introduction--page"
+          fullWidth
+        >
+          Documentation
+        </BrothButton>
       </Stack>
     </Container>
   );
