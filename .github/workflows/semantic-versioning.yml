@@ -32,7 +32,7 @@ jobs: # list of things to do
           # namespace: my-service
 
           # If this is set to true, *every* commit will be treated as a new version.
-          # bump_each_commit: false
+          bump_each_commit: true
 
           # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
           search_commit_body: true
