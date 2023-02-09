@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
 
     steps:
       - name: 'Checkout source code'
