@@ -11,7 +11,7 @@ jobs:
     name: 'Bump Version on main'
     runs-on: ubuntu-latest
     permissions:
-      actions: read|write
+      actions: write
 
     steps:
       - name: 'Checkout source code'
