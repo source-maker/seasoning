@@ -3,15 +3,15 @@ import { Box } from '@mui/system';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactElement } from 'react';
 import { BizFooter } from './BizFooter';
-import { NextPageWithLayout, PageMeta } from 'types/types';
+import { NextPageWithLayout, PageOptions } from 'types/types';
 
 // eslint-disable-next-line import/no-default-export
 function Layout({
   children,
-  pageMeta,
+  pageOptions,
 }: {
   children: React.ReactNode;
-  pageMeta?: PageMeta;
+  pageOptions?: PageOptions;
 }) {
   return (
     <Box
@@ -20,12 +20,12 @@ function Layout({
       justifyContent="space-between"
       minHeight="100vh"
     >
-      <BizHeader title={pageMeta?.title} />
+      <BizHeader title={pageOptions?.title} />
       <AnimatePresence>
         <motion.div
           initial="pageInitial"
           animate="pageAnimate"
-          key={pageMeta?.title}
+          key={pageOptions?.title}
           variants={{
             pageInitial: {
               opacity: 0,
@@ -48,13 +48,13 @@ function Layout({
   );
 }
 
-const bizLayout = (target: NextPageWithLayout, pageMeta?: PageMeta) => {
+const bizLayout = (target: NextPageWithLayout, pageOptions?: PageOptions) => {
   target.getLayout = (page: ReactElement) => {
-    return <Layout pageMeta={pageMeta}>{page}</Layout>;
+    return <Layout pageOptions={pageOptions}>{page}</Layout>;
   };
 
   // TIPS: セットしたMetaを_app.tsx上 で Component.options で呼び出して利用できる。
-  target.pageMeta = pageMeta;
+  target.pageOptions = pageOptions;
   return target;
 };
 
