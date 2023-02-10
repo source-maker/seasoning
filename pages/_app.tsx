@@ -9,7 +9,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../styles/initAppTheme';
 import { createEmotionCache } from '@/lib/emotion';
 import { SWRConfig } from 'swr';
-import { fetcher, axios } from '../lib/axios';
+import { fetcher } from '../lib/axios';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { RouteGuardProvider } from '@/providers/RouteGuardProvider';
 import Backdrop from '@mui/material/Backdrop';
@@ -55,42 +55,8 @@ export default function MyApp(props: AppPropsWithLayout) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // HACK pageProps.titleがundefined
-  const getLayout =
-    Component.getLayout ??
-    ((page) => (
-      <Layout>
-        <>
-          {'defaultlayout'}
-          {page}
-        </>
-      </Layout>
-    ));
-
-  axios.interceptors.request.use(
-    function (config) {
-      if (config.url == '/api/me/') {
-        return config;
-      }
-      setLoading(true);
-      return config;
-    },
-    function (error) {
-      setLoading(false);
-      return Promise.reject(error);
-    }
-  );
-
-  axios.interceptors.response.use(
-    function (response) {
-      setLoading(false);
-      return response;
-    },
-    function (error) {
-      setLoading(false);
-      return Promise.reject(error);
-    }
-  );
+  // Render default layout if no layout is provided
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
 
   return (
     <>
