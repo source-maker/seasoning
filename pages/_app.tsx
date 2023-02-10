@@ -16,8 +16,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { SessionProvider } from 'next-auth/react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { useEffect, useState } from 'react';
-import TagManager from 'react-gtm-module';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -25,6 +24,7 @@ import Layout from '@/features/layout/public/PublicLayout';
 
 // if localizing date-fns, import the locale here, example given below:
 // import ja from 'date-fns/locale/ja';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -56,7 +56,16 @@ export default function MyApp(props: AppPropsWithLayout) {
   const router = useRouter();
 
   // HACK pageProps.titleがundefined
-  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
+  const getLayout =
+    Component.getLayout ??
+    ((page) => (
+      <Layout>
+        <>
+          {'defaultlayout'}
+          {page}
+        </>
+      </Layout>
+    ));
 
   axios.interceptors.request.use(
     function (config) {
@@ -82,21 +91,6 @@ export default function MyApp(props: AppPropsWithLayout) {
       return Promise.reject(error);
     }
   );
-
-  // Google Tag Manager start
-  useEffect(() => {
-    const gtmId = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || '';
-    if (gtmId !== '') {
-      TagManager.initialize({
-        gtmId: gtmId,
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    document.body.classList?.remove('loading');
-  }, []);
-  // Google Tag Manager end
 
   return (
     <>
@@ -139,7 +133,27 @@ export default function MyApp(props: AppPropsWithLayout) {
                     <CircularProgress color="primary" />
                   </Backdrop>
                   <RouteGuardProvider>
-                    {getLayout(<Component {...props.pageProps} />)}
+                    <AnimatePresence>
+                      <motion.div
+                        initial="pageInitial"
+                        animate="pageAnimate"
+                        variants={{
+                          pageInitial: {
+                            opacity: 0,
+                          },
+                          pageAnimate: {
+                            opacity: 1,
+                          },
+                          pageExit: {
+                            backgroundColor: 'white',
+                            filter: `invert()`,
+                            opacity: 0,
+                          },
+                        }}
+                      >
+                        {getLayout(<Component {...props.pageProps} />)}
+                      </motion.div>
+                    </AnimatePresence>
                   </RouteGuardProvider>
                 </AuthProvider>
               </SessionProvider>
