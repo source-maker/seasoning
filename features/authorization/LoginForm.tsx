@@ -73,6 +73,7 @@ export function LoginForm({
           control={control}
           margin="normal"
           fullWidth
+          autoFocus
         />
       </div>
 
