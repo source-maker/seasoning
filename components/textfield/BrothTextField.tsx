@@ -35,6 +35,7 @@ export function BrothTextField<T extends FieldValues = never>({
   InputProps,
   renderValue,
   customizeValue,
+  autoFocus,
   ...rest
 }: TextFieldProps<T>) {
   return (
@@ -51,6 +52,7 @@ export function BrothTextField<T extends FieldValues = never>({
           <MuiTextField
             id={name}
             name={name}
+            autoFocus={autoFocus}
             value={
               value == null ? '' : renderValue ? renderValue(value) : value
             }
