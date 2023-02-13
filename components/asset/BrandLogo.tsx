@@ -1,13 +1,10 @@
-import * as React from 'react';
 import { Box } from '@mui/system';
-import BrothLink from '../link/BrothLink';
+import { CSSProperties } from 'react';
 
-export function BrandLogo() {
+export function BrandLogo({ sx }: { sx?: CSSProperties }) {
   return (
-    <BrothLink href="/" sx={{ textDecoration: 'none' }}>
-      <Box textAlign="center">
-        <img src="/BrothLogo.svg" alt="Logo" style={{ width: '5rem' }} />
-      </Box>
-    </BrothLink>
+    <Box textAlign="center">
+      <img src="/BrothLogo.svg" alt="Logo" style={sx} />
+    </Box>
   );
 }
