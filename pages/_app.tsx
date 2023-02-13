@@ -25,6 +25,7 @@ import Layout from '@/features/layout/public/PublicLayout';
 // if localizing date-fns, import the locale here, example given below:
 // import ja from 'date-fns/locale/ja';
 import { AnimatePresence, motion } from 'framer-motion';
+import { DrawerProvider } from '@/providers/DrawerProvider';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -52,7 +53,7 @@ type AppPropsWithLayout = AppProps & {
 // eslint-disable-next-line import/no-default-export
 export default function MyApp(props: AppPropsWithLayout) {
   const { Component, emotionCache = clientSideEmotionCache } = props;
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const router = useRouter();
 
   // Render default layout if no layout is provided
@@ -99,27 +100,29 @@ export default function MyApp(props: AppPropsWithLayout) {
                     <CircularProgress color="primary" />
                   </Backdrop>
                   <RouteGuardProvider>
-                    <AnimatePresence>
-                      <motion.div
-                        initial="pageInitial"
-                        animate="pageAnimate"
-                        variants={{
-                          pageInitial: {
-                            opacity: 0,
-                          },
-                          pageAnimate: {
-                            opacity: 1,
-                          },
-                          pageExit: {
-                            backgroundColor: 'white',
-                            filter: `invert()`,
-                            opacity: 0,
-                          },
-                        }}
-                      >
-                        {getLayout(<Component {...props.pageProps} />)}
-                      </motion.div>
-                    </AnimatePresence>
+                    <DrawerProvider>
+                      <AnimatePresence>
+                        <motion.div
+                          initial="pageInitial"
+                          animate="pageAnimate"
+                          variants={{
+                            pageInitial: {
+                              opacity: 0,
+                            },
+                            pageAnimate: {
+                              opacity: 1,
+                            },
+                            pageExit: {
+                              backgroundColor: 'white',
+                              filter: `invert()`,
+                              opacity: 0,
+                            },
+                          }}
+                        >
+                          {getLayout(<Component {...props.pageProps} />)}
+                        </motion.div>
+                      </AnimatePresence>
+                    </DrawerProvider>
                   </RouteGuardProvider>
                 </AuthProvider>
               </SessionProvider>
