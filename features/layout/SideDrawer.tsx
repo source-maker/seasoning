@@ -10,13 +10,11 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { DrawerItems, DrawerItem } from '@/components/drawer/DrawerItems';
 import BrothLink from '@/components/link/BrothLink';
+import { DrawerContext } from '@/providers/DrawerProvider';
+import { useContext } from 'react';
 
-export interface ISideDrawerProps {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-}
-
-export function SideDrawer({ open, setOpen }: ISideDrawerProps) {
+export function SideDrawer() {
+  const { open, setOpen } = useContext(DrawerContext);
   const { currentUser, isLogin, logout, isAdmin } = useAuth();
 
   const handleDrawerClose = () => {

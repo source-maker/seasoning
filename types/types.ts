@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 
 // TODO: remove this pageMeta and NextPageWithLayout to use getStaticProps for layouts?
-export interface PageMeta {
+export interface PageOptions {
   title?: string;
   useBackButton?: boolean;
   rightNavMenu?: ReactNode;
@@ -11,7 +11,7 @@ export interface PageMeta {
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
-  pageMeta?: PageMeta;
+  pageOptions?: PageOptions;
 };
 
 export type UserType = 'user' | 'admin';

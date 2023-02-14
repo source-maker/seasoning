@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
-import AppBarBasic from '@/features/layout/AppBarBasic';
+import AppBarBasic from '@/components/appbar/AppBarBasic';
 import { Alert, Grid, Stack } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { BrothButton } from '@/components/button/BrothButton';

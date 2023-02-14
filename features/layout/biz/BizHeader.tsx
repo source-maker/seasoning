@@ -21,7 +21,7 @@ export interface HeaderProps {
 export function BizHeader({ title, useBackButton = false }: HeaderProps) {
   const { isLogin, logout, isAdmin } = useAuth();
 
-  const [open, setOpen] = useState(false);
+  const [, setOpen] = useState(false);
   const router = useRouter();
   const pathname = router.pathname;
 
@@ -68,7 +68,7 @@ export function BizHeader({ title, useBackButton = false }: HeaderProps) {
             justifyContent="center"
             alignItems="center"
           >
-            {isLogin() && isAdmin && (
+            {isLogin() && isAdmin() && (
               <>
                 <BrothButton onClick={async () => await logout()}>
                   Logout
@@ -78,7 +78,7 @@ export function BizHeader({ title, useBackButton = false }: HeaderProps) {
           </Box>
         </Toolbar>
 
-        <SideDrawer open={open} setOpen={setOpen} />
+        <SideDrawer />
       </AppBar>
     </>
   );
