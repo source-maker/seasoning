@@ -67,17 +67,19 @@ export default function Layout({
             </>
           }
           centerMenu={
-            <>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                Products
-              </Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                Products
-              </Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                Products
-              </Button>
-            </>
+            isLogin() && (
+              <>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  Products
+                </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  Products
+                </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  Products
+                </Button>
+              </>
+            )
           }
           rightMenu={
             <>
