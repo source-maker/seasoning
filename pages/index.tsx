@@ -44,11 +44,9 @@ const Home: NextPage = () => {
         justifyContent={'space-evenly'}
       >
         {isLogin() ? (
-          <>
-            <BrothButton LinkComponent={BrothLink} href="/mypage">
-              My Dashboard
-            </BrothButton>
-          </>
+          <BrothButton LinkComponent={BrothLink} href="/mypage" fullWidth>
+            Dashboard
+          </BrothButton>
         ) : (
           <BrothButton LinkComponent={BrothLink} href="/login" fullWidth>
             Login
