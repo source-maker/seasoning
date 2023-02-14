@@ -1,7 +1,13 @@
 import { Box } from '@mui/system';
 import { CSSProperties } from 'react';
 
-export function BrandLogo({ sx }: { sx?: CSSProperties }) {
+export function BrandLogo({
+  sx = {
+    width: '10vw',
+  },
+}: {
+  sx?: CSSProperties;
+}) {
   return (
     <Box textAlign="center">
       <img src="/BrothLogo.svg" alt="Logo" style={sx} />
