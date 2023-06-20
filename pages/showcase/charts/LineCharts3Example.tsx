@@ -18,13 +18,27 @@ import TableBody from '@mui/material/TableBody';
 
 type ChartData = {
   date: string;
-  merges: number;
-  developer: string;
+  [key: string]: number | string;
+};
+
+type SelectedPointType = {
+  stroke: string;
+  strokeWidth: number;
+  fill: string;
+  dataKey: string;
+  name: string;
+  color: string;
+  value: number;
+  payload: {
+    date: string;
+    developer: string;
+    merges: number;
+  };
 };
 
 export default function LineCharts3Example() {
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [selectedPoint, setSelectedPoint] = useState<ChartData[]>([]);
+  const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
 
   useEffect(() => {
     const data = [
@@ -66,8 +80,8 @@ export default function LineCharts3Example() {
     setChartData(formattedChartData);
   }, []);
 
-  const handleClick = (data, index) => {
-    console.log(`You clicked on ${index}:`, data);
+  const handleClick = (data) => {
+    console.log(`selected:`, data?.activePayload);
     console.log('chartdata:', chartData);
     setSelectedPoint(data?.activePayload);
   };
@@ -103,12 +117,13 @@ export default function LineCharts3Example() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {chartData.map((datapoint, index) => (
+            {chartData.map((chartDataPoint, index) => (
               <TableRow
                 key={index}
                 sx={{
                   backgroundColor: selectedPoint?.some(
-                    (selected) => selected?.payload?.date === datapoint.date
+                    (selected) =>
+                      selected?.payload?.date === chartDataPoint.date
                   )
                     ? 'lightcyan'
                     : 'white',
@@ -118,9 +133,9 @@ export default function LineCharts3Example() {
                   Selected:{JSON.stringify(selectedPoint[0], null, 2)}
                 </TableCell>
                 <TableCell>
-                  Datapoint:{JSON.stringify(datapoint, null, 2)}
+                  Datapoint:{JSON.stringify(chartDataPoint, null, 2)}
                 </TableCell>
-                <TableCell>{datapoint.merges}</TableCell>
+                <TableCell>{chartDataPoint.merges}</TableCell>
                 <TableCell></TableCell>
               </TableRow>
             ))}
