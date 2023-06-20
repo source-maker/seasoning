@@ -20,6 +20,7 @@ import { Stack } from '@mui/system';
 
 type ChartData = {
   date: string;
+  note?: string;
   [key: string]: number | string;
 };
 
@@ -33,6 +34,7 @@ type SelectedPointType = {
   value: number;
   payload: {
     date: string;
+    note?: string;
     developer: string;
     merges: number;
   };
@@ -41,26 +43,27 @@ type SelectedPointType = {
 export default function LineCharts3Example() {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
-  const [notes, setNotes] = useState<{ [date: string]: string }>({});
   const [editing, setEditing] = useState<string | null>(null);
+  const [noteText, setNoteText] = useState<string>('');
 
   useEffect(() => {
+    // TODO: django apiからデータを取得する
     const data = [
-      { developer: '山田 太郎', date: '2023-06-06', merges: 3 },
-      { developer: '山田 太郎', date: '2023-06-07', merges: 5 },
-      { developer: '山田 太郎', date: '2023-06-08', merges: 2 },
-      { developer: '山田 太郎', date: '2023-06-09', merges: 4 },
-      { developer: '山田 太郎', date: '2023-06-10', merges: 1 },
-      { developer: '鈴木 花子', date: '2023-06-12', merges: 4 },
-      { developer: '鈴木 花子', date: '2023-06-07', merges: 3 },
-      { developer: '鈴木 花子', date: '2023-06-08', merges: 6 },
-      { developer: '鈴木 花子', date: '2023-06-09', merges: 2 },
-      { developer: '鈴木 花子', date: '2023-06-10', merges: 3 },
-      { developer: '田中 一郎', date: '2023-06-06', merges: 2 },
-      { developer: '田中 一郎', date: '2023-06-07', merges: 4 },
-      { developer: '田中 一郎', date: '2023-06-08', merges: 5 },
-      { developer: '田中 一郎', date: '2023-06-09', merges: 1 },
-      { developer: '田中 一郎', date: '2023-06-10', merges: 3 },
+      { developer: '山田 太郎', date: '2023-06-06', merges: 3, note: 'test' },
+      { developer: '山田 太郎', date: '2023-06-07', merges: 5, note: '' },
+      { developer: '山田 太郎', date: '2023-06-08', merges: 2, note: 'test2' },
+      { developer: '山田 太郎', date: '2023-06-09', merges: 4, note: '' },
+      { developer: '山田 太郎', date: '2023-06-10', merges: 1, note: '' },
+      { developer: '鈴木 花子', date: '2023-06-12', merges: 4, note: '' },
+      { developer: '鈴木 花子', date: '2023-06-07', merges: 3, note: '' },
+      { developer: '鈴木 花子', date: '2023-06-08', merges: 6, note: 'test3' },
+      { developer: '鈴木 花子', date: '2023-06-09', merges: 2, note: '' },
+      { developer: '鈴木 花子', date: '2023-06-10', merges: 3, note: '' },
+      { developer: '田中 一郎', date: '2023-06-06', merges: 2, note: '' },
+      { developer: '田中 一郎', date: '2023-06-07', merges: 4, note: '' },
+      { developer: '田中 一郎', date: '2023-06-08', merges: 5, note: '' },
+      { developer: '田中 一郎', date: '2023-06-09', merges: 1, note: '' },
+      { developer: '田中 一郎', date: '2023-06-10', merges: 3, note: '' },
     ];
 
     const developers = ['山田 太郎', '鈴木 花子', '田中 一郎'];
@@ -69,6 +72,8 @@ export default function LineCharts3Example() {
       .filter((item) => developers.includes(item.developer))
       .map((item) => ({
         date: item.date,
+        note: item.note,
+
         [item.developer]: item.merges,
       }));
 
@@ -90,14 +95,26 @@ export default function LineCharts3Example() {
     setSelectedPoint(data?.activePayload);
   };
 
+  const handleNoteSave = (date: string, note: string) => {
+    setChartData(
+      chartData.map((item) =>
+        item.date === date ? { ...item, note: note } : item
+      )
+    );
+
+    setEditing(null);
+    setNoteText('');
+  };
+
   function convertDataFormat(oldFormatData: ChartData) {
     const newEntry: {
       date: string;
+      note?: string;
       data: { name: string; merges: string | number }[];
-    } = { date: oldFormatData.date, data: [] };
+    } = { date: oldFormatData.date, note: oldFormatData.note, data: [] };
 
     Object.keys(oldFormatData).forEach((key) => {
-      if (key !== 'date') {
+      if (key !== 'date' && key !== 'note') {
         newEntry.data.push({ name: key, merges: oldFormatData[key] });
       }
     });
@@ -160,19 +177,24 @@ export default function LineCharts3Example() {
                       <MuiTextField
                         rows={4}
                         multiline
-                        value={notes[row.date] || ''}
-                        onChange={(e) =>
-                          setNotes({ ...notes, [row.date]: e.target.value })
-                        }
+                        value={noteText}
+                        onChange={(e) => setNoteText(e.target.value)}
                       />
-                      <BrothButton onClick={() => setEditing(null)}>
+                      <BrothButton
+                        onClick={() => handleNoteSave(row.date, noteText)}
+                      >
                         Save
                       </BrothButton>
                     </Stack>
                   ) : (
                     <>
-                      <div>{notes[row.date]}</div>
-                      <BrothButton onClick={() => setEditing(row.date)}>
+                      <div>{JSON.stringify(row, null, 2)}</div>
+                      <BrothButton
+                        onClick={() => {
+                          setEditing(row.date);
+                          setNoteText(row?.note || '');
+                        }}
+                      >
                         Edit
                       </BrothButton>
                     </>
