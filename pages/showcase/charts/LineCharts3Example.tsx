@@ -7,7 +7,7 @@ import {
   Legend,
   Line,
 } from 'recharts';
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { useEffect, useState } from 'react';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -102,7 +102,7 @@ export default function LineCharts3Example() {
   }
 
   return (
-    <>
+    <Container sx={{ my: 5 }}>
       <Box sx={{ width: '800px', mx: 'auto' }}>
         <LineChart
           width={800}
@@ -156,6 +156,6 @@ export default function LineCharts3Example() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Container>
   );
 }
