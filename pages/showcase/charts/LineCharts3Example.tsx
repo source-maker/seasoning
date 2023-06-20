@@ -86,6 +86,21 @@ export default function LineCharts3Example() {
     setSelectedPoint(data?.activePayload);
   };
 
+  function convertDataFormat(oldFormatData: ChartData) {
+    const newEntry: {
+      date: string;
+      data: { name: string; merges: string | number }[];
+    } = { date: oldFormatData.date, data: [] };
+
+    Object.keys(oldFormatData).forEach((key) => {
+      if (key !== 'date') {
+        newEntry.data.push({ name: key, merges: oldFormatData[key] });
+      }
+    });
+
+    return newEntry;
+  }
+
   return (
     <>
       <Box sx={{ width: '800px', mx: 'auto' }}>
@@ -117,25 +132,22 @@ export default function LineCharts3Example() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {chartData.map((chartDataPoint, index) => (
+            {chartData.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{
                   backgroundColor: selectedPoint?.some(
-                    (selected) =>
-                      selected?.payload?.date === chartDataPoint.date
+                    (selected) => selected?.payload?.date === row.date
                   )
                     ? 'lightcyan'
                     : 'white',
                 }}
               >
+                <TableCell>{row.date}</TableCell>
                 <TableCell>
-                  Selected:{JSON.stringify(selectedPoint[0], null, 2)}
+                  {JSON.stringify(convertDataFormat(row), null, 2)}
                 </TableCell>
-                <TableCell>
-                  Datapoint:{JSON.stringify(chartDataPoint, null, 2)}
-                </TableCell>
-                <TableCell>{chartDataPoint.merges}</TableCell>
+                <TableCell>{row.merges}</TableCell>
                 <TableCell></TableCell>
               </TableRow>
             ))}
