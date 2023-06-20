@@ -126,7 +126,6 @@ export default function LineCharts3Example() {
           <TableHead>
             <TableRow>
               <TableCell>Date</TableCell>
-              <TableCell>Developer</TableCell>
               <TableCell>Merges</TableCell>
               <TableCell>Notes</TableCell>
             </TableRow>
@@ -145,9 +144,12 @@ export default function LineCharts3Example() {
               >
                 <TableCell>{row.date}</TableCell>
                 <TableCell>
-                  {JSON.stringify(convertDataFormat(row), null, 2)}
+                  {convertDataFormat(row).data.map((dev) => (
+                    <div key={dev.name}>
+                      {dev.name}: {dev.merges}
+                    </div>
+                  ))}
                 </TableCell>
-                <TableCell>{row.merges}</TableCell>
                 <TableCell></TableCell>
               </TableRow>
             ))}
