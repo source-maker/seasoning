@@ -12,9 +12,8 @@ import { useEffect, useState } from 'react';
 
 type ChartData = {
   date: string;
-  Dev1?: number;
-  Dev2?: number;
-  Dev3?: number;
+  merges: number;
+  developer: string;
 };
 
 export default function LineCharts3Example() {
@@ -22,24 +21,24 @@ export default function LineCharts3Example() {
 
   useEffect(() => {
     const data = [
-      { developer: 'Dev1', date: '2023-06-06', merges: 3 },
-      { developer: 'Dev1', date: '2023-06-07', merges: 5 },
-      { developer: 'Dev1', date: '2023-06-08', merges: 2 },
-      { developer: 'Dev1', date: '2023-06-09', merges: 4 },
-      { developer: 'Dev1', date: '2023-06-10', merges: 1 },
-      { developer: 'Dev2', date: '2023-06-12', merges: 4 },
-      { developer: 'Dev2', date: '2023-06-07', merges: 3 },
-      { developer: 'Dev2', date: '2023-06-08', merges: 6 },
-      { developer: 'Dev2', date: '2023-06-09', merges: 2 },
-      { developer: 'Dev2', date: '2023-06-10', merges: 3 },
-      { developer: 'Dev3', date: '2023-06-06', merges: 2 },
-      { developer: 'Dev3', date: '2023-06-07', merges: 4 },
-      { developer: 'Dev3', date: '2023-06-08', merges: 5 },
-      { developer: 'Dev3', date: '2023-06-09', merges: 1 },
-      { developer: 'Dev3', date: '2023-06-10', merges: 3 },
+      { developer: '山田 太郎', date: '2023-06-06', merges: 3 },
+      { developer: '山田 太郎', date: '2023-06-07', merges: 5 },
+      { developer: '山田 太郎', date: '2023-06-08', merges: 2 },
+      { developer: '山田 太郎', date: '2023-06-09', merges: 4 },
+      { developer: '山田 太郎', date: '2023-06-10', merges: 1 },
+      { developer: '鈴木 花子', date: '2023-06-12', merges: 4 },
+      { developer: '鈴木 花子', date: '2023-06-07', merges: 3 },
+      { developer: '鈴木 花子', date: '2023-06-08', merges: 6 },
+      { developer: '鈴木 花子', date: '2023-06-09', merges: 2 },
+      { developer: '鈴木 花子', date: '2023-06-10', merges: 3 },
+      { developer: '田中 一郎', date: '2023-06-06', merges: 2 },
+      { developer: '田中 一郎', date: '2023-06-07', merges: 4 },
+      { developer: '田中 一郎', date: '2023-06-08', merges: 5 },
+      { developer: '田中 一郎', date: '2023-06-09', merges: 1 },
+      { developer: '田中 一郎', date: '2023-06-10', merges: 3 },
     ];
 
-    const developers = ['Dev1', 'Dev2', 'Dev3'];
+    const developers = ['山田 太郎', '鈴木 花子', '田中 一郎'];
     const chartData = data
       .filter((item) => developers.includes(item.developer))
       .map((item) => ({
@@ -60,7 +59,7 @@ export default function LineCharts3Example() {
   }, []);
 
   const handleClick = (data, index) => {
-    console.log('You clicked on', data);
+    console.log(`You clicked on ${index}:`, data);
   };
 
   return (
@@ -77,9 +76,9 @@ export default function LineCharts3Example() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Dev1" stroke="tomato" />
-        <Line type="monotone" dataKey="Dev2" stroke="purple" />
-        <Line type="monotone" dataKey="Dev3" stroke="gold" />
+        <Line type="monotone" dataKey="山田 太郎" stroke="tomato" />
+        <Line type="monotone" dataKey="鈴木 花子" stroke="purple" />
+        <Line type="monotone" dataKey="田中 一郎" stroke="gold" />
       </LineChart>
     </Box>
   );
