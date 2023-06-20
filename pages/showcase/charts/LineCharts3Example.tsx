@@ -21,7 +21,8 @@ import { Stack } from '@mui/system';
 type ChartData = {
   date: string;
   note?: string;
-  [key: string]: number | string;
+  merges?: number;
+  [key: string]: string | number | undefined;
 };
 
 type SelectedPointType = {
@@ -79,10 +80,18 @@ export default function LineCharts3Example() {
 
     const formattedChartData: ChartData[] = Array.from(
       chartData
-        .reduce(
-          (map, item) => map.set(item.date, { ...map.get(item.date), ...item }),
-          new Map()
-        )
+        .reduce((map, item) => {
+          const existingItem = map.get(item.date);
+          return map.set(item.date, {
+            ...existingItem,
+            ...item,
+            note: existingItem?.note
+              ? item.note
+                ? existingItem.note + ' ' + item.note
+                : existingItem.note
+              : item.note,
+          });
+        }, new Map())
         .values()
     );
 
@@ -101,21 +110,23 @@ export default function LineCharts3Example() {
         item.date === date ? { ...item, note: note } : item
       )
     );
-
     setEditing(null);
-    setNoteText('');
   };
 
   function convertDataFormat(oldFormatData: ChartData) {
     const newEntry: {
       date: string;
       note?: string;
-      data: { name: string; merges: string | number }[];
+      data: { name: string; merges: number }[];
     } = { date: oldFormatData.date, note: oldFormatData.note, data: [] };
 
     Object.keys(oldFormatData).forEach((key) => {
-      if (key !== 'date' && key !== 'note') {
-        newEntry.data.push({ name: key, merges: oldFormatData[key] });
+      if (
+        key !== 'date' &&
+        key !== 'note' &&
+        typeof oldFormatData[key] === 'number'
+      ) {
+        newEntry.data.push({ name: key, merges: oldFormatData[key] as number });
       }
     });
 
@@ -188,7 +199,7 @@ export default function LineCharts3Example() {
                     </Stack>
                   ) : (
                     <>
-                      <div>{JSON.stringify(row, null, 2)}</div>
+                      <div>{row.note}</div>
                       <BrothButton
                         onClick={() => {
                           setEditing(row.date);
