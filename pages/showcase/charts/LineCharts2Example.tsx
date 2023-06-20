@@ -82,15 +82,15 @@ export default function LineCharts2Example() {
     onClick: (event, elements) => {
       if (elements.length > 0) {
         const chartElement = elements[0];
-        const index = chartElement.index;
-        const datasetIndex = chartElement.datasetIndex;
-        const chart = chartElement.chart;
-        if (!chart) return;
-        const label = chart?.data.labels[index];
-        const value = chart?.data.datasets[datasetIndex].data[index];
-        const developer = chart?.data.datasets[datasetIndex].label;
-
-        alert(`Clicked on ${developer} with ${value} merges on ${label}`);
+        console.log(chartElement);
+        // const index = chartElement.index;
+        // const datasetIndex = chartElement.datasetIndex;
+        // const chart = chartElement.chart;
+        // if (!chart) return;
+        // const label = chart?.data.labels[index];
+        // const value = chart?.data.datasets[datasetIndex].data[index];
+        // const developer = chart?.data.datasets[datasetIndex].label;
+        // console.log(`Clicked on ${developer} with ${value} merges on ${label}`);
       }
     },
   };
