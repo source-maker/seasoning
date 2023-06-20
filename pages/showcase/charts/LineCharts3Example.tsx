@@ -7,7 +7,7 @@ import {
   Legend,
   Line,
 } from 'recharts';
-import { Box, Container } from '@mui/material';
+import { Box, Container, TextField as MuiTextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -15,6 +15,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
+import { BrothButton } from '@/components/button/BrothButton';
+import { Stack } from '@mui/system';
 
 type ChartData = {
   date: string;
@@ -39,6 +41,8 @@ type SelectedPointType = {
 export default function LineCharts3Example() {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
+  const [notes, setNotes] = useState<{ [date: string]: string }>({});
+  const [editing, setEditing] = useState<string | null>(null);
 
   useEffect(() => {
     const data = [
@@ -150,7 +154,30 @@ export default function LineCharts3Example() {
                     </div>
                   ))}
                 </TableCell>
-                <TableCell></TableCell>
+                <TableCell>
+                  {editing === row.date ? (
+                    <Stack direction={'column'}>
+                      <MuiTextField
+                        rows={4}
+                        multiline
+                        value={notes[row.date] || ''}
+                        onChange={(e) =>
+                          setNotes({ ...notes, [row.date]: e.target.value })
+                        }
+                      />
+                      <BrothButton onClick={() => setEditing(null)}>
+                        Save
+                      </BrothButton>
+                    </Stack>
+                  ) : (
+                    <>
+                      <div>{notes[row.date]}</div>
+                      <BrothButton onClick={() => setEditing(row.date)}>
+                        Edit
+                      </BrothButton>
+                    </>
+                  )}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
