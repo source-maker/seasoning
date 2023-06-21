@@ -17,6 +17,7 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import { BrothButton } from '@/components/button/BrothButton';
 import { Stack } from '@mui/system';
+import { Octokit } from 'octokit';
 
 type ChartData = {
   date: string;
@@ -46,7 +47,32 @@ export default function LineCharts3Example() {
   const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [noteText, setNoteText] = useState<string>('');
+  const [githubData, setGithubData] = useState<any>(null);
 
+  useEffect(() => {
+    async function getPR() {
+      const octokit = new Octokit({
+        auth: process.env.NEXT_PUBLIC_GITHUB_PERSONAL_KEY,
+      });
+
+      const {
+        data: { login },
+      } = await octokit.rest.users.getAuthenticated();
+      console.log('Hello, %s', login);
+
+      // Fetch PRs from a specific repository
+      const { data: prData } = await octokit.rest.pulls.list({
+        owner: process.env.NEXT_PUBLIC_GITHUB_DEMO_OWNER || '',
+        repo: process.env.NEXT_PUBLIC_GITHUB_DEMO_REPO || '',
+        state: 'all',
+      });
+      console.log('prData', prData);
+    }
+
+    getPR();
+  }, []);
+
+  //
   useEffect(() => {
     // TODO: django apiからデータを取得する
     const data = [
@@ -113,6 +139,7 @@ export default function LineCharts3Example() {
     setEditing(null);
   };
 
+  // convert chart data into format that can be used by line chart
   function convertDataFormat(oldFormatData: ChartData) {
     const newEntry: {
       date: string;
