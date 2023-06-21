@@ -20,6 +20,7 @@ import { Stack } from '@mui/system';
 import { Octokit } from 'octokit';
 import { format } from 'date-fns';
 import { formatIsoDate } from '../../../helpers/dateHelpers';
+import { BrothTypography } from '../../../components/typography/BrothTypography';
 
 type ChartData = {
   date: string;
@@ -64,83 +65,101 @@ export default function LineCharts3Example() {
   const [editing, setEditing] = useState<string | null>(null);
   const [noteText, setNoteText] = useState<string>('');
   const [developers, setDevelopers] = useState<Set<string>>(new Set());
+  const [owner, setOwner] = useState<string>(
+    process.env.NEXT_PUBLIC_GITHUB_DEMO_OWNER || ''
+  );
+  const [repo, setRepo] = useState<string>(
+    process.env.NEXT_PUBLIC_GITHUB_DEMO_REPO || ''
+  );
 
   useEffect(() => {
     async function getPR() {
-      const octokit = new Octokit({
-        auth: process.env.NEXT_PUBLIC_GITHUB_PERSONAL_KEY,
-      });
+      try {
+        const octokit = new Octokit({
+          auth: process.env.NEXT_PUBLIC_GITHUB_PERSONAL_KEY,
+        });
+        const {
+          data: { login },
+        } = await octokit.rest.users.getAuthenticated();
+        console.log('Github Account: %s', login);
 
-      const {
-        data: { login },
-      } = await octokit.rest.users.getAuthenticated();
-      console.log('Github Account: %s', login);
+        // Fetch PRs from a specific repository
+        const { data: prData } = await octokit?.rest?.pulls?.list({
+          owner: owner,
+          repo: repo,
+          state: 'all',
+        });
 
-      // Fetch PRs from a specific repository
-      const { data: prData } = await octokit.rest.pulls.list({
-        owner: process.env.NEXT_PUBLIC_GITHUB_DEMO_OWNER || '',
-        repo: process.env.NEXT_PUBLIC_GITHUB_DEMO_REPO || '',
-        state: 'all',
-      });
+        console.log('Pull Requests:', prData);
 
-      console.log('Pull Requests:', prData);
+        //  get all unique developer names.
+        const developers = new Set(
+          prData.map((item) => item?.user?.login || '')
+        );
+        console.log('developers:', developers);
+        setDevelopers(developers);
 
-      // First pass: get all unique developer names.
-      const developers = new Set(prData.map((item) => item?.user?.login || ''));
-      console.log('developers:', developers);
-      setDevelopers(developers);
-      // Prepare line chart data and consolidate all operations into a single reduce function
-      const consolidatedChartData: ChartData[] = Array.from(
-        prData
-          .reduce((map, item) => {
-            // Normalize the date to the day
-            const date = item.closed_at ? new Date(item.closed_at) : new Date();
-            const normalizedDate = new Date(
-              date.getFullYear(),
-              date.getMonth(),
-              date.getDate()
-            ).toISOString();
+        // Prepare line chart data and consolidate all operations into a single reduce function
+        const consolidatedChartData: ChartData[] = Array.from(
+          prData
+            .reduce((map, item) => {
+              // Normalize the date to the day
+              const date = item.closed_at
+                ? new Date(item.closed_at)
+                : new Date();
+              const normalizedDate = new Date(
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate()
+              ).toISOString();
 
-            const description = item.body;
-            const note = '';
-            const developer = item?.user?.login || '';
-            const merges = item.merged_at ? 1 : 0;
+              const description = item.body;
+              const note = '';
+              const developer = item?.user?.login || '';
+              const merges = item.merged_at ? 1 : 0;
 
-            const existingItem = map.get(normalizedDate);
-            const existingMerges = existingItem
-              ? existingItem[developer] || 0
-              : 0;
+              const existingItem = map.get(normalizedDate);
+              const existingMerges = existingItem
+                ? existingItem[developer] || 0
+                : 0;
 
-            // Ensure each data point has a value for each developer.
-            const dataPoint = {
-              ...Array.from(developers).reduce(
-                (obj, developer) => ({ ...obj, [developer]: 0 }),
-                {}
-              ),
-              ...existingItem,
-              date: normalizedDate,
-              note,
-              description,
-              [developer]: existingMerges + merges,
-            };
+              // Concatenate descriptions for the same date
+              const concatenatedDescription =
+                existingItem?.description && description
+                  ? `${existingItem.description}\n${description}`
+                  : description;
 
-            return map.set(normalizedDate, dataPoint);
-          }, new Map())
-          .values()
-      );
+              // Ensure each data point has a value for each developer.
+              const dataPoint = {
+                ...Array.from(developers).reduce(
+                  (obj, developer) => ({ ...obj, [developer]: 0 }),
+                  {}
+                ),
+                ...existingItem,
+                date: normalizedDate,
+                note,
+                description: concatenatedDescription,
+                [developer]: existingMerges + merges,
+              };
 
-      // Sort chart data by date
-      const sortedChartData = consolidatedChartData.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
+              return map.set(normalizedDate, dataPoint);
+            }, new Map())
+            .values()
+        );
 
-      console.log('Consolidated Chart Data:', consolidatedChartData);
+        // Sort chart data by date
+        const sortedChartData = consolidatedChartData.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
 
-      setChartData(sortedChartData);
+        console.log('Consolidated Chart Data:', consolidatedChartData);
+
+        setChartData(sortedChartData);
+      } catch (error) {}
     }
 
     getPR();
-  }, []);
+  }, [owner, repo]);
 
   const handleClick = (data) => {
     console.log(`selected:`, data?.activePayload);
@@ -162,8 +181,14 @@ export default function LineCharts3Example() {
     const newEntry: {
       date: string;
       note?: string;
+      description?: string; // Added description field
       data: { name: string; merges: number }[];
-    } = { date: oldFormatData.date, note: oldFormatData.note, data: [] };
+    } = {
+      date: oldFormatData.date,
+      note: oldFormatData.note,
+      description: oldFormatData.description,
+      data: [],
+    };
 
     Object.keys(oldFormatData).forEach((key) => {
       if (
@@ -181,6 +206,30 @@ export default function LineCharts3Example() {
 
   return (
     <Container sx={{ my: 5 }}>
+      <Box sx={{ mb: 5 }}>
+        <BrothTypography variant="h4" baseline>
+          Pull Request History
+        </BrothTypography>
+        <BrothTypography>
+          Instructions: Set an environment variable
+          `NEXT_PUBLIC_GITHUB_PERSONAL_KEY` with a Github personal access token.
+          <br />
+          Enter the owner and repo of a Github repository your account has
+          access to to see the pull request history.
+        </BrothTypography>
+        <Stack spacing={2} direction={'row'}>
+          <MuiTextField
+            label="Owner"
+            value={owner}
+            onChange={(e) => setOwner(e.target.value)}
+          />
+          <MuiTextField
+            label="Repo"
+            value={repo}
+            onChange={(e) => setRepo(e.target.value)}
+          />
+        </Stack>
+      </Box>
       <Box sx={{ width: '800px', mx: 'auto' }}>
         <LineChart
           width={800}
@@ -213,6 +262,7 @@ export default function LineCharts3Example() {
             <TableRow>
               <TableCell>Date</TableCell>
               <TableCell>Merges</TableCell>
+              <TableCell>Description</TableCell>
               <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
@@ -236,6 +286,7 @@ export default function LineCharts3Example() {
                     </div>
                   ))}
                 </TableCell>
+                <TableCell>{row.description}</TableCell>
                 <TableCell>
                   {editing === row.date ? (
                     <Stack direction={'column'}>
