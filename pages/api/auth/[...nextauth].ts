@@ -1,15 +1,20 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { swaggerClient } from '@/lib/swaggerClient';
+import GitHubProvider from 'next-auth/providers/github';
 
 export default NextAuth({
-  session: {
-    strategy: 'jwt',
-  },
+  // session: {
+  //   strategy: 'jwt',
+  // },
   pages: {
     error: '/login',
   },
   providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || '',
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+    }),
     // fields for signin form
     CredentialsProvider({
       id: 'django-credentials',
@@ -35,6 +40,7 @@ export default NextAuth({
       },
     }),
   ],
+
   /**
    * jwt callback is called when a JWT is received from the provider.
    * This modifies the JWT by providing the accessToken to session, which then can be used in the session callback
