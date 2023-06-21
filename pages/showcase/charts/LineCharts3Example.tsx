@@ -18,6 +18,8 @@ import TableBody from '@mui/material/TableBody';
 import { BrothButton } from '@/components/button/BrothButton';
 import { Stack } from '@mui/system';
 import { Octokit } from 'octokit';
+import { format } from 'date-fns';
+import { formatIsoDate } from '../../../helpers/dateHelpers';
 
 type ChartData = {
   date: string;
@@ -42,12 +44,26 @@ type SelectedPointType = {
     merges: number;
   };
 };
+const colorList = [
+  'Red',
+  'Blue',
+  'Purple',
+  'Green',
+  'Aqua',
+  'Maroon',
+  'Orange',
+  'Fuchsia',
+  'Lime',
+  'Teal',
+  'Olive',
+];
 
 export default function LineCharts3Example() {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [noteText, setNoteText] = useState<string>('');
+  const [developers, setDevelopers] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     async function getPR() {
@@ -71,18 +87,26 @@ export default function LineCharts3Example() {
 
       // First pass: get all unique developer names.
       const developers = new Set(prData.map((item) => item?.user?.login || ''));
-
+      console.log('developers:', developers);
+      setDevelopers(developers);
       // Prepare line chart data and consolidate all operations into a single reduce function
       const consolidatedChartData: ChartData[] = Array.from(
         prData
           .reduce((map, item) => {
-            const date = item.closed_at;
+            // Normalize the date to the day
+            const date = item.closed_at ? new Date(item.closed_at) : new Date();
+            const normalizedDate = new Date(
+              date.getFullYear(),
+              date.getMonth(),
+              date.getDate()
+            ).toISOString();
+
             const description = item.body;
             const note = '';
             const developer = item?.user?.login || '';
             const merges = item.merged_at ? 1 : 0;
 
-            const existingItem = map.get(date);
+            const existingItem = map.get(normalizedDate);
             const existingMerges = existingItem
               ? existingItem[developer] || 0
               : 0;
@@ -94,20 +118,25 @@ export default function LineCharts3Example() {
                 {}
               ),
               ...existingItem,
-              date,
+              date: normalizedDate,
               note,
               description,
               [developer]: existingMerges + merges,
             };
 
-            return map.set(date, dataPoint);
+            return map.set(normalizedDate, dataPoint);
           }, new Map())
           .values()
       );
 
+      // Sort chart data by date
+      const sortedChartData = consolidatedChartData.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+
       console.log('Consolidated Chart Data:', consolidatedChartData);
 
-      setChartData(consolidatedChartData);
+      setChartData(sortedChartData);
     }
 
     getPR();
@@ -161,28 +190,21 @@ export default function LineCharts3Example() {
           onClick={handleClick}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+          <XAxis
+            dataKey="date"
+            tickFormatter={(str) => format(new Date(str), 'yyyy/MM/dd')}
+          />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey={'david-mambou'}
-            stroke={'red'}
-            key={'david-mambou'}
-          />
-          <Line
-            type="monotone"
-            dataKey={'alvara'}
-            stroke={'yellow'}
-            key={'alvara'}
-          />
-          <Line
-            type="monotone"
-            dataKey={'mickubota'}
-            stroke={'green'}
-            key={'mickubota'}
-          />
+          {Array.from(developers).map((developer, i) => (
+            <Line
+              type="monotone"
+              dataKey={developer}
+              stroke={colorList[i % colorList.length]}
+              key={developer}
+            />
+          ))}
         </LineChart>
       </Box>
       <TableContainer>
@@ -206,7 +228,7 @@ export default function LineCharts3Example() {
                     : 'white',
                 }}
               >
-                <TableCell>{row.date}</TableCell>
+                <TableCell>{formatIsoDate(row.date)}</TableCell>
                 <TableCell>
                   {convertDataFormat(row).data.map((dev) => (
                     <div key={dev.name}>
