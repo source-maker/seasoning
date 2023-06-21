@@ -22,6 +22,7 @@ import { Octokit } from 'octokit';
 type ChartData = {
   date: string;
   note?: string;
+  description?: string;
   merges?: number;
   [key: string]: string | number | undefined;
 };
@@ -47,7 +48,6 @@ export default function LineCharts3Example() {
   const [selectedPoint, setSelectedPoint] = useState<SelectedPointType[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [noteText, setNoteText] = useState<string>('');
-  const [githubData, setGithubData] = useState<any>(null);
 
   useEffect(() => {
     async function getPR() {
@@ -58,7 +58,7 @@ export default function LineCharts3Example() {
       const {
         data: { login },
       } = await octokit.rest.users.getAuthenticated();
-      console.log('Hello, %s', login);
+      console.log('Github Account: %s', login);
 
       // Fetch PRs from a specific repository
       const { data: prData } = await octokit.rest.pulls.list({
@@ -66,62 +66,51 @@ export default function LineCharts3Example() {
         repo: process.env.NEXT_PUBLIC_GITHUB_DEMO_REPO || '',
         state: 'all',
       });
-      console.log('prData', prData);
+
+      console.log('Pull Requests:', prData);
+
+      // First pass: get all unique developer names.
+      const developers = new Set(prData.map((item) => item?.user?.login || ''));
+
+      // Prepare line chart data and consolidate all operations into a single reduce function
+      const consolidatedChartData: ChartData[] = Array.from(
+        prData
+          .reduce((map, item) => {
+            const date = item.closed_at;
+            const description = item.body;
+            const note = '';
+            const developer = item?.user?.login || '';
+            const merges = item.merged_at ? 1 : 0;
+
+            const existingItem = map.get(date);
+            const existingMerges = existingItem
+              ? existingItem[developer] || 0
+              : 0;
+
+            // Ensure each data point has a value for each developer.
+            const dataPoint = {
+              ...Array.from(developers).reduce(
+                (obj, developer) => ({ ...obj, [developer]: 0 }),
+                {}
+              ),
+              ...existingItem,
+              date,
+              note,
+              description,
+              [developer]: existingMerges + merges,
+            };
+
+            return map.set(date, dataPoint);
+          }, new Map())
+          .values()
+      );
+
+      console.log('Consolidated Chart Data:', consolidatedChartData);
+
+      setChartData(consolidatedChartData);
     }
 
     getPR();
-  }, []);
-
-  //
-  useEffect(() => {
-    // TODO: django apiからデータを取得する
-    const data = [
-      { developer: '山田 太郎', date: '2023-06-06', merges: 3, note: 'test' },
-      { developer: '山田 太郎', date: '2023-06-07', merges: 5, note: '' },
-      { developer: '山田 太郎', date: '2023-06-08', merges: 2, note: 'test2' },
-      { developer: '山田 太郎', date: '2023-06-09', merges: 4, note: '' },
-      { developer: '山田 太郎', date: '2023-06-10', merges: 1, note: '' },
-      { developer: '鈴木 花子', date: '2023-06-12', merges: 4, note: '' },
-      { developer: '鈴木 花子', date: '2023-06-07', merges: 3, note: '' },
-      { developer: '鈴木 花子', date: '2023-06-08', merges: 6, note: 'test3' },
-      { developer: '鈴木 花子', date: '2023-06-09', merges: 2, note: '' },
-      { developer: '鈴木 花子', date: '2023-06-10', merges: 3, note: '' },
-      { developer: '田中 一郎', date: '2023-06-06', merges: 2, note: '' },
-      { developer: '田中 一郎', date: '2023-06-07', merges: 4, note: '' },
-      { developer: '田中 一郎', date: '2023-06-08', merges: 5, note: '' },
-      { developer: '田中 一郎', date: '2023-06-09', merges: 1, note: '' },
-      { developer: '田中 一郎', date: '2023-06-10', merges: 3, note: '' },
-    ];
-
-    const developers = ['山田 太郎', '鈴木 花子', '田中 一郎'];
-
-    const chartData = data
-      .filter((item) => developers.includes(item.developer))
-      .map((item) => ({
-        date: item.date,
-        note: item.note,
-
-        [item.developer]: item.merges,
-      }));
-
-    const formattedChartData: ChartData[] = Array.from(
-      chartData
-        .reduce((map, item) => {
-          const existingItem = map.get(item.date);
-          return map.set(item.date, {
-            ...existingItem,
-            ...item,
-            note: existingItem?.note
-              ? item.note
-                ? existingItem.note + ' ' + item.note
-                : existingItem.note
-              : item.note,
-          });
-        }, new Map())
-        .values()
-    );
-
-    setChartData(formattedChartData);
   }, []);
 
   const handleClick = (data) => {
@@ -151,6 +140,7 @@ export default function LineCharts3Example() {
       if (
         key !== 'date' &&
         key !== 'note' &&
+        key !== 'description' &&
         typeof oldFormatData[key] === 'number'
       ) {
         newEntry.data.push({ name: key, merges: oldFormatData[key] as number });
@@ -175,9 +165,24 @@ export default function LineCharts3Example() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="山田 太郎" stroke="tomato" />
-          <Line type="monotone" dataKey="鈴木 花子" stroke="purple" />
-          <Line type="monotone" dataKey="田中 一郎" stroke="gold" />
+          <Line
+            type="monotone"
+            dataKey={'david-mambou'}
+            stroke={'red'}
+            key={'david-mambou'}
+          />
+          <Line
+            type="monotone"
+            dataKey={'alvara'}
+            stroke={'yellow'}
+            key={'alvara'}
+          />
+          <Line
+            type="monotone"
+            dataKey={'mickubota'}
+            stroke={'green'}
+            key={'mickubota'}
+          />
         </LineChart>
       </Box>
       <TableContainer>
