@@ -23,7 +23,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
-      "@/lib/*": ["lib/*"],
+      "@/lib/*": ["init/*"],
       "@/helpers/*": ["helpers/*"]
     }
   },

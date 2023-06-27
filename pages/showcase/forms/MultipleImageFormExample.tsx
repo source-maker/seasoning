@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { Box, Button, Container, Divider, Grid, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import yup from '@/lib/yup';
+import yup from 'init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';

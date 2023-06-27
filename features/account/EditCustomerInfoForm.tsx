@@ -6,8 +6,8 @@ import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { Loading } from '@/components/asset/Loading';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
-import { swaggerClient } from 'lib/swaggerClient';
-import { User } from '@/lib/swagger';
+import { swaggerClient } from 'init/swaggerClient';
+import { User } from 'init/swagger';
 import { Stack } from '@mui/system';
 
 interface IEditCustomerInfoFormProps {

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { Button, Container, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import yup from '@/lib/yup';
+import yup from 'init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
