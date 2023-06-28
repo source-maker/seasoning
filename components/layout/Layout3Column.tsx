@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import { ReactElement, ReactNode } from 'react';
-import { NextPageWithLayout } from 'types/types';
+import { NextPageWithLayout } from '@/types/types';
 
 interface PageOptions {
   title?: string;
