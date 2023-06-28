@@ -26,7 +26,8 @@
       "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/providers/*": ["src/providers/*"],
-      "@/types/*": ["src/types/*"]
+      "@/types/*": ["src/types/*"],
+      "@/schemas/*": ["src/schemas/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
