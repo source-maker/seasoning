@@ -1,4 +1,5 @@
 .next/
 node_modules/
-lib/swagger/
 storybook-static/
+init/swagger/
+src/init/swagger/
