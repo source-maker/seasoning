@@ -1,4 +1,4 @@
-import yup from 'init/yup';
+import yup from '@/init/yup';
 import { InferType } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 

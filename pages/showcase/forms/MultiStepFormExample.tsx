@@ -3,7 +3,7 @@ import { BrothButton } from '@/components/button/BrothButton';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import { Box, Container, Grid, Paper, Step } from '@mui/material';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
-import yup from 'init/yup';
+import yup from '@/init/yup';
 import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { BrothStepper } from '@/components/stepper/BrothStepper';

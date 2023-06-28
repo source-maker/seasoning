@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { swaggerClient } from 'init/swaggerClient';
+import { swaggerClient } from '@/init/swaggerClient';
 import GitHubProvider from 'next-auth/providers/github';
 
 export default NextAuth({

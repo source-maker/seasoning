@@ -1,9 +1,9 @@
 import React, { createContext, ReactNode, useRef } from 'react';
 import { LoginPost } from '../schemas/LoginSchema';
 import useSWR from 'swr';
-import { fetcher, setToken } from 'init/axios';
-import { User } from 'init/swagger';
-import { swaggerClient } from 'init/swaggerClient';
+import { fetcher, setToken } from '@/init/axios';
+import { User } from '@/init/swagger';
+import { swaggerClient } from '@/init/swaggerClient';
 import { UserType } from '@/types/types';
 import { signIn, signOut, useSession } from 'next-auth/react';
 

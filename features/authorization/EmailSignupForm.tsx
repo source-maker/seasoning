@@ -6,8 +6,8 @@ import { SignupPostResolver } from '@/schemas/SignupSchema';
 import { mutate } from 'swr';
 import { useState } from 'react';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
-import { swaggerClient } from '../../init/swaggerClient';
-import { User } from 'init/swagger';
+import { swaggerClient } from '../../src/init/swaggerClient';
+import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
 
 EmailSignupForm.defaultProps = {

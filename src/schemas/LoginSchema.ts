@@ -1,5 +1,5 @@
 import { InferType } from 'yup';
-import yup from '../../init/yup';
+import yup from '../init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 export const LoginPostSchema = yup.object({
