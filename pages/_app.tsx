@@ -1,4 +1,4 @@
-import '../src/styles/globals.css';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import type { ReactElement, ReactNode } from 'react';
@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../src/styles/initAppTheme';
+import theme from '@/styles/initAppTheme';
 import { createEmotionCache } from 'init/emotion';
 import { SWRConfig } from 'swr';
 import { fetcher } from '../init/axios';
