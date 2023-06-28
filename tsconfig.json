@@ -19,7 +19,6 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/hooks/*": ["hooks/*"],
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/init/*": ["src/init/*"],
@@ -28,6 +27,7 @@
       "@/providers/*": ["src/providers/*"],
       "@/types/*": ["src/types/*"],
       "@/schemas/*": ["src/schemas/*"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/pages/*": ["/src/pages/*"]
     }
   },

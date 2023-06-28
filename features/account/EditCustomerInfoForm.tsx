@@ -1,5 +1,5 @@
 import { Alert, Button, Snackbar } from '@mui/material';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { BrothTextField } from '@/components/textfield/BrothTextField';

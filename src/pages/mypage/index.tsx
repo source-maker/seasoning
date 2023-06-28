@@ -4,7 +4,7 @@ import { BrothTypography } from '@/components/typography/BrothTypography';
 import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 
 export async function getStaticProps() {
   return {

@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useForm } from 'react-hook-form';
 import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from 'hooks/useSnackbar';
+import { useSnackbar } from '@/hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { YubinBangoCore } from '@/init/yubinbango-core';
 

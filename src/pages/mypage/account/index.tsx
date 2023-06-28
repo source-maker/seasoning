@@ -1,5 +1,5 @@
 import { Button, Container } from '@mui/material';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { Box } from '@mui/system';
 import type { NextPage } from 'next';
 import { Loading } from '@/components/asset/Loading';

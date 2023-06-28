@@ -3,7 +3,7 @@ import { Box, Container } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BrandLogo } from '@/components/asset/BrandLogo';
 import { LoginForm } from '@/features/authorization/LoginForm';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { BrothTypography } from '@/components/typography/BrothTypography';

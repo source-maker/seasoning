@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import { BrothButton } from '@/components/button/BrothButton';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { SideDrawer } from '../SideDrawer';
 
 export interface HeaderProps {
