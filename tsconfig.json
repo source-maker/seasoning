@@ -19,13 +19,13 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/providers/*": ["providers/*"],
       "@/hooks/*": ["hooks/*"],
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/lib/*": ["init/*"],
       "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["./src/styles/*"],
+      "@/providers/*": ["src/providers/*"],
       "@/types/*": ["src/types/*"]
     }
   },

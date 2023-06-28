@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useRef } from 'react';
-import { LoginPost } from '../schemas/LoginSchema';
+import { LoginPost } from '../../schemas/LoginSchema';
 import useSWR from 'swr';
 import { fetcher, setToken } from 'init/axios';
 import { User } from 'init/swagger';
