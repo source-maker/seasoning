@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 
 import { generateFakerData } from 'helpers/fakerHelpers';
-import BrothImage from '../../../components/image/BrothImage';
+import BrothImage from '../../../../components/image/BrothImage';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import { limitLength } from 'helpers/textHelpers';
 import { ChangeEvent, useMemo, useState } from 'react';

@@ -1,4 +1,3 @@
-import { NextPageWithLayout } from 'pages/_app';
 import bizLayout from '@/features/layout/biz/BizLayout';
 import { Box, Container } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -9,6 +8,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothLink from '@/components/link/BrothLink';
+import { NextPageWithLayout } from '@/types/types';
 
 const BizLogin: NextPageWithLayout = () => {
   const { isLogin, isAdmin } = useAuth();

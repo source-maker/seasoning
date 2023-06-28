@@ -9,7 +9,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '@/styles/initAppTheme';
 import { createEmotionCache } from '@/init/emotion';
 import { SWRConfig } from 'swr';
-import { fetcher } from '../src/init/axios';
+import { fetcher } from '../init/axios';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { RouteGuardProvider } from '@/providers/RouteGuardProvider';
 import Backdrop from '@mui/material/Backdrop';

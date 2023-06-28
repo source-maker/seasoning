@@ -1,7 +1,7 @@
 import { BrandLogo } from '@/components/asset/BrandLogo';
 import { Box, Container, Typography } from '@mui/material';
 import type { NextPage } from 'next';
-import { PasswordResetForm } from '../../../features/authorization/PasswordResetForm';
+import { PasswordResetForm } from '../../../../features/authorization/PasswordResetForm';
 
 const PasswordReset: NextPage = () => {
   return (

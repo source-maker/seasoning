@@ -27,7 +27,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/providers/*": ["src/providers/*"],
       "@/types/*": ["src/types/*"],
-      "@/schemas/*": ["src/schemas/*"]
+      "@/schemas/*": ["src/schemas/*"],
+      "@/pages/*": ["/src/pages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

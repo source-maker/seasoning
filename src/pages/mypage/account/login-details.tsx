@@ -5,9 +5,9 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../../hooks/useAuth';
 import type { NextPage } from 'next';
-import { Loading } from '../../../components/asset/Loading';
+import { Loading } from '../../../../components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 
 const LoginDetails: NextPage = () => {

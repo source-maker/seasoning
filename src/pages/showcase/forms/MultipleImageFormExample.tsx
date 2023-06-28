@@ -5,7 +5,7 @@ import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from 'hooks/useSnackbar';
 import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
-import { BrothImageArrayButton } from '../../../components/button/BrothImageArrayButton';
+import { BrothImageArrayButton } from '../../../../components/button/BrothImageArrayButton';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothImage from '@/components/image/BrothImage';
 import CircularProgress from '@mui/material/CircularProgress';

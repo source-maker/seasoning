@@ -1,6 +1,6 @@
-import BrothCardExample from 'pages/showcase/marketing/BrothCardExample';
-import BulletListExample from 'pages/showcase/marketing/BulletListExample';
-import CtaLinkExample from 'pages/showcase/marketing/CtaLinkExample';
+import BrothCardExample from 'src/pages/showcase/marketing/BrothCardExample';
+import BulletListExample from 'src/pages/showcase/marketing/BulletListExample';
+import CtaLinkExample from 'src/pages/showcase/marketing/CtaLinkExample';
 import { showcaseParameters } from './showcaseParameters';
 
 export default {
