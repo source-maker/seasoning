@@ -128,39 +128,52 @@ Accessible by default at `0.0.0.0:6006` or `http://localhost:6006`
 - <b>Watch for Conflicting Ports</b> - If another service on your computer is using either of these ports, the command may start with a different port. If you have trouble accessing any of the local servers, please refer to your terminal for the correct url address.
 - <b>Stories</b> - Stories are tied to the example app, so if you delete the example app, you will need to delete the stories as well.
 
-# File Structure
+# Project File Structure
 
-The following describes how the directories and files are organized within this framework:
+This document provides a description of how the directories and files are structured within this boilerplate project.<br />
+The objective is to help you understand the organization of the project, making it easier to navigate and contribute to the codebase.
 
-- <b>.storybook/</b> - configures the storybook showcase environment, initializing libraries such as MUI and React Hook Form to work in stories.
+## Root Directory _(./)_
 
-- <b>components/</b> - stores atomic level components, the basic building blocks for your app. Separated by their core functionality. (eg: button, radio, textfield, etc). These components typically should not have any effect on other parts in your codebase.
+The root directory of the project contains several important subdirectories and files. Here's an overview:
 
-- <b>features/</b> - stores molecule/organism level components, separated by their specific feature or purpose in the project. (eg: authorization, transactions, products, etc). Allowed to consume services and have side effects throughout the codebase (eg: use contextAPI, hooks, API requests, etc.)
+- **.storybook/:** This directory configures the Storybook environment, initializing external libraries like MUI (Material UI) and React Hook Form. This setup allows the rendering of various components within the Storybook showcase.
 
-- <b>lib/</b> - stores code related to the initialization and configuration of third party packages and libraries.
+- **public/:** This directory is used to store files that are publicly accessible, such as images. These files are available to be served to clients upon request.
 
-- <b>pages/</b> - NextJS directory that is used for file-based routing. Please refer to NextJS documentation to learn more.
+- **showcase/:** This directory contains a collection of single-page components with minimal custom component dependencies. It is designed to accelerate the development of specific features in your project through example.
 
-  - <b>pages/api</b> - server side code for creating API endpoints. Please refer to NextJS documentation to learn more.
+- **stories/:** This directory contains the Storybook story components. These components are used to display the Design System environment.
 
-  - <b>pages/showcase</b> - a collection of example pages for achieving various common functionality. Useful to refer to when beginning a new project.
+- **tests/:** This directory houses the End-to-End (E2E) and integration test files.
 
-- <b>public/</b> - stores publicly accessible files, typically static images, for quick serving to clients on request.
+## src Directory _(./src/)_
 
-- <b>providers/</b> - contains providers to wrap components, providing state management via ContextAPI.
+The `src` directory contains the source code of the project, organized in several subdirectories:
 
-- <b>helpers/</b> - contains reusable functions to assist throughout the project. Some common functions have been included for convenience. (eg: arrayHelpers, fileHelpers, dateHelpers, etc).
+- **components/:** This directory contains atomic level components which act as the foundational building blocks for your app. The components are segregated based on their core functionality (e.g., button, radio, textfield). Ideally, these components should not interact or interfere with other parts of your codebase.
 
-- <b>hooks/</b> - contains custom React hooks for reusable state logic.
+- **features/:** This directory contains molecule/organism level components, categorized by their specific feature or purpose within the project (e.g., authorization, transactions, products). These components are allowed to consume services and can have side effects throughout the codebase (e.g., using ContextAPI, hooks, API requests).
 
-- <b>schemas/</b> - Stores YUP schema code for form validation.
+- **init/:** This directory stores the code related to the initialization of the app, along with the setup for third-party packages and libraries.
 
-- <b>types/</b> - Contains any Typescript interfaces, types, and enums.
+- **pages/:** This is a special Next.js directory used for file-based routing. For more information, please refer to the Next.js documentation. Note that because the `app` directory is relatively new (from Next 13), we have opted to stay with the standard `pages` directory for production stability.
 
-- <b>stories/</b> - contains stories developed for consumption by the storybook server to generate previews of the components.
+  - **pages/api:** This subdirectory contains server-side code for creating API endpoints. For further details, refer to the Next.js documentation.
 
-- <b>styles/</b> - contains global css styles, MUI theme configuration files, and initialization of the MUi theme for the NextJS project.
+- **layouts/:** This boilerplate supports multiple layouts to handle various users. This directory stores these various layouts to be consumed by the pages.
+
+- **providers/:** This directory contains providers that wrap components and provide state management via the Context API.
+
+- **helpers/:** This directory contains reusable functions that assist throughout the project. Some common helper functions, such as arrayHelpers, fileHelpers, and dateHelpers, are included for convenience.
+
+- **hooks/:** This directory houses custom React hooks, which encapsulate reusable state logic.
+
+- **schemas/:** This directory stores schema code used for form validation.
+
+- **types/:** This directory contains TypeScript interfaces, types, and enums to enforce typing throughout the project.
+
+- **styles/:** This directory contains global CSS styles in order to customize on top of the design system theme being used. Note that it is generally better to modify the design system theme whenever possible.
 
 # How to Contribute
 
