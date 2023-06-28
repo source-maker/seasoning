@@ -22,7 +22,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
-      "@/lib/*": ["init/*"],
+      "@/init/*": ["src/init/*"],
       "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/providers/*": ["src/providers/*"],
