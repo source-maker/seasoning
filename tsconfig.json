@@ -24,7 +24,8 @@
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/lib/*": ["init/*"],
-      "@/helpers/*": ["helpers/*"]
+      "@/helpers/*": ["helpers/*"],
+      "@/styles/*": ["./src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
