@@ -1,6 +1,6 @@
 {
   "name": "seasoning",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "private": true,
   "engines": {
     "node": ">=14.17.0",
