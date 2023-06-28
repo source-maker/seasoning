@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '@/styles/initAppTheme';
-import { createEmotionCache } from '@/init/emotion';
+import { createEmotionCache } from '@/init/mui/emotion';
 import { SWRConfig } from 'swr';
 import { fetcher } from '../init/axios';
 import { AuthProvider } from '@/providers/AuthProvider';

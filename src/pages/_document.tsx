@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import theme from '@/styles/initAppTheme';
-import { createEmotionCache } from '@/init/emotion';
+import { createEmotionCache } from '@/init/mui/emotion';
 
 // eslint-disable-next-line import/no-default-export
 export default class MyDocument extends Document {
