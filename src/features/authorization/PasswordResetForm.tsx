@@ -4,7 +4,7 @@ import {
   PasswordResetResolver,
 } from '@/schemas/PasswordResetSchema';
 import { Button } from '@mui/material';
-import { BrothTextField } from '../../src/components/textfield/BrothTextField';
+import { BrothTextField } from '../../components/textfield/BrothTextField';
 import BrothLink from '@/components/link/BrothLink';
 
 // TODO: decide password reset functionality in demo or not

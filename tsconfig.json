@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/features/*": ["features/*"],
+      "@/features/*": ["src/features/*"],
       "@/init/*": ["src/init/*"],
       "@/helpers/*": ["src/helpers/*"],
       "@/styles/*": ["./src/styles/*"],

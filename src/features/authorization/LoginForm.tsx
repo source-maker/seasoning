@@ -8,12 +8,12 @@ import {
   FormControlLabel,
   FormGroup,
 } from '@mui/material';
-import { BrothTextField } from '../../src/components/textfield/BrothTextField';
-import { PasswordInput } from '../../src/components/textfield/PasswordInput';
+import { BrothTextField } from '../../components/textfield/BrothTextField';
+import { PasswordInput } from '../../components/textfield/PasswordInput';
 import { useState } from 'react';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession, signIn } from 'next-auth/react';
-import { BrothTypography } from '../../src/components/typography/BrothTypography';
+import { BrothTypography } from '../../components/typography/BrothTypography';
 
 export function LoginForm({
   callBackPath = '/mypage',
