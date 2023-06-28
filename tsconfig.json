@@ -30,6 +30,11 @@
       "@/pages/*": ["/src/pages/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".storybook/initMuiThemes.ts"
+  ],
   "exclude": ["node_modules", ".next"]
 }
