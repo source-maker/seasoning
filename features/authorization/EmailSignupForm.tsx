@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Alert, Button } from '@mui/material';
-import { PasswordInput } from '../../components/textfield/PasswordInput';
+import { PasswordInput } from '../../src/components/textfield/PasswordInput';
 import { useRouter } from 'next/router';
 import { SignupPostResolver } from '@/schemas/SignupSchema';
 import { mutate } from 'swr';

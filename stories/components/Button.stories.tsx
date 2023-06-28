@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { BrothButton as Button } from '../../components/button/BrothButton';
+import { BrothButton as Button } from '../../src/components/button/BrothButton';
 import * as icons from '@mui/icons-material';
 
 export default {

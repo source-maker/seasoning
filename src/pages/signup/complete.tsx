@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothLink from '@/components/link/BrothLink';
-import { BrothButton } from '../../../components/button/BrothButton';
+import { BrothButton } from '@/components/button/BrothButton';
 
 const EmailSignupComplete: NextPage = () => {
   return (

@@ -2,10 +2,10 @@ import { Alert, Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { BrandLogo } from '../../../components/asset/BrandLogo';
+import { BrandLogo } from '@/components/asset/BrandLogo';
 import { LoginForm } from '@/features/authorization/LoginForm';
 import { useAuth } from '@/hooks/useAuth';
-import { Loading } from '../../../components/asset/Loading';
+import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 

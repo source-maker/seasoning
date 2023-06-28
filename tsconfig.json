@@ -18,8 +18,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/repositories/*": ["repositories/*"],
+      "@/components/*": ["src/components/*"],
       "@/features/*": ["features/*"],
       "@/init/*": ["src/init/*"],
       "@/helpers/*": ["src/helpers/*"],
