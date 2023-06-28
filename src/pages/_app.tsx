@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '@/styles/initAppTheme';
+import theme from '@/init/mui/loadMuiTheme';
 import { createEmotionCache } from '@/init/mui/emotion';
 import { SWRConfig } from 'swr';
 import { fetcher } from '../init/axios';
