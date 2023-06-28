@@ -19,7 +19,7 @@ import { BrothButton } from '@/components/button/BrothButton';
 import { Stack } from '@mui/system';
 import { Octokit } from 'octokit';
 import { format } from 'date-fns';
-import { formatIsoDate } from '../../../../helpers/dateHelpers';
+import { formatIsoDate } from '@/helpers/dateHelpers';
 import { BrothTypography } from '../../../../components/typography/BrothTypography';
 
 type ChartData = {

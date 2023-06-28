@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material';
 import BrothDashboardPaper from '@/components/paper/BrothDashboardPaper';
 import BrothLineChart from '@/components/chart/BrothLineChart';
 import { BrothTypography } from '@/components/typography/BrothTypography';
-import { formatYen } from 'helpers/textHelpers';
+import { formatYen } from '@/helpers/textHelpers';
 import faker from 'faker';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';

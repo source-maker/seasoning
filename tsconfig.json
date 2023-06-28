@@ -22,7 +22,7 @@
       "@/repositories/*": ["repositories/*"],
       "@/features/*": ["features/*"],
       "@/init/*": ["src/init/*"],
-      "@/helpers/*": ["helpers/*"],
+      "@/helpers/*": ["src/helpers/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/providers/*": ["src/providers/*"],
       "@/types/*": ["src/types/*"],
