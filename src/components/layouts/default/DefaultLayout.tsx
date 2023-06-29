@@ -7,6 +7,7 @@ import { Box } from '@mui/system';
 import { ReactNode } from 'react';
 import { SideDrawer } from '@/components/drawer/SideDrawer';
 import { DefaultHeader } from './DefaultHeader';
+import { Container } from '@mui/material';
 
 // Page options for this layout
 interface PageOptions {
@@ -31,11 +32,11 @@ export function DefaultLayout({
         justifyContent="space-between"
         minHeight="100vh"
       >
-        <DefaultHeader title={pageOptions?.title} />
-
+        <DefaultHeader title={pageOptions?.title || 'Dashboard'} />
         <SideDrawer />
-
-        <main style={{ display: 'contents' }}>{children}</main>
+        <Container>
+          <main style={{ display: 'contents' }}>{children}</main>
+        </Container>
         <DefaultFooter />
       </Box>
     </>
