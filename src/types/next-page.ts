@@ -4,18 +4,14 @@ import { Session } from 'next-auth';
 import { EmotionCache } from '@emotion/react';
 import type { AppProps } from 'next/app';
 
-export interface PageOptions {
-  title?: string;
-  useBackButton?: boolean;
-  rightNavMenu?: ReactNode;
-}
-
-export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
-  P,
-  IP
-> & {
+// For Adding Layout Support to Next Page
+export type NextPageWithLayout<
+  P = Record<string, unknown>, // Page Props
+  IP = P, // Initial Prop
+  PO = Record<string, unknown> // Page Options
+> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
-  pageOptions?: PageOptions;
+  pageOptions?: PO;
 };
 
 export type AppPropsWithLayout = AppProps & {
