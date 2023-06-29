@@ -5,6 +5,7 @@ import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
 import { useAuth } from '@/hooks/useAuth';
+import { DashboardLayout } from '@/components/layouts/dashboard/DashboardLayout';
 
 export async function getStaticProps() {
   return {
@@ -48,4 +49,4 @@ const MyPage: NextPage = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default MyPage;
+export default DashboardLayout(MyPage);

@@ -1,10 +1,10 @@
 import { Container, Typography } from '@mui/material';
-import bizLayout from '@/features/layout/biz/BizLayout';
+import { DashboardLayout } from '@/components/layouts/dashboard/DashboardLayout';
 import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
 
-import { NextPageWithLayout } from '@/types/types';
 import { BrothTypography } from '@/components/typography/BrothTypography';
+import { NextPageWithLayout } from '@/types/next-page';
 
 const Biz: NextPageWithLayout = () => {
   const { currentUser } = useAuth();
@@ -35,4 +35,4 @@ const Biz: NextPageWithLayout = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default bizLayout(Biz, { title: 'Business Dashboard' });
+export default DashboardLayout(Biz, { title: 'Business Dashboard' });
