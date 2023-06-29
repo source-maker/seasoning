@@ -16,11 +16,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { PublicLayout } from 'src/layouts/public/PublicLayout';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DrawerProvider } from '@/providers/DrawerProvider';
 // import ja from 'date-fns/locale/ja'; // if localizing date-fns, import the locale here, example given below:
 import { AppPropsWithLayout } from '@/types/next-page';
+import { DefaultLayout } from '@/components/layouts/default/DefaultLayout';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -32,7 +32,7 @@ export default function MyApp(props: AppPropsWithLayout) {
 
   // Render default layout if no layout is provided
   const getLayout =
-    Component.getLayout ?? ((page) => <PublicLayout>{page}</PublicLayout>);
+    Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
     <>
