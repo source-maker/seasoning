@@ -1,4 +1,4 @@
-import ContextExample from 'pages/showcase/misc/contextexample';
+import ContextExample from 'src/pages/showcase/misc/contextexample';
 import { showcaseParameters } from './showcaseParameters';
 
 export default {

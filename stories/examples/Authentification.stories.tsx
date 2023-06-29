@@ -1,7 +1,7 @@
-import LoginCenteredExample from 'pages/showcase/authentification/LoginCenteredExample';
-import LoginSocials from 'pages/showcase/authentification/LoginSocials';
-import PasswordReset from 'pages/showcase/authentification/passwordReset';
-import PasswordResetSuccess from 'pages/showcase/authentification/passwordResetSuccess';
+import LoginCenteredExample from 'src/pages/showcase/authentification/LoginCenteredExample';
+import LoginSocials from 'src/pages/showcase/authentification/LoginSocials';
+import PasswordReset from 'src/pages/showcase/authentification/passwordReset';
+import PasswordResetSuccess from 'src/pages/showcase/authentification/passwordResetSuccess';
 import { showcaseParameters } from './showcaseParameters';
 
 export default {

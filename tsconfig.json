@@ -18,15 +18,23 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/providers/*": ["providers/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/repositories/*": ["repositories/*"],
-      "@/features/*": ["features/*"],
-      "@/lib/*": ["lib/*"],
-      "@/helpers/*": ["helpers/*"]
+      "@/components/*": ["src/components/*"],
+      "@/features/*": ["src/features/*"],
+      "@/init/*": ["src/init/*"],
+      "@/helpers/*": ["src/helpers/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/providers/*": ["src/providers/*"],
+      "@/types/*": ["src/types/*"],
+      "@/schemas/*": ["src/schemas/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/pages/*": ["/src/pages/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".storybook/initMuiThemes.ts"
+  ],
   "exclude": ["node_modules", ".next"]
 }

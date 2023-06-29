@@ -1,4 +1,4 @@
-import FinancialDashboardExample from 'pages/showcase/dashboards/FinancialDashboardExample';
+import FinancialDashboardExample from 'src/pages/showcase/dashboards/FinancialDashboardExample';
 import { showcaseParameters } from './showcaseParameters';
 
 export default {

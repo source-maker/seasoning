@@ -1,6 +1,6 @@
-import HeroCentered from 'pages/showcase/heroes/HeroCentered';
-import HeroSignup from 'pages/showcase/heroes/HeroSignup';
-import HeroVisual from 'pages/showcase/heroes/HeroVisual';
+import HeroCentered from 'src/pages/showcase/heroes/HeroCentered';
+import HeroSignup from 'src/pages/showcase/heroes/HeroSignup';
+import HeroVisual from 'src/pages/showcase/heroes/HeroVisual';
 import { showcaseParameters } from './showcaseParameters';
 
 export default {

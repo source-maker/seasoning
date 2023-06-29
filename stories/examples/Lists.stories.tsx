@@ -1,10 +1,10 @@
-import CardListExample from 'pages/showcase/lists/SocialFeedExample';
-import DataTableExample from 'pages/showcase/lists/DataTableExample';
-import ImageFeedExample from 'pages/showcase/lists/ImageFeedExample';
-import ActivityFeedExample from 'pages/showcase/lists/ActivityFeedExample';
-import ProjectsFeedExample from 'pages/showcase/lists/ProjectsFeedExample';
+import CardListExample from 'src/pages/showcase/lists/SocialFeedExample';
+import DataTableExample from 'src/pages/showcase/lists/DataTableExample';
+import ImageFeedExample from 'src/pages/showcase/lists/ImageFeedExample';
+import ActivityFeedExample from 'src/pages/showcase/lists/ActivityFeedExample';
+import ProjectsFeedExample from 'src/pages/showcase/lists/ProjectsFeedExample';
 import { showcaseParameters } from './showcaseParameters';
-import PaginationBasicExample from 'pages/showcase/lists/PaginationBasicExample';
+import PaginationBasicExample from 'src/pages/showcase/lists/PaginationBasicExample';
 
 export default {
   title: 'Showcase/Lists',
