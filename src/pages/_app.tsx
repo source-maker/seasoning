@@ -20,7 +20,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { DrawerProvider } from '@/providers/DrawerProvider';
 // import ja from 'date-fns/locale/ja'; // if localizing date-fns, import the locale here, example given below:
 import { AppPropsWithLayout } from '@/types/next-page';
-import { DefaultLayout } from '@/components/layouts/default/DefaultLayout';
+import { DefaultLayout } from '@/layouts/default/DefaultLayout';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

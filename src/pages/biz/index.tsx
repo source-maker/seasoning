@@ -1,5 +1,5 @@
 import { Container, Typography } from '@mui/material';
-import { DashboardLayout } from '@/components/layouts/dashboard/DashboardLayout';
+import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
 

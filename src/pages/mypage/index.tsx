@@ -5,7 +5,7 @@ import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
 import { useAuth } from '@/hooks/useAuth';
-import { DashboardLayout } from '@/components/layouts/dashboard/DashboardLayout';
+import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 
 export async function getStaticProps() {
   return {

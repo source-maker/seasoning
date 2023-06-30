@@ -1,4 +1,4 @@
-import { DashboardLayout } from '@/components/layouts/dashboard/DashboardLayout';
+import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 import { Box, Container } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BrandLogo } from '@/components/asset/BrandLogo';
