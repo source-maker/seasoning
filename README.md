@@ -308,7 +308,7 @@ Read the following link for more information on strict mode:
 
 Seasoning comes equipped with Storybook to centralize your project's components into a UI library/design system.
 
-### Creating a Story
+## Creating a Story
 
 In general, you should create a story in parallel with the components themselves. 
 
@@ -322,7 +322,7 @@ For example:
 However, if the situation is unique and cannot be easily stored in parallel, such as stories for NextJS pages, you can store these stories in the `stories/` directory at the root of the project.
 
 
-### Adding a Theme to Storybook
+## Adding a Theme to Storybook
 
 Storybook is similarly equipped to work with MUI, and works with all of the MUI themes in the project.
 There is a dropdown in the toolbar that provides a convenient way your UI in different themes.
