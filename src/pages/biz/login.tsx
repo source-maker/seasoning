@@ -1,4 +1,4 @@
-import bizLayout from '@/features/layout/biz/BizLayout';
+import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 import { Box, Container } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BrandLogo } from '@/components/asset/BrandLogo';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothLink from '@/components/link/BrothLink';
-import { NextPageWithLayout } from '@/types/types';
+import { NextPageWithLayout } from '@/types/next-page';
 
 const BizLogin: NextPageWithLayout = () => {
   const { isLogin, isAdmin } = useAuth();
@@ -60,4 +60,4 @@ const BizLogin: NextPageWithLayout = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default bizLayout(BizLogin, { title: 'Business Login' });
+export default DashboardLayout(BizLogin, { title: 'Business Login' });

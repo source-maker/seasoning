@@ -187,11 +187,6 @@ If you would like to contribute to this project, please follow the following ste
 3. Develop the page/component. If new, please include a matching storybook story so it is added into our storybook showcase
 4. Provide any relevant screenshots and links to access the feature
 
-## How to Create a Storybook Story
-
-1. Create a new story file in the `stories/` directory
-2. Import the component to be previewed
-3. Create a story for the component
 
 ## How to Submit a Bug Report
 
@@ -202,50 +197,34 @@ If you find a bug, please follow the following steps:
 3. Provide steps to reproduce the bug
 4. Provide any relevant screenshots
 
+# Layouts
+
+## How Our Layouts Work
+NextJS 13 introduces layouts with its new `app` directory, however, for production stability, we have chosen to stick with using the `pages` directory for the time being.
+
+We have architectured layouts via higher order components (HOC).
+Each layout file is structured in the following order:
+
+1. `PageOptions`: Defined at the top of each page file, this Typescript interface enables developers to specify what properties can be passed from Next.js pages to modify the layout.
+
+2. `Layout` Component: The Layout component is where the UI of the layout is defined. This is created using standard React components and JSX syntax.
+
+3. `HOC` (Higher Order Component): This part of the file involves defining and exporting the HOC. The HOC applies the layout with the options provided to any Next.js page that wishes to use the layout. This function takes a component (Next.js page) as an argument and returns a new component with the layout applied.
+
+(Note: The `DefaultLayout.tsx` is unique among other layout files because it does not utilize HOC, and simply wraps around a page as a fallback if no layout is specified by a page.)
+
 # Development Guidelines
 
-## Creating a Custom Theme
+## Creating a Custom MUI Theme
 
-All of the showcase pages and components in this boilerplate are based on minimally styled MUI components.<br />This allows global styling via theme files that contain the extension `*.theme.ts`, stored in the `styles/themes/` directory.<br />
+By default, this boilerplate is based on MUI.<br />This means global styling is achieved via theme files that contain the extension `*.theme.ts`.<br />
 These theme files essentially hold a large object that overrides MUI's default palette (colors), typography, spacing, components, and more. You can refer to the MUI documentation for configuration options:
 
 https://mui.com/material-ui/customization/theming/
 
 We have included several example themes to get you started.
+They are stored in the `init/mui/themes` directory.
 
-### Adding a Theme to Storybook
-
-Storybook is designed to load all of the themes in the `styles/themes/` directory, and allow you to switch between them in the toolbar at the top of the page. This is a convenient way to preview your changes to a theme.
-
-When you create a new theme, you will need to make two changes:
-
-1. Import the theme object and add to the `storyThemes` array in the `styles/themes/initStoryThemes.tsx` file.
-
-```
-export const storyThemes = {
-...
-
-  YourTheme: {
-    value: 'new',
-    title: 'New Theme',
-    theme: createTheme(newTheme as ThemeOptions, ja),
-  },
-
-...
-};
-```
-
-2. Next, you have to make the theme as toolbar option in storybook by `.stories/preview.tsx` file:
-
-```
-  items: [
-    ...
-        { value: 'new Theme',  title: 'New Theme' },
-    ...
-      ],
-```
-
-Your theme should now be available in the storybook toolbar.
 
 ## Atomic Design Influence
 
@@ -324,6 +303,59 @@ This behavior is to be expected during development, and is not a problem in prod
 Read the following link for more information on strict mode:
 
 [Strict Mode](https://ja.reactjs.org/docs/strict-mode.html)
+
+# Storybook
+
+Seasoning comes equipped with Storybook to centralize your project's components into a UI library/design system.
+
+## Creating a Story
+
+In general, you should create a story in parallel with the components themselves. 
+
+For example:
+```
+/ButtonDirectory
+  - Button.tsx
+  - Button.stories.tsx
+```
+
+However, if the situation is unique and cannot be easily stored in parallel, such as stories for NextJS pages, you can store these stories in the `stories/` directory at the root of the project.
+
+
+## Adding a Theme to Storybook
+
+Storybook is similarly equipped to work with MUI, and works with all of the MUI themes in the project.
+There is a dropdown in the toolbar that provides a convenient way your UI in different themes.
+
+When you create a new MUI theme, you will need make sure Storybook can read it by making the following changes:
+
+1. Import the theme object and add to the `storyThemes` array in the `.storybook/initMuiThemes.ts` file.
+
+```
+export const storyThemes = {
+...
+
+  YourTheme: {
+    value: 'new',
+    title: 'New Theme',
+    theme: createTheme(newTheme as ThemeOptions, ja),
+  },
+
+...
+};
+```
+
+2. Next, you have to add the theme as a toolbar option in storybook by `.stories/preview.tsx` file:
+
+```
+  items: [
+    ...
+        { value: 'new Theme',  title: 'New Theme' },
+    ...
+      ],
+```
+
+Your theme should now be available in the storybook toolbar.
 
 <!-- LICENSE -->
 

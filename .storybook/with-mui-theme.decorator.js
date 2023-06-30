@@ -5,6 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import ja from 'date-fns/locale/ja';
 import { SessionProvider } from 'next-auth/react';
+import { DrawerProvider } from '@/providers/DrawerProvider';
 
 export const withMuiTheme = (Story, context, session) => {
   const { theme: themeKey } = context.globals;
@@ -28,7 +29,9 @@ export const withMuiTheme = (Story, context, session) => {
       >
         <CssBaseline />
         <SessionProvider session={session}>
-          <Story />
+          <DrawerProvider>
+            <Story />
+          </DrawerProvider>
         </SessionProvider>
       </LocalizationProvider>
     </ThemeProvider>

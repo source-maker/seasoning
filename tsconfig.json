@@ -27,7 +27,8 @@
       "@/types/*": ["src/types/*"],
       "@/schemas/*": ["src/schemas/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/pages/*": ["/src/pages/*"]
+      "@/pages/*": ["/src/pages/*"],
+      "@/layouts/*": ["src/layouts/*"]
     }
   },
   "include": [
