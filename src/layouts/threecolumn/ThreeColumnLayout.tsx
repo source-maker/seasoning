@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { ReactElement, ReactNode } from 'react';
 import { NextPageWithLayout } from '@/types/next-page';
 import { SideDrawer } from '@/components/drawer/SideDrawer';
-import { DefaultHeader } from '@/layouts/default/DefaultHeader';
+import { DefaultHeader } from 'src/layouts/default/DefaultHeader';
 import { Box } from '@mui/system';
 
 // Page options for this layout

@@ -1,13 +1,13 @@
-// stories/ThreeColumnLayout.stories.js
+// stories/DashboardLayout.stories.js
 import React from 'react';
-import { ThreeColumnLayout } from '@/components/layouts/threecolumn/ThreeColumnLayout';
-import { showcaseParameters } from '../../../../stories/examples/showcaseParameters';
+import { DashboardLayout } from 'src/layouts/dashboard/DashboardLayout';
+import { showcaseParameters } from '../../../stories/examples/showcaseParameters';
 import { Box } from '@mui/system';
 import { NextPageWithLayout } from '@/types/next-page';
 
 export default {
   title: 'Showcase/Layouts',
-  component: ThreeColumnLayout,
+  component: DashboardLayout,
   parameters: showcaseParameters,
 };
 
@@ -23,16 +23,14 @@ const dummybox = {
   display: 'flex',
 };
 
-export const ThreeColumns = () => {
+export const Dashboard = () => {
   const TestPage: NextPageWithLayout = () => (
     <Box sx={dummybox}>Main content goes here</Box>
   );
   TestPage.getLayout = (page) => page; // Add a default getLayout function to your page
 
-  const LayoutTestPage = ThreeColumnLayout(TestPage, {
-    title: 'ThreeColumnLayout Example',
-    leftSidebar: <Box sx={dummybox}>Left Sidebar Content</Box>,
-    rightSidebar: <Box sx={dummybox}>Right Sidebar Content</Box>,
+  const LayoutTestPage = DashboardLayout(TestPage, {
+    title: 'DashboardLayout Example',
   });
 
   // Simulate a Next.js page by calling the getLayout function

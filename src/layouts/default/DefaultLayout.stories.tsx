@@ -1,7 +1,7 @@
 // stories/DefaultLayout.stories.js
 import React from 'react';
-import { DefaultLayout } from '@/components/layouts/default/DefaultLayout';
-import { showcaseParameters } from '../../../../stories/examples/showcaseParameters';
+import { DefaultLayout } from 'src/layouts/default/DefaultLayout';
+import { showcaseParameters } from '../../../stories/examples/showcaseParameters';
 import { Box } from '@mui/system';
 
 export default {
