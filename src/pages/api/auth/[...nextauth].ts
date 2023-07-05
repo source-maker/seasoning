@@ -1,12 +1,12 @@
+import { swaggerClient } from '@/init/swaggerClient';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { swaggerClient } from '@/init/swaggerClient';
 import GitHubProvider from 'next-auth/providers/github';
 
 export default NextAuth({
-  // session: {
-  //   strategy: 'jwt',
-  // },
+  session: {
+    strategy: 'jwt',
+  },
   pages: {
     error: '/login',
   },
@@ -26,26 +26,33 @@ export default NextAuth({
       },
       async authorize(credentials) {
         const success = await swaggerClient.login.loginCreate({
-          username: credentials?.username || '',
-          password: credentials?.password || '',
+          username: credentials?.username ?? '',
+          password: credentials?.password ?? '',
         });
+
+        const { access, refresh } = success as unknown as {
+          access: string;
+          refresh: string;
+        };
+
+        // if no username, stop auth
+        if (credentials?.username === undefined) return null;
 
         return success
           ? {
-              id: success.id.toString(),
-              accessToken: success.access,
-              refreshToken: success.refresh,
+              id: credentials.username,
+              accessToken: access,
+              refreshToken: refresh,
             }
           : null;
       },
     }),
   ],
-
-  /**
-   * jwt callback is called when a JWT is received from the provider.
-   * This modifies the JWT by providing the accessToken to session, which then can be used in the session callback
-   */
   callbacks: {
+    /**
+     * jwt callback is triggered whenever a JWT token is created or updated.
+     * We are adding the accessToken to the JWT token so its available in the session callback
+     */
     async jwt({ token, user, account }) {
       if (account && user) {
         return {
@@ -57,6 +64,10 @@ export default NextAuth({
       return token;
     },
 
+    /**
+     * session callback is triggered whenever a session is accessed.
+     * Here, we are adding the accessToken (from the JWT callback) to the user object for client access
+     */
     async session({ session, token }) {
       if (!session.user) return session;
 
