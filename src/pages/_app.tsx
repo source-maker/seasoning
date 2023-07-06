@@ -6,7 +6,6 @@ import { CacheProvider } from '@emotion/react';
 import theme from '@/init/mui/loadMuiTheme';
 import { createEmotionCache } from '@/init/mui/emotion';
 import { SWRConfig } from 'swr';
-import { fetcher } from '@/init/axios';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { RouteGuardProvider } from '@/providers/RouteGuardProvider';
 import Backdrop from '@mui/material/Backdrop';
@@ -21,6 +20,8 @@ import { DrawerProvider } from '@/providers/DrawerProvider';
 // import ja from 'date-fns/locale/ja'; // if localizing date-fns, import the locale here, example given below:
 import { AppPropsWithLayout } from '@/types/next-page';
 import { DefaultLayout } from '@/layouts/default/DefaultLayout';
+import { SwaggerProvider } from '@/providers/SwaggerProvider';
+import { SnackbarProvider } from '@/providers/SnackbarProvider';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -46,7 +47,9 @@ export default function MyApp(props: AppPropsWithLayout) {
       <CacheProvider value={emotionCache}>
         <SWRConfig
           value={{
-            fetcher: fetcher,
+            dedupingInterval: 100,
+            refreshInterval: 100,
+            fallback: { a: 1, b: 1 },
             revalidateOnReconnect: true,
           }}
         >
@@ -64,42 +67,48 @@ export default function MyApp(props: AppPropsWithLayout) {
               <CssBaseline />
 
               <SessionProvider session={props.session}>
-                <AuthProvider>
-                  <Backdrop
-                    sx={{
-                      color: '#fff',
-                      zIndex: (theme) => theme.zIndex.drawer + 1,
-                    }}
-                    open={loading}
-                  >
-                    <CircularProgress color="primary" />
-                  </Backdrop>
-                  <RouteGuardProvider>
-                    <DrawerProvider>
-                      <AnimatePresence>
-                        <motion.div
-                          initial="pageInitial"
-                          animate="pageAnimate"
-                          variants={{
-                            pageInitial: {
-                              opacity: 0,
-                            },
-                            pageAnimate: {
-                              opacity: 1,
-                            },
-                            pageExit: {
-                              backgroundColor: 'white',
-                              filter: `invert()`,
-                              opacity: 0,
-                            },
-                          }}
-                        >
-                          {getLayout(<Component {...props.pageProps} />)}
-                        </motion.div>
-                      </AnimatePresence>
-                    </DrawerProvider>
-                  </RouteGuardProvider>
-                </AuthProvider>
+                <SwaggerProvider>
+                  <AuthProvider>
+                    <>
+                      <Backdrop
+                        sx={{
+                          color: '#fff',
+                          zIndex: (theme) => theme.zIndex.drawer + 1,
+                        }}
+                        open={loading}
+                      >
+                        <CircularProgress color="primary" />
+                      </Backdrop>
+                      <RouteGuardProvider>
+                        <SnackbarProvider>
+                          <DrawerProvider>
+                            <AnimatePresence>
+                              <motion.div
+                                initial="pageInitial"
+                                animate="pageAnimate"
+                                variants={{
+                                  pageInitial: {
+                                    opacity: 0,
+                                  },
+                                  pageAnimate: {
+                                    opacity: 1,
+                                  },
+                                  pageExit: {
+                                    backgroundColor: 'white',
+                                    filter: `invert()`,
+                                    opacity: 0,
+                                  },
+                                }}
+                              >
+                                {getLayout(<Component {...props.pageProps} />)}
+                              </motion.div>
+                            </AnimatePresence>
+                          </DrawerProvider>
+                        </SnackbarProvider>
+                      </RouteGuardProvider>
+                    </>
+                  </AuthProvider>
+                </SwaggerProvider>
               </SessionProvider>
             </LocalizationProvider>
           </ThemeProvider>
