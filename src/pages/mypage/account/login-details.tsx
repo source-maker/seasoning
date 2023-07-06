@@ -5,13 +5,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useAuth } from '@/hooks/useAuth';
 import type { NextPage } from 'next';
 import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const LoginDetails: NextPage = () => {
-  const { currentUser } = useAuth();
+  const { data: currentUser } = useCurrentUser();
 
   if (!currentUser) return <Loading />;
 

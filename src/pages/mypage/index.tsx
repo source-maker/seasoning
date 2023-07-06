@@ -4,20 +4,13 @@ import { BrothTypography } from '@/components/typography/BrothTypography';
 import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
-import { useAuth } from '@/hooks/useAuth';
 import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
-
-export async function getStaticProps() {
-  return {
-    props: {
-      title: 'My Account',
-    },
-  };
-}
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const MyPage: NextPage = () => {
-  const { currentUser } = useAuth();
+  const { data: currentUser } = useCurrentUser();
   const { status } = useSession();
+
   if (status !== 'authenticated') return <Loading />;
 
   return (
@@ -49,4 +42,6 @@ const MyPage: NextPage = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default DashboardLayout(MyPage);
+export default DashboardLayout(MyPage, {
+  title: 'My Account',
+});
