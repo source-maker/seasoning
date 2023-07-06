@@ -1,3 +1,7 @@
+import { SwaggerClient } from '@/init/swagger';
+
+export type SwaggerClientType = InstanceType<typeof SwaggerClient>;
+
 export type UserType = 'user' | 'admin';
 
 export interface JwtToken {

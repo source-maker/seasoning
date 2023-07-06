@@ -1,13 +1,13 @@
 import { Button, Container } from '@mui/material';
-import { useAuth } from '@/hooks/useAuth';
 import { Box } from '@mui/system';
 import type { NextPage } from 'next';
 import { Loading } from '@/components/asset/Loading';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothLink from '@/components/link/BrothLink';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const Account: NextPage = () => {
-  const { currentUser } = useAuth();
+  const { data: currentUser } = useCurrentUser();
 
   if (!currentUser) return <Loading />;
 

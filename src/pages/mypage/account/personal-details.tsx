@@ -10,7 +10,7 @@ const MemberDetails: NextPage = () => {
         Personal Information
       </BrothTypography>
 
-      <EditCustomerInfoForm onSuccessRoute="/mypage/account" />
+      <EditCustomerInfoForm />
     </Container>
   );
 };

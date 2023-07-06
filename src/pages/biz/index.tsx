@@ -1,13 +1,13 @@
 import { Container, Typography } from '@mui/material';
 import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
-import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
 
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import { NextPageWithLayout } from '@/types/next-page';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const Biz: NextPageWithLayout = () => {
-  const { currentUser } = useAuth();
+  const { data: currentUser } = useCurrentUser();
 
   if (!currentUser) return <Loading />;
 

@@ -1,56 +1,40 @@
-import { Alert, Button, Snackbar } from '@mui/material';
-import { useAuth } from '@/hooks/useAuth';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
+import { useEffect } from 'react';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { Loading } from '@/components/asset/Loading';
 import { useForm } from 'react-hook-form';
-import { mutate } from 'swr';
 import { swaggerClient } from '@/init/swaggerClient';
 import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useSnackbar } from '@/hooks/useSnackbar';
 
-interface IEditCustomerInfoFormProps {
-  onSuccessRoute?: string;
-  onSuccessData?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-}
+export function EditCustomerInfoForm() {
+  const { data: currentUser } = useCurrentUser();
+  const { openSnackbar } = useSnackbar();
 
-export function EditCustomerInfoForm({
-  onSuccessRoute,
-  onSuccessData,
-}: IEditCustomerInfoFormProps) {
-  const { currentUser } = useAuth();
-  const router = useRouter();
-  const [error, setError] = useState<string>('');
-  const [openSnackbar, setOpenSnackbar] = useState(false);
   type FormSchema = Pick<User, 'name' | 'money' | 'password'>;
 
   const { handleSubmit, control, reset } = useForm<FormSchema>({
-    defaultValues: currentUser || {},
+    defaultValues: currentUser ? currentUser : undefined,
   });
 
-  // Reset form when user changes
+  // re-update form when currentUser changes
   useEffect(() => {
     if (currentUser) {
-      reset({ ...currentUser });
+      reset(currentUser);
     }
-  }, [reset, currentUser]);
+  }, [currentUser, reset]);
 
   const onSubmit = async (formData: FormSchema) => {
     try {
       if (currentUser) {
-        await swaggerClient.me.meUpdate({ ...currentUser, ...formData });
-        await setError('');
-        mutate('/api/me/');
-        setOpenSnackbar(true);
-
-        router.push({
-          pathname: onSuccessRoute,
-          query: onSuccessData,
-        });
+        const newData = { ...currentUser, ...formData };
+        await swaggerClient?.me.meUpdate(newData);
+        openSnackbar('Updated successfully', 'success');
       }
     } catch (error) {
-      setError('Error updating');
+      openSnackbar('Error updating', 'error');
       console.log('update error', JSON.stringify(error, null, 2));
     }
   };
@@ -61,7 +45,6 @@ export function EditCustomerInfoForm({
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
-          {error && <Alert severity="error">{error}</Alert>}
           <BrothTextField
             label="Name"
             name="name"
@@ -88,12 +71,6 @@ export function EditCustomerInfoForm({
           </Button>
         </Stack>
       </form>
-
-      <Snackbar
-        message={'Updated successfully'}
-        open={openSnackbar}
-        onClose={() => setOpenSnackbar(false)}
-      ></Snackbar>
     </>
   );
 }
