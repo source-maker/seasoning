@@ -13,6 +13,11 @@ interface SnackbarProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Snackbar context object that contains the current state of the snackbar and a function to change it.
+ *
+ * @type {React.Context}
+ */
 export const SnackbarContext = createContext<{
   snackbar: SnackbarContextProps;
   setSnackbar: React.Dispatch<React.SetStateAction<SnackbarContextProps>>;
@@ -21,6 +26,13 @@ export const SnackbarContext = createContext<{
   setSnackbar: () => {},
 });
 
+/**
+ * Provider component for the SnackbarContext. Provides an interface for opening the snackbar with a message.
+ *
+ * @param {ReactNode} children - React components that are children of the provider.
+ *
+ * @returns {React.FC} - A function component.
+ */
 export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
 }) => {
