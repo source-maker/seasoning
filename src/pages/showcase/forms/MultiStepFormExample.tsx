@@ -5,7 +5,6 @@ import { Box, Container, Grid, Paper, Step } from '@mui/material';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import yup from '@/init/yup';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { BrothStepper } from '@/components/stepper/BrothStepper';
 import { BrothStepLabel } from '@/components/stepper/BrothStepLabel';
 import { Stack } from '@mui/system';
@@ -159,8 +158,7 @@ const formSchema = yup.object({
 
 export default function MultiStepFormExample() {
   const [currentStep, setCurrentStep] = React.useState<number>(0);
-  const { isActive, setIsActive, message, severity, openSnackBar } =
-    useSnackbar();
+  const { openSnackbar } = useSnackbar();
 
   // FORM SCHEMA & METHODS
   const formMethods = useForm<formSchemaTypes>({
@@ -169,7 +167,7 @@ export default function MultiStepFormExample() {
 
   const onSubmit = async (formData) => {
     console.log('formData', formData);
-    openSnackBar(
+    openSnackbar(
       `Thank you for your order, ${
         formData.lastName + ' ' + formData.firstName
       }! We will ship your order to ${formData.address}`,
@@ -182,7 +180,7 @@ export default function MultiStepFormExample() {
   function restartForm() {
     formMethods.reset();
     setCurrentStep(0);
-    openSnackBar('Form has been cleared', 'info');
+    openSnackbar('Form has been cleared', 'info');
   }
 
   // FORM NAVIGATION UTILITIES
@@ -272,13 +270,6 @@ export default function MultiStepFormExample() {
                 </Grid>
               </Grid>
             </form>
-
-            <BrothSnackbar
-              message={message}
-              isActive={isActive}
-              setIsActive={setIsActive}
-              severity={severity}
-            />
           </FormProvider>
         </Paper>
       </Box>

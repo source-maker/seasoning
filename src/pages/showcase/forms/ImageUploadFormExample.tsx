@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { getMime } from '@/helpers/fileHelpers';
 
 interface formTypes {
@@ -20,8 +19,7 @@ const formSchema = yup.object({
 });
 
 const ImageUploadFormExample: NextPage = () => {
-  const { isActive, setIsActive, message, severity, openSnackBar } =
-    useSnackbar();
+  const { openSnackbar } = useSnackbar();
 
   // configure form
   const { setValue, handleSubmit, control, reset } = useForm<formTypes>({
@@ -44,10 +42,10 @@ const ImageUploadFormExample: NextPage = () => {
       });
 
     try {
-      openSnackBar('Profile saved successfully', 'success');
+      openSnackbar('Profile saved successfully', 'success');
       console.log('formData', formData);
     } catch (error) {
-      openSnackBar('Error updating profile', 'error');
+      openSnackbar('Error updating profile', 'error');
     }
   }
 
@@ -88,7 +86,7 @@ const ImageUploadFormExample: NextPage = () => {
               variant="outlined"
               onClick={() => {
                 reset();
-                openSnackBar('Clearing form', 'info');
+                openSnackbar('Clearing form', 'info');
               }}
               fullWidth
             >
@@ -97,14 +95,6 @@ const ImageUploadFormExample: NextPage = () => {
           </Grid>
         </Grid>
       </form>
-
-      <BrothSnackbar
-        message={message}
-        isActive={isActive}
-        setIsActive={setIsActive}
-        severity={severity}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      />
     </Container>
   );
 };

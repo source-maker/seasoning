@@ -6,15 +6,17 @@ import { SignupPostResolver } from '@/schemas/SignupSchema';
 import { mutate } from 'swr';
 import { useState } from 'react';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
-import { swaggerClient } from '../../init/swaggerClient';
+import { swaggerClient } from '@/init/swaggerClient';
 import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
+import { useSnackbar } from '@/hooks/useSnackbar';
 
 EmailSignupForm.defaultProps = {
   onClose: () => null,
 };
 
 export function EmailSignupForm() {
+  const { openSnackbar } = useSnackbar();
   const { handleSubmit, control } = useForm<User>({
     resolver: SignupPostResolver,
     defaultValues: {
@@ -32,7 +34,7 @@ export function EmailSignupForm() {
       setError('');
       mutate('/api/me/');
       router.push('/signup/complete');
-      // TODO: create snackbar for successful signup notification
+      openSnackbar('Signup successful', 'success');
     } catch (error) {
       setError('There was a problem with your email or password.');
       console.log('signup error', error);

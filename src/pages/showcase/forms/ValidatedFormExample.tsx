@@ -16,7 +16,6 @@ import { RHFSelect } from '@/components/select/RHFSelect';
 import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 
 interface formTypes {
   name: string;
@@ -39,21 +38,20 @@ const formSchema = yup.object({
 });
 
 export default function ValidatedFormExample() {
-  const { isActive, setIsActive, message, severity, openSnackBar } =
-    useSnackbar();
+  const { openSnackbar } = useSnackbar();
   const { handleSubmit, control, reset } = useForm<formTypes>({
     resolver: yupResolver(formSchema),
   });
 
   const onSubmit = async (formData: formTypes) => {
     console.log('formData', formData);
-    openSnackBar('Product updated successfully', 'success');
+    openSnackbar('Product updated successfully', 'success');
     reset();
   };
 
   function handleDelete() {
     console.log('deleting');
-    openSnackBar('Product Deleted', 'error');
+    openSnackbar('Product Deleted', 'error');
     reset();
   }
   return (
@@ -135,13 +133,6 @@ export default function ValidatedFormExample() {
             </Grid>
           </Grid>
         </form>
-        <BrothSnackbar
-          message={message}
-          isActive={isActive}
-          setIsActive={setIsActive}
-          severity={severity}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        />
       </Box>
     </Container>
   );

@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { YubinBangoCore } from '@/init/yubinbango-core';
 
 interface formTypes {
@@ -33,8 +32,7 @@ const formSchema = yup.object({
 });
 
 export default function AddressFormExample() {
-  const { isActive, setIsActive, message, severity, openSnackBar } =
-    useSnackbar();
+  const { openSnackbar } = useSnackbar();
   const { handleSubmit, control, reset, watch, setValue, getValues } =
     useForm<formTypes>({
       resolver: yupResolver(formSchema),
@@ -64,13 +62,13 @@ export default function AddressFormExample() {
 
   const onSubmit = async (formData: formTypes) => {
     console.log('formData', formData);
-    openSnackBar(`Address submitted ${JSON.stringify(formData)}`, 'success');
+    openSnackbar(`Address submitted ${JSON.stringify(formData)}`, 'success');
     reset();
   };
 
   function handleDelete() {
     console.log('clearing');
-    openSnackBar('Clearing Fields', 'info');
+    openSnackbar('Clearing Fields', 'info');
     reset();
   }
   return (
@@ -149,13 +147,6 @@ export default function AddressFormExample() {
             </Grid>
           </Grid>
         </form>
-        <BrothSnackbar
-          message={message}
-          isActive={isActive}
-          setIsActive={setIsActive}
-          severity={severity}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        />
       </Box>
     </Container>
   );

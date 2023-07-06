@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import BrothSnackbar from '@/components/snackbar/BrothSnackbar';
 import { BrothImageArrayButton } from '@/components/button/BrothImageArrayButton';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothImage from '@/components/image/BrothImage';
@@ -24,8 +23,7 @@ const formSchema = yup.object({
 });
 
 const MultipleImageFormExample: NextPage = () => {
-  const { isActive, setIsActive, message, severity, openSnackBar } =
-    useSnackbar();
+  const { openSnackbar } = useSnackbar();
 
   // configure form
   const { handleSubmit, control, reset, watch } = useForm<formTypes>({
@@ -39,7 +37,7 @@ const MultipleImageFormExample: NextPage = () => {
     const numImages = formData?.images?.length || 0;
     console.log('formData', formData);
 
-    openSnackBar(
+    openSnackbar(
       `Uploaded ${numImages} ${
         numImages > 1 ? `images` : `image`
       } successfully`,
@@ -52,7 +50,7 @@ const MultipleImageFormExample: NextPage = () => {
 
   async function onError(errors) {
     console.log('errors', errors);
-    openSnackBar('Please upload at least one image.', 'error');
+    openSnackbar('Please upload at least one image.', 'error');
   }
 
   return (
@@ -104,7 +102,7 @@ const MultipleImageFormExample: NextPage = () => {
                 variant="outlined"
                 onClick={() => {
                   reset();
-                  openSnackBar('Clearing form', 'info');
+                  openSnackbar('Clearing form', 'info');
                 }}
               >
                 Clear
@@ -113,14 +111,6 @@ const MultipleImageFormExample: NextPage = () => {
           </Grid>
         </Grid>
       </form>
-
-      <BrothSnackbar
-        message={message}
-        isActive={isActive}
-        setIsActive={setIsActive}
-        severity={severity}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      />
     </Container>
   );
 };
