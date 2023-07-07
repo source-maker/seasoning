@@ -6,13 +6,12 @@ import { useAuth } from '../hooks/useAuth';
 import { BrothButton } from '@/components/button/BrothButton';
 import BrothLink from '@/components/link/BrothLink';
 import { BrothTypography } from '@/components/typography/BrothTypography';
-
-// Add this line to the top of a nextJS page to pass props to the page
-// export async function getStaticProps() {
-//   return { props: { title: 'HomePage' } };
-// }
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
+import { convertStringToJSX } from '@/helpers/stringHelpers';
 
 const Home: NextPage = () => {
+  const { t } = useTranslation(['common', 'home']);
   const { isLogin } = useAuth();
 
   return (
@@ -28,11 +27,10 @@ const Home: NextPage = () => {
     >
       <BrandLogo />
       <BrothTypography variant="h1" baseline>
-        <strong>Seasoning</strong>
+        <strong>{t('app_name')}</strong>
       </BrothTypography>
       <BrothTypography variant="h3">
-        A NextJS MUI Boilerplate
-        <br /> for Production-Ready Web Apps
+        {convertStringToJSX(t('app_description'))}
       </BrothTypography>
 
       <Stack
@@ -45,11 +43,11 @@ const Home: NextPage = () => {
       >
         {isLogin() ? (
           <BrothButton LinkComponent={BrothLink} href="/mypage" fullWidth>
-            Dashboard
+            {t('home:dashboard_btn')}
           </BrothButton>
         ) : (
           <BrothButton LinkComponent={BrothLink} href="/login" fullWidth>
-            Login
+            {t('home:login_btn')}
           </BrothButton>
         )}
 
@@ -59,7 +57,7 @@ const Home: NextPage = () => {
           href="/signup"
           fullWidth
         >
-          Create Account
+          {t('home:create_account_btn')}
         </BrothButton>
         <BrothButton
           variant="outlined"
@@ -67,12 +65,24 @@ const Home: NextPage = () => {
           href="https://broth-nextjs-boilerplate.vercel.app/?path=/docs/introduction--page"
           fullWidth
         >
-          Documentation
+          {t('home:documentation_btn')}
         </BrothButton>
       </Stack>
     </Container>
   );
 };
+
+export async function getStaticProps(context) {
+  // extract the locale identifier from the URL
+  const { locale } = context;
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}
 
 // eslint-disable-next-line import/no-default-export
 export default Home;
