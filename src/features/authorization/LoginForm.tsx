@@ -24,7 +24,7 @@ export function LoginForm({
   callBackPath?: string;
   isBizLogin?: boolean;
 }) {
-  const { t } = useTranslation('login');
+  const { t } = useTranslation('auth');
 
   const LoginPostSchema = yup.object({
     username: yup
