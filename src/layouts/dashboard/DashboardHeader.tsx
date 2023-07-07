@@ -8,6 +8,8 @@ import { DrawerContext } from '@/providers/DrawerProvider';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NotesIcon from '@mui/icons-material/Notes';
 import BrothLink from '@/components/link/BrothLink';
+import LanguageSwitcherButton from '@/components/button/LanguageSwitcherButton';
+import { useTranslation } from 'next-i18next';
 
 import {
   Avatar,
@@ -15,6 +17,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Stack,
   Tooltip,
 } from '@mui/material';
 
@@ -24,6 +27,7 @@ export function DashboardHeader({ title }: { title?: string }) {
   const router = useRouter();
   const { setOpen } = useContext(DrawerContext);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { t } = useTranslation('common');
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -34,7 +38,7 @@ export function DashboardHeader({ title }: { title?: string }) {
 
   return (
     <AppBarAdvance
-      title={title}
+      title={title || t('app_name')}
       logo={<BrandLogo sx={{ width: '2rem', marginRight: 8 }} />}
       leftMenu={
         <>
@@ -54,23 +58,9 @@ export function DashboardHeader({ title }: { title?: string }) {
           )}
         </>
       }
-      centerMenu={
-        isLogin() && (
-          <>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-          </>
-        )
-      }
       rightMenu={
-        <>
+        <Stack direction="row" alignItems={'center'} spacing={2}>
+          <LanguageSwitcherButton />
           {isLogin() ? (
             <>
               <Tooltip title="Open settings">
@@ -105,7 +95,7 @@ export function DashboardHeader({ title }: { title?: string }) {
               <Button color="inherit">Create Account</Button>
             </BrothLink>
           )}
-        </>
+        </Stack>
       }
     />
   );
