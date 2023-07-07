@@ -288,6 +288,63 @@ Once executed, the types will be generated. Endpoints can be accessed by importi
 
 <b>Important:</b> You cannot make any changes to files inside the `lib/swagger` directory because they will be overwritten the next time the swagger command is executed.
 
+## Internationalization (i18n)
+
+Our application supports multiple languages using the next-i18next library. Here's a simplified guide on how it works:
+
+### Passing Translations to Pages
+
+For each Next.js page, we need to pass the translations. We do this by calling the `serverSideTranslations` function in `getStaticProps` or `getServerSideProps`:
+
+```jsx
+export async function getStaticProps(context) {
+  // Extract the locale identifier from the URL
+  const { locale } = context;
+
+  return {
+    props: {
+      // Pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}
+```
+
+### Consuming Translations in Components
+Once pages can access translations, any component rendered in the page can utilize the translations by importing the useTranslation hook from next-i18next. Pass the name of the json file(s) for the translations you wish to consume:
+
+```jsx
+  // lets get translations from common.json and home.json
+  const { t } = useTranslation(['common', 'home']);
+```
+You can then use the translations in your component:
+
+```jsx
+{t('common:app_name')}
+{t('home:login')}
+```
+
+We also included a utility function `convertStringToJSX` for rendering strings with new lines or spaces:
+```jsx
+  {convertStringToJSX(t('app_description'))}
+```
+
+It is common to interpolate information into the translations. As long as it is strings, you can do so by wrapping variables with curly braces `{{variable}}` and then pass strings in the component render:
+
+
+```json
+{
+  "welcome_message": "This is a personal account page for {{name}}.\nYou have a balance of {{balance}} in your account.",
+}
+```
+
+```jsx
+    t('welcome_message', {
+      name: currentUser?.name,
+      balance: `¥${currentUser?.money}`,
+    })
+```
+
 ## Package Management
 
 By default, Seasoning enforces the use of `npm` for package management, restricting other managers from being used. This is to ensure that all developers are using the same package manager, and to avoid any potential issues with package lock files.
