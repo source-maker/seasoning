@@ -1,0 +1,10 @@
+{
+  "title": "Account Details",
+  "name": "Name",
+  "password": "Password",
+  "money": "Money",
+  "edit_btn": "Edit Account",
+  "update_btn": "Update",
+  "success_msg": "Updated successfully",
+  "error_msg": "Error occurred"
+}

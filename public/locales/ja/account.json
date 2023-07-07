@@ -1,0 +1,10 @@
+{
+  "title": "アカウント詳細",
+  "name": "名前",
+  "password": "パスワード",
+  "money": "お金",
+  "edit_btn": "アカウント編集",
+  "update_btn": "更新",
+  "success_msg": "更新しました。",
+  "error_msg": "更新に失敗しました。"
+}
