@@ -14,7 +14,7 @@ const Login: NextPage = () => {
   const { isLogin } = useAuth();
   const [currentLoggedIn, setCurrentLoggedIn] = useState<boolean | null>(null); // wait until login status checked
   const router = useRouter();
-  const { t } = useTranslation('login');
+  const { t } = useTranslation('auth');
 
   // confirm login status
   useEffect(() => {
@@ -49,7 +49,7 @@ const Login: NextPage = () => {
       >
         <BrandLogo />
         <BrothTypography variant="h3" component="h1" textAlign="center">
-          {t('title')}
+          {t('signin_title')}
         </BrothTypography>
 
         {router.query['error'] && (

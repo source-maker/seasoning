@@ -3,12 +3,14 @@ import type { NextPage } from 'next';
 import { EditCustomerInfoForm } from '@/features/account/EditCustomerInfoForm';
 import { BrothTypography } from '@/components/typography/BrothTypography';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 const MemberDetails: NextPage = () => {
+  const { t } = useTranslation('account');
   return (
     <Container>
       <BrothTypography variant="h2" component="h1">
-        Personal Information
+        {t('title')}
       </BrothTypography>
 
       <EditCustomerInfoForm />

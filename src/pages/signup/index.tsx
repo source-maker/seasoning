@@ -4,8 +4,10 @@ import { EmailSignupForm } from '@/features/authorization/EmailSignupForm';
 import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 const EmailSignup: NextPage = () => {
+  const { t } = useTranslation('auth');
   return (
     <Container maxWidth="sm">
       <Box
@@ -16,7 +18,7 @@ const EmailSignup: NextPage = () => {
       >
         <BrandLogo />
         <BrothTypography variant="h3" component="h1" textAlign="center">
-          Create New Account
+          {t('signup_title')}
         </BrothTypography>
 
         <EmailSignupForm />
