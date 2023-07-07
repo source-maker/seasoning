@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { LoginPost, LoginPostResolver } from '@/schemas/LoginSchema';
+import { InferType } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import yup from '@/init/yup';
 import {
   Alert,
   Box,
@@ -8,12 +10,13 @@ import {
   FormControlLabel,
   FormGroup,
 } from '@mui/material';
-import { BrothTextField } from '../../components/textfield/BrothTextField';
-import { PasswordInput } from '../../components/textfield/PasswordInput';
+import { BrothTextField } from '@/components/textfield/BrothTextField';
+import { PasswordInput } from '@/components/textfield/PasswordInput';
 import { useState } from 'react';
 import BrothLink from '@/components/link/BrothLink';
-import { useSession, signIn } from 'next-auth/react';
-import { BrothTypography } from '../../components/typography/BrothTypography';
+import { signIn } from 'next-auth/react';
+import { useTranslation } from 'next-i18next';
+import { LoginPost } from '@/schemas/LoginSchema';
 
 export function LoginForm({
   callBackPath = '/mypage',
@@ -21,7 +24,19 @@ export function LoginForm({
   callBackPath?: string;
   isBizLogin?: boolean;
 }) {
-  const { handleSubmit, control } = useForm<LoginPost>({
+  const { t } = useTranslation('login');
+
+  const LoginPostSchema = yup.object({
+    username: yup
+      .string()
+      .email(t('error_not_username'))
+      .required(t('error_username_required')),
+    password: yup.string().required(t('error_password_required')),
+  });
+
+  const LoginPostResolver = yupResolver(LoginPostSchema);
+
+  const { handleSubmit, control } = useForm<InferType<typeof LoginPostSchema>>({
     resolver: LoginPostResolver,
     defaultValues: {
       username: '',
@@ -30,27 +45,14 @@ export function LoginForm({
   });
 
   const [error] = useState<string>('');
-  const { status } = useSession();
 
-  const onSubmit = async (data: LoginPost) => {
+  const onSubmit = async (data: InferType<typeof LoginPostSchema>) => {
     signIn('django-credentials', {
       username: data.username,
       password: data.password,
       callbackUrl: callBackPath,
     });
   };
-
-  if (status === 'authenticated')
-    return (
-      <Box textAlign="center">
-        <BrothTypography variant="h4" textAlign="center">
-          Already logged in
-        </BrothTypography>
-        <Button href="/mypage" variant="contained" component={BrothLink}>
-          Go to my page
-        </Button>
-      </Box>
-    );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,8 +69,8 @@ export function LoginForm({
 
       <div>
         <BrothTextField<LoginPost>
-          label="email"
           name="username"
+          label={t('email')}
           autoComplete="username"
           control={control}
           margin="normal"
@@ -80,7 +82,7 @@ export function LoginForm({
       <div>
         <PasswordInput<LoginPost>
           name="password"
-          label="Password"
+          label={t('password')}
           control={control}
           margin="normal"
           fullWidth
@@ -109,15 +111,15 @@ export function LoginForm({
         <FormGroup>
           <FormControlLabel
             control={<Checkbox defaultChecked />}
-            label="Remember me"
+            label={t('remember_me')}
           />
         </FormGroup>
-        <BrothLink href="#">Forgot your password?</BrothLink>
+        <BrothLink href="#">{t('remember_me')}</BrothLink>
       </Box>
 
       <div>
         <Button variant="contained" type="submit" fullWidth>
-          Login
+          {t('sign_in')}
         </Button>
       </div>
     </form>
