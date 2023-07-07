@@ -1,5 +1,6 @@
 {
   "dashboard_btn": "Dashboard",
   "create_account_btn": "Create Account",
-  "documentation_btn": "Documentation"
+  "documentation_btn": "Documentation",
+  "login_btn": "Login"
 }
