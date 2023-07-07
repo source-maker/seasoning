@@ -1,11 +1,24 @@
 import { InferType } from 'yup';
-import yup from '../init/yup';
+import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'next-i18next';
 
-export const SignupPostSchema = yup.object({
-  name: yup.string().email('Please enter a valid email address.').required(),
-  password: yup.string().required(),
-});
-export type SignupPostSchema = InferType<typeof SignupPostSchema>;
+export const useSignupSchema = () => {
+  const { t } = useTranslation('auth');
 
-export const SignupPostResolver = yupResolver(SignupPostSchema);
+  const SignupPostSchema = yup.object({
+    name: yup
+      .string()
+      .email(t('error_not_username'))
+      .required(t('error_username_required')),
+    password: yup.string().required(t('error_password_required')),
+  });
+
+  const SignupPostResolver = yupResolver(SignupPostSchema);
+
+  return { SignupPostSchema, SignupPostResolver };
+};
+
+export type SignupPostType = InferType<
+  ReturnType<typeof useSignupSchema>['SignupPostSchema']
+>;
