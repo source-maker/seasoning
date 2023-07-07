@@ -1,0 +1,14 @@
+{
+  "title": "Sign in to your account",
+  "email": "Email address",
+  "password": "Password",
+  "remember_me": "Remember me",
+  "forgot_password": "Forgot password?",
+  "sign_in": "Login",
+  "error_message": "Invalid email address or password.",
+  "error_already_auth": "You are already logged in.",
+  "error_already_auth_btn": "To my page",
+  "error_not_username": "Email address is incorrect.",
+  "error_username_required": "Please enter your email address.",
+  "error_password_required": "Please enter your password."
+}

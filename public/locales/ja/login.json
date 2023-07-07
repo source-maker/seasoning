@@ -1,0 +1,14 @@
+{
+  "title": "アカウントにサインイン",
+  "email": "メールアドレス",
+  "password": "パスワード",
+  "remember_me": "ログイン状態を保存する",
+  "forgot_password": "パスワードをお忘れですか？",
+  "sign_in": "ログイン",
+  "error_message": "無効なメールアドレスまたはパスワードです。",
+  "error_already_auth": "既にログインしています。",
+  "error_already_auth_btn": "マイページへ",
+  "error_not_username": "メールアドレスが正しくありません。",
+  "error_username_required": "メールアドレスを入力してください。",
+  "error_password_required": "パスワードを入力してください。"
+}
