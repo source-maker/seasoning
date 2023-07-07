@@ -1,7 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { InferType } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import yup from '@/init/yup';
 import {
   Alert,
   Box,
@@ -16,7 +14,7 @@ import { useState } from 'react';
 import BrothLink from '@/components/link/BrothLink';
 import { signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
-import { LoginPost } from '@/schemas/LoginSchema';
+import { LoginPostType, useLoginSchema } from '@/schemas/LoginSchema';
 
 export function LoginForm({
   callBackPath = '/mypage',
@@ -25,16 +23,7 @@ export function LoginForm({
   isBizLogin?: boolean;
 }) {
   const { t } = useTranslation('auth');
-
-  const LoginPostSchema = yup.object({
-    username: yup
-      .string()
-      .email(t('error_not_username'))
-      .required(t('error_username_required')),
-    password: yup.string().required(t('error_password_required')),
-  });
-
-  const LoginPostResolver = yupResolver(LoginPostSchema);
+  const { LoginPostResolver, LoginPostSchema } = useLoginSchema();
 
   const { handleSubmit, control } = useForm<InferType<typeof LoginPostSchema>>({
     resolver: LoginPostResolver,
@@ -68,7 +57,7 @@ export function LoginForm({
       )}
 
       <div>
-        <BrothTextField<LoginPost>
+        <BrothTextField<LoginPostType>
           name="username"
           label={t('email')}
           autoComplete="username"
@@ -80,7 +69,7 @@ export function LoginForm({
       </div>
 
       <div>
-        <PasswordInput<LoginPost>
+        <PasswordInput<LoginPostType>
           name="password"
           label={t('password')}
           control={control}
