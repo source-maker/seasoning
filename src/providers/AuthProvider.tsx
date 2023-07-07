@@ -1,9 +1,9 @@
 import React, { createContext, ReactNode, useRef } from 'react';
-import { LoginPost } from '@/schemas/LoginSchema';
 import { setToken } from '@/init/axios';
 
 import { UserType } from '@/types/types';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { LoginPostType } from '@/schemas/LoginSchema';
 
 interface AuthProps {
   // auth status
@@ -11,7 +11,7 @@ interface AuthProps {
   isLogin: () => boolean;
 
   // auth actions
-  login: (user: LoginPost, isAdmin?: boolean) => Promise<void>;
+  login: (user: LoginPostType, isAdmin?: boolean) => Promise<void>;
   logout: (callbackUrl?: string) => void;
 }
 
@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const userType = useRef<UserType>('user');
 
-  const login = async (user: LoginPost) => {
+  const login = async (user: LoginPostType) => {
     signIn('django-credentials', {
       username: user.username,
       password: user.password,
