@@ -22,11 +22,12 @@ import { AppPropsWithLayout } from '@/types/next-page';
 import { DefaultLayout } from '@/layouts/default/DefaultLayout';
 import { SwaggerProvider } from '@/providers/SwaggerProvider';
 import { SnackbarProvider } from '@/providers/SnackbarProvider';
+import { appWithTranslation } from 'next-i18next';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-export default function MyApp(props: AppPropsWithLayout) {
+function MyApp(props: AppPropsWithLayout) {
   const { Component, emotionCache = clientSideEmotionCache } = props;
   const [loading] = useState(false);
   const router = useRouter();
@@ -117,3 +118,5 @@ export default function MyApp(props: AppPropsWithLayout) {
     </>
   );
 }
+
+export default appWithTranslation(MyApp);
