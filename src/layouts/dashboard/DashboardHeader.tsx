@@ -84,15 +84,22 @@ export function DashboardHeader({ title }: { title?: string }) {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={async () => await logout()}>Logout</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push('/mypage/account');
+                    handleCloseUserMenu();
+                  }}
+                >
+                  {t('common:profile')}
+                </MenuItem>
+                <MenuItem onClick={async () => await logout()}>
+                  {t('common:logout')}
+                </MenuItem>
               </Menu>
             </>
           ) : (
             <BrothLink href="/signup" color={'#FFF'} underline={'none'}>
-              <Button color="inherit">Create Account</Button>
+              <Button color="inherit">{t('common:create_account')}</Button>
             </BrothLink>
           )}
         </Stack>

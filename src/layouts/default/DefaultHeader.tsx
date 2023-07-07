@@ -84,7 +84,12 @@ export function DefaultHeader({ title }: { title?: string }) {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem
+                  onClick={() => {
+                    router.push('/mypage/account');
+                    handleCloseUserMenu();
+                  }}
+                >
                   {t('common:profile')}
                 </MenuItem>
                 <MenuItem onClick={async () => await logout()}>
