@@ -8,10 +8,12 @@ import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useSnackbar } from '@/hooks/useSnackbar';
+import { useTranslation } from 'next-i18next';
 
 export function EditCustomerInfoForm() {
   const { data: currentUser } = useCurrentUser();
   const { openSnackbar } = useSnackbar();
+  const { t } = useTranslation('account');
 
   type FormSchema = Pick<User, 'name' | 'money' | 'password'>;
 
@@ -31,10 +33,10 @@ export function EditCustomerInfoForm() {
       if (currentUser) {
         const newData = { ...currentUser, ...formData };
         await swaggerClient?.me.meUpdate(newData);
-        openSnackbar('Updated successfully', 'success');
+        openSnackbar(t('success_msg'), 'success');
       }
     } catch (error) {
-      openSnackbar('Error updating', 'error');
+      openSnackbar(t('error_msg'), 'error');
       console.log('update error', JSON.stringify(error, null, 2));
     }
   };
@@ -46,28 +48,28 @@ export function EditCustomerInfoForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <BrothTextField
-            label="Name"
+            label={t('name')}
             name="name"
             control={control}
             placeholder="John Doe"
             fullWidth
           />
           <BrothTextField
-            label="Password"
+            label={t('password')}
             name="password"
             control={control}
             type="password"
             fullWidth
           />
           <BrothTextField
-            label="Money"
+            label={t('money')}
             name="money"
             control={control}
             placeholder="100000"
             fullWidth
           />
           <Button variant="contained" fullWidth color="primary" type="submit">
-            Update
+            {t('update_btn')}
           </Button>
         </Stack>
       </form>

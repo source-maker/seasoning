@@ -1,0 +1,7 @@
+{
+  "app_name": "Seasoning",
+  "app_description": "A NextJS MUI Boilerplate \nfor Production-Ready Web Apps",
+  "profile": "Profile",
+  "logout": "Logout",
+  "create_account": "Create Account"
+}

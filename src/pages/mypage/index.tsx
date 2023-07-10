@@ -6,10 +6,14 @@ import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
 import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { convertStringToJSX } from '../../helpers/stringHelpers';
 
 const MyPage: NextPage = () => {
   const { data: currentUser } = useCurrentUser();
   const { status } = useSession();
+  const { t } = useTranslation('dashboard');
 
   if (status !== 'authenticated') return <Loading />;
 
@@ -21,13 +25,15 @@ const MyPage: NextPage = () => {
         textAlign={'center'}
         sx={{ margin: '1em auto' }}
       >
-        Welcome Back!
+        {t('welcome')}
       </Typography>
       <BrothTypography textAlign={'center'}>
-        This is a personal account page for <strong>{currentUser?.name}</strong>
-      </BrothTypography>
-      <BrothTypography textAlign={'center'}>
-        You have a balance of <strong>¥{currentUser?.money}</strong>.
+        {convertStringToJSX(
+          t('welcome_message', {
+            name: currentUser?.name,
+            balance: `¥${currentUser?.money}`,
+          })
+        )}
       </BrothTypography>
 
       <Button
@@ -35,13 +41,23 @@ const MyPage: NextPage = () => {
         component={BrothLink}
         variant="contained"
       >
-        Edit Account
+        {t('edit_account_btn')}
       </Button>
     </Container>
   );
 };
 
+export async function getStaticProps(context) {
+  // extract the locale identifier from the URL
+  const { locale } = context;
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}
+
 // eslint-disable-next-line import/no-default-export
-export default DashboardLayout(MyPage, {
-  title: 'My Account',
-});
+export default DashboardLayout(MyPage);

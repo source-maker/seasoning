@@ -13,11 +13,13 @@ import BrothLink from '@/components/link/BrothLink';
 import { DrawerContext } from '@/providers/DrawerProvider';
 import { useContext } from 'react';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useTranslation } from 'next-i18next';
 
 export function SideDrawer() {
   const { open, setOpen } = useContext(DrawerContext);
   const { data: currentUser } = useCurrentUser();
   const { isLogin, logout, isAdmin } = useAuth();
+  const { t } = useTranslation('drawer');
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -25,22 +27,22 @@ export function SideDrawer() {
 
   const publicDrawerItems: DrawerItem[] = [
     {
-      title: 'Home',
+      title: t('home'),
       href: '/',
       icon: 'home',
     },
     {
-      title: 'Terms of Service',
+      title: t('terms_of_service'),
       href: '/',
       icon: 'textSnippet',
     },
     {
-      title: 'Privacy Policy',
+      title: t('privacy_policy'),
       href: '/',
       icon: 'help',
     },
     {
-      title: 'Contact',
+      title: t('contact'),
       href: '/',
       icon: 'email',
     },
@@ -58,12 +60,12 @@ export function SideDrawer() {
 
   const authenticatedDrawer: DrawerItem[] = bizDrawerItems.concat([
     {
-      title: 'My Page',
+      title: t('my_page'),
       href: '/mypage',
       icon: 'person',
     },
     {
-      title: 'Account Settings',
+      title: t('account_settings'),
       href: '/mypage/account/',
       icon: 'badge',
     },
@@ -86,7 +88,7 @@ export function SideDrawer() {
               {currentUser?.name}
             </Typography>
             <Button variant="contained" onClick={() => logout()}>
-              Logout
+              {t('logout_btn')}
             </Button>
           </Stack>
         ) : (
@@ -97,7 +99,7 @@ export function SideDrawer() {
               component={BrothLink}
               onClick={handleDrawerClose}
             >
-              Login
+              {t('login_btn')}
             </Button>
             <Button
               variant="outlined"
@@ -108,15 +110,18 @@ export function SideDrawer() {
                 backgroundColor: 'white',
               }}
             >
-              Create Account
+              {t('create_account_btn')}
             </Button>
           </Stack>
         )}
         {isLogin() && (
-          <DrawerItems headerText="Your Account" items={authenticatedDrawer} />
+          <DrawerItems
+            headerText={t('header_your_account')}
+            items={authenticatedDrawer}
+          />
         )}
         <DrawerItems
-          headerText="General Information"
+          headerText={t('header_general_info')}
           items={publicDrawerItems}
         />
       </Box>

@@ -12,5 +12,6 @@ module.exports = {
     '@next/next/no-img-element': 'off',
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    'no-restricted-imports': ['error', 'react-i18next'],
   },
 };

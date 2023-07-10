@@ -17,6 +17,9 @@ import {
   MenuItem,
   Tooltip,
 } from '@mui/material';
+import LanguageSwitcherButton from '@/components/button/LanguageSwitcherButton';
+import { Stack } from '@mui/system';
+import { useTranslation } from 'next-i18next';
 
 export function DefaultHeader({ title }: { title?: string }) {
   const [toggleBackButton] = useState(false);
@@ -24,6 +27,7 @@ export function DefaultHeader({ title }: { title?: string }) {
   const router = useRouter();
   const { setOpen } = useContext(DrawerContext);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { t } = useTranslation(['common', 'home']);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -54,23 +58,9 @@ export function DefaultHeader({ title }: { title?: string }) {
           )}
         </>
       }
-      centerMenu={
-        isLogin() && (
-          <>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              Products
-            </Button>
-          </>
-        )
-      }
       rightMenu={
-        <>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <LanguageSwitcherButton />
           {isLogin() ? (
             <>
               <Tooltip title="Open settings">
@@ -94,18 +84,25 @@ export function DefaultHeader({ title }: { title?: string }) {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                <MenuItem onClick={async () => await logout()}>Logout</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push('/mypage/account');
+                    handleCloseUserMenu();
+                  }}
+                >
+                  {t('common:profile')}
+                </MenuItem>
+                <MenuItem onClick={async () => await logout()}>
+                  {t('common:logout')}
+                </MenuItem>
               </Menu>
             </>
           ) : (
             <BrothLink href="/signup" color={'#FFF'} underline={'none'}>
-              <Button color="inherit">Create Account</Button>
+              <Button color="inherit">{t('common:create_account')}</Button>
             </BrothLink>
           )}
-        </>
+        </Stack>
       }
     />
   );

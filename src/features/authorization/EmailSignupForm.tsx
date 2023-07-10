@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { Alert, Button } from '@mui/material';
 import { PasswordInput } from '../../components/textfield/PasswordInput';
 import { useRouter } from 'next/router';
-import { SignupPostResolver } from '@/schemas/SignupSchema';
 import { mutate } from 'swr';
 import { useState } from 'react';
 import { BrothTextField } from '@/components/textfield/BrothTextField';
@@ -10,12 +9,16 @@ import { swaggerClient } from '@/init/swaggerClient';
 import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
 import { useSnackbar } from '@/hooks/useSnackbar';
+import { useTranslation } from 'next-i18next';
+import { useSignupSchema } from '@/schemas/SignupSchema';
 
 EmailSignupForm.defaultProps = {
   onClose: () => null,
 };
 
 export function EmailSignupForm() {
+  const { SignupPostResolver } = useSignupSchema();
+  const { t } = useTranslation('auth');
   const { openSnackbar } = useSnackbar();
   const { handleSubmit, control } = useForm<User>({
     resolver: SignupPostResolver,
@@ -47,8 +50,8 @@ export function EmailSignupForm() {
         {error && <Alert severity="error">{error}</Alert>}
 
         <BrothTextField
-          label="email"
           name="name"
+          label={t('email')}
           control={control}
           validation={{
             required: true,
@@ -57,8 +60,8 @@ export function EmailSignupForm() {
         />
 
         <PasswordInput<User>
-          label="password"
           name="password"
+          label={t('password')}
           control={control}
           validation={{
             required: true,
@@ -67,7 +70,7 @@ export function EmailSignupForm() {
         />
 
         <Button variant="contained" fullWidth type="submit">
-          Create Account
+          {t('signup')}
         </Button>
       </Stack>
     </form>

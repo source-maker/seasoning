@@ -1,0 +1,5 @@
+{
+  "welcome": "Welcome Back!",
+  "welcome_message": "This is a personal account page for {{name}}.\nYou have a balance of {{balance}} in your account.",
+  "edit_account_btn": "Edit Account"
+}

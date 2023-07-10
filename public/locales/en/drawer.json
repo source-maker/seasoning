@@ -1,0 +1,13 @@
+{
+  "login_btn": "Login",
+  "logout_btn": "Logout",
+  "create_account_btn": "Create Account",
+  "home": "Home",
+  "terms_of_service": "Terms of Service",
+  "privacy_policy": "Privacy Policy",
+  "contact": "Contact",
+  "my_page": "My Page",
+  "account_settings": "Account Settings",
+  "header_general_info": "General Information",
+  "header_your_account": "Your Account"
+}

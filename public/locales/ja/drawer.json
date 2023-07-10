@@ -1,0 +1,13 @@
+{
+  "login_btn": "ログイン",
+  "logout_btn": "ログアウト",
+  "create_account_btn": "アカウント作成",
+  "home": "ホーム",
+  "terms_of_service": "利用規約",
+  "privacy_policy": "プライバシーポリシー",
+  "contact": "お問い合わせ",
+  "my_page": "マイページ",
+  "account_settings": "アカウント設定",
+  "header_general_info": "一般情報",
+  "header_your_account": "あなたのアカウント"
+}

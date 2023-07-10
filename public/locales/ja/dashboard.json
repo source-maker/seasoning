@@ -1,0 +1,5 @@
+{
+  "welcome": "ようこそ",
+  "welcome_message": "{{name}}様の個人アカウントページです。\n現在の残高は{{balance}}です。",
+  "edit_account_btn": "アカウント情報の編集"
+}

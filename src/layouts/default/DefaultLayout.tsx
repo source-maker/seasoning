@@ -8,6 +8,7 @@ import { ReactNode } from 'react';
 import { SideDrawer } from '@/components/drawer/SideDrawer';
 import { DefaultHeader } from './DefaultHeader';
 import { Container } from '@mui/material';
+import { useTranslation } from 'next-i18next';
 
 // Page options for this layout
 interface PageOptions {
@@ -24,6 +25,7 @@ export function DefaultLayout({
   children: React.ReactNode;
   pageOptions?: PageOptions;
 }) {
+  const { t } = useTranslation(['common']);
   return (
     <>
       <Box
@@ -32,7 +34,7 @@ export function DefaultLayout({
         justifyContent="space-between"
         minHeight="100vh"
       >
-        <DefaultHeader title={pageOptions?.title || 'Dashboard'} />
+        <DefaultHeader title={pageOptions?.title || t('app_name')} />
         <SideDrawer />
         <Container>
           <main style={{ display: 'contents' }}>{children}</main>
