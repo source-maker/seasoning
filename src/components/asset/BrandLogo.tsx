@@ -4,6 +4,8 @@ import { CSSProperties } from 'react';
 export function BrandLogo({
   sx = {
     width: '10vw',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 }: {
   sx?: CSSProperties;
