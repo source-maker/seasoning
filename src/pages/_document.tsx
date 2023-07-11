@@ -1,9 +1,17 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import createEmotionServer from '@emotion/server/create-instance';
 import theme from '@/init/mui/loadMuiTheme';
+import config from '../../app.config.json';
 import { createEmotionCache } from '@/init/mui/emotion';
 
-// eslint-disable-next-line import/no-default-export
+// Conditionally import MUI
+const enableMui = config.enableMui;
+let createEmotionServer, cache;
+if (enableMui) {
+  createEmotionServer = require('@emotion/server/create-instance').default; // eslint-disable-line
+  // createEmotionCache = require('../init/mui/emotion').createEmotionCache; // eslint-disable-line
+  cache = createEmotionCache();
+}
+
 export default class MyDocument extends Document {
   render() {
     // TODO: configure head settings for your project
@@ -56,9 +64,7 @@ export default class MyDocument extends Document {
   }
 }
 
-// `getInitialProps` belongs to `_document` (instead of `_app`),
-// it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async (context) => {
   // Resolution order
   //
   // On the server:
@@ -81,38 +87,41 @@ MyDocument.getInitialProps = async (ctx) => {
   // 3. app.render
   // 4. page.render
 
-  const originalRenderPage = ctx.renderPage;
+  if (enableMui) {
+    const originalRenderPage = context.renderPage;
 
-  // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
-  // However, be aware that it can have global side effects.
-  const cache = createEmotionCache();
-  const { extractCriticalToChunks } = createEmotionServer(cache);
+    // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
+    // However, be aware that it can have global side effects.
+    const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: (
-        App: any // eslint-disable-line @typescript-eslint/no-explicit-any
-      ) =>
-        function EnhanceApp(props) {
-          return <App emotionCache={cache} {...props} />;
-        },
-    });
+    context.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (
+          App: any // eslint-disable-line @typescript-eslint/no-explicit-any
+        ) =>
+          function EnhanceApp(props) {
+            return <App emotionCache={cache} {...props} />;
+          },
+      });
 
-  const initialProps = await Document.getInitialProps(ctx);
-  // This is important. It prevents emotion to render invalid HTML.
-  // See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
-  const emotionStyles = extractCriticalToChunks(initialProps.html);
-  const emotionStyleTags = emotionStyles.styles.map((style) => (
-    <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
-      key={style.key}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: style.css }}
-    />
-  ));
+    const initialProps = await Document.getInitialProps(context);
+    // This is important. It prevents emotion to render invalid HTML.
+    // See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
+    const emotionStyles = extractCriticalToChunks(initialProps.html);
+    const emotionStyleTags = emotionStyles.styles.map((style) => (
+      <style
+        data-emotion={`${style.key} ${style.ids.join(' ')}`}
+        key={style.key}
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: style.css }}
+      />
+    ));
 
-  return {
-    ...initialProps,
-    emotionStyleTags,
-  };
+    return {
+      ...initialProps,
+      emotionStyleTags,
+    };
+  }
+
+  return await Document.getInitialProps(context);
 };
