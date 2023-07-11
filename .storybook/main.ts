@@ -25,7 +25,7 @@ module.exports = {
       },
     },
   ],
-  // staticDirs: ['../public'],
+  staticDirs: ['../public'],
   webpackFinal: async (config, { configType }) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
@@ -33,11 +33,6 @@ module.exports = {
         extensions: config.resolve.extensions,
       }),
     ];
-
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'next-i18next': 'react-i18next',
-    };
 
     config.module.rules.push({
       test: /\.tsx?$/,
@@ -68,6 +63,31 @@ module.exports = {
     });
 
     config.resolve.extensions.push('.mjs');
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'next-i18next': 'react-i18next',
+    };
+
+    // Exclude next-i18next from being processed by webpack
+    // config.module.rules.push({
+    //   test: /next-i18next/,
+    //   use: 'null-loader',
+    // });
+
+    // const nullLoaderRule = {
+    //   test: /next-i18next/,
+    //   use: 'null-loader',
+    // };
+
+    // Add null-loader rule if it doesn't exist already
+    // if (
+    //   !config.module.rules.some(
+    //     (rule) => rule.test && rule.test.toString() === '/next-i18next/'
+    //   )
+    // ) {
+    //   config.module.rules.push(nullLoaderRule);
+    // }
 
     return config;
   },
