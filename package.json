@@ -1,6 +1,6 @@
 {
   "name": "seasoning",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "private": true,
   "engines": {
     "node": ">=14.17.0",
@@ -10,8 +10,10 @@
     "pn": "please use npm"
   },
   "scripts": {
-    "dev": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version next dev",
-    "build": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version test & lint & next build ",
+    "predev": "node scripts/generateTailwindCSS.js && NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version next dev",
+    "dev": "next dev",
+    "prebuild": "node scripts/generateTailwindCSS.js",
+    "build": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version npm run test && npm run lint && next build",
     "start": "next start",
     "lint": "npm-run-all -p -l -c --aggregate-output lint:*",
     "lint:eslint": "eslint . --ext \".js,.ts,.jsx,.tsx\"",
@@ -27,7 +29,8 @@
     "swagger": "openapi --input http://127.0.0.1:8888/swagger/ --output ./src/init/swagger/ --client axios --name SwaggerClient",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "serve-storybook": "serve storybook-static"
+    "serve-storybook": "serve storybook-static",
+    "postinstall": "node ./scripts/installTailwind.js"
   },
   "dependencies": {
     "@date-io/dayjs": "^2.14.0",
