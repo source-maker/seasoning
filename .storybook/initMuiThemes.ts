@@ -1,10 +1,10 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 import ja from 'date-fns/locale/ja';
-import { lightTheme } from '../src/init/mui/themes/light.theme';
-import { darkTheme } from '../src/init/mui/themes/dark.theme';
-import { blueMobileThemeOptions } from '../src/init/mui/themes/blueMobile.theme';
-import { defaultTheme } from '../src/init/mui/themes/default.theme';
-import { crimsonTheme } from '../src/init/mui/themes/crimson.theme';
+import { theme as lightTheme } from '../src/init/mui/themes/light.theme';
+import { theme as darkTheme } from '../src/init/mui/themes/dark.theme';
+import { theme as blueMobileThemeOptions } from '../src/init/mui/themes/blueMobile.theme';
+import { theme as defaultTheme } from '../src/init/mui/themes/default.theme';
+import { theme as crimsonTheme } from '../src/init/mui/themes/crimson.theme';
 
 /**
  * List of themes for use in storybook

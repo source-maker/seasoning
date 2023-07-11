@@ -1,6 +1,6 @@
 import { cyan, pink } from '@mui/material/colors';
 
-export const lightTheme = {
+export const theme = {
   palette: {
     mode: 'light',
     primary: {

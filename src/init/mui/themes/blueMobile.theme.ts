@@ -37,7 +37,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const blueMobileThemeOptions = {
+export const theme = {
   palette: {
     primary: {
       lightest: '#E6E7F1', // confirmation checkbox bg

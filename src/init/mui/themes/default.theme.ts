@@ -3,4 +3,4 @@
  * The following GUI tool can be used to init a new theme:
  * @see https://zenoo.github.io/mui-theme-creator/
  */
-export const defaultTheme = {};
+export const theme = {};
