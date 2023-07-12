@@ -10,10 +10,10 @@
     "pn": "please use npm"
   },
   "scripts": {
-    "predev": "node scripts/generateTailwindCSS.js && NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version next dev",
+    "predev": "node scripts/generateTailwindCSS.js && next dev",
     "dev": "next dev",
     "prebuild": "node scripts/generateTailwindCSS.js",
-    "build": "NEXT_PUBLIC_NAME=$npm_package_name NEXT_PUBLIC_VERSION=$npm_package_version npm run test && npm run lint && next build",
+    "build": "npm run test && npm run lint && next build",
     "start": "next start",
     "lint": "npm-run-all -p -l -c --aggregate-output lint:*",
     "lint:eslint": "eslint . --ext \".js,.ts,.jsx,.tsx\"",
@@ -29,8 +29,7 @@
     "swagger": "openapi --input http://127.0.0.1:8888/swagger/ --output ./src/init/swagger/ --client axios --name SwaggerClient",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "serve-storybook": "serve storybook-static",
-    "postinstall": "node ./scripts/installTailwind.js"
+    "serve-storybook": "serve storybook-static"
   },
   "dependencies": {
     "@date-io/dayjs": "^2.14.0",
@@ -41,6 +40,7 @@
     "@fontsource/material-icons": "^4.5.4",
     "@fontsource/roboto": "^4.5.8",
     "@hookform/resolvers": "^2.8.8",
+    "@mui/base": "^5.0.0-beta.7",
     "@mui/icons-material": "^5.10.6",
     "@mui/lab": "^5.0.0-alpha.77",
     "@mui/material": "^5.10.5",
@@ -102,6 +102,7 @@
     "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
+    "autoprefixer": "^10.4.14",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.2",
     "eslint": "^8.12.0",
@@ -112,6 +113,7 @@
     "lint-staged": "^12.3.7",
     "npm-run-all": "^4.1.5",
     "openapi-typescript-codegen": "^0.23.0",
+    "postcss": "^8.4.25",
     "prettier": "^2.6.2",
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-scripts": "5.0.1",
@@ -120,6 +122,7 @@
     "stylelint": "^14.6.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
+    "tailwindcss": "^3.3.2",
     "terser-webpack-plugin": "^5.3.6",
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
