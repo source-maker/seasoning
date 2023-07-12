@@ -24,7 +24,7 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:style": "stylelint --fix '**/*.{css,scss,sass}'",
-    "test": "jest --",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "swagger": "openapi --input http://127.0.0.1:8888/swagger/ --output ./src/init/swagger/ --client axios --name SwaggerClient",
     "storybook": "start-storybook -p 6006",
