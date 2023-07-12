@@ -4,7 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const TerserPlugin = require('terser-webpack-plugin');
 const { i18n } = require('./next-i18next.config');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
@@ -12,7 +11,6 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   webpack: (config) => {
-    config.cache = false;
     config.optimization.minimize = isProd;
     config.optimization.minimizer = [
       new TerserPlugin({
@@ -24,12 +22,6 @@ const nextConfig = {
         extractComments: 'all',
       }),
     ];
-
-    if (!config.resolve.plugins) {
-      config.resolve.plugins = [];
-    }
-    config.resolve.plugins.push(new TsconfigPathsPlugin());
-
     return config;
   },
   images: {
