@@ -4,3 +4,4 @@ storybook-static/
 init/swagger/
 src/init/swagger/
 README.md
+src/styles/tailwind-init.css
