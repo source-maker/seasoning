@@ -29,7 +29,8 @@
     "swagger": "openapi --input http://127.0.0.1:8888/swagger/ --output ./src/init/swagger/ --client axios --name SwaggerClient",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "serve-storybook": "serve storybook-static"
+    "serve-storybook": "serve storybook-static",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@date-io/dayjs": "^2.14.0",
@@ -66,7 +67,7 @@
     "react-dom": "18.0.0",
     "react-dropzone": "^14.2.3",
     "react-gtm-module": "^2.0.11",
-    "react-hook-form": "^7.33.1",
+    "react-hook-form": "^7.45.1",
     "react-i18next": "^13.0.1",
     "react-window": "^1.8.7",
     "recharts": "^2.7.1",
@@ -81,6 +82,7 @@
     "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@next/bundle-analyzer": "^13.4.9",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
