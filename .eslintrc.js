@@ -13,5 +13,6 @@ module.exports = {
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'no-restricted-imports': ['error', 'react-i18next'],
+    '@typescript-eslint/no-var-requires': 'off',
   },
 };
