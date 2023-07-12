@@ -1,6 +1,10 @@
-const TerserPlugin = require('terser-webpack-plugin'); // eslint-disable-line
-const { i18n } = require('./next-i18next.config'); // eslint-disable-line
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin'); // eslint-disable-line
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const TerserPlugin = require('terser-webpack-plugin');
+const { i18n } = require('./next-i18next.config');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
@@ -41,4 +45,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
