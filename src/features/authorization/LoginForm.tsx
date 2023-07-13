@@ -69,7 +69,7 @@ export function LoginForm({
       </div>
 
       <div>
-        <PasswordInput<LoginPostType>
+        <PasswordInput
           name="password"
           label={t('password')}
           control={control}

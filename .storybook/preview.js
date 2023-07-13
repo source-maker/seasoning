@@ -10,6 +10,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 import { withRHF } from './RHF.decorator.js';
+import { withNexti18next } from './nexti18next.decorator.js';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -59,4 +60,4 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [withRHF, withMuiTheme];
+export const decorators = [withRHF, withMuiTheme, withNexti18next];

@@ -1,10 +1,4 @@
-import {
-  Control,
-  Controller,
-  ControllerProps,
-  FieldValues,
-  Path,
-} from 'react-hook-form';
+import { Control, Controller, ControllerProps } from 'react-hook-form';
 import {
   IconButton,
   InputAdornment,
@@ -16,23 +10,21 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from 'react';
 
-export interface TextFieldProps<T> extends Omit<MuiTextFieldProps, 'name'> {
+export interface TextFieldProps extends Omit<MuiTextFieldProps, 'name'> {
   validation?: ControllerProps['rules'];
-  name: Path<T>;
-  control?: Control<T & FieldValues>;
+  name: string;
+  control: Control<any, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   defaultValue?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-// https://zenn.dev/mistolteen/articles/81fc5236c21ba4#textinput
-// Tにschemaを指定する事で、nameを制限する
-export function PasswordInput<T extends FieldValues = never>({
+export function PasswordInput({
   validation = {},
   required,
   name,
   control,
   defaultValue,
   ...rest
-}: TextFieldProps<T>) {
+}: TextFieldProps) {
   const [values, setValues] = useState({
     password: '',
     showPassword: false,
@@ -73,7 +65,7 @@ export function PasswordInput<T extends FieldValues = never>({
             error={invalid}
             autoComplete="current-password"
             helperText={error ? error?.message : ''}
-            {...rest} //sxとか
+            {...rest}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">

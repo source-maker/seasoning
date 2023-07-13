@@ -59,7 +59,7 @@ export function EmailSignupForm() {
           fullWidth
         />
 
-        <PasswordInput<User>
+        <PasswordInput
           name="password"
           label={t('password')}
           control={control}

@@ -4,7 +4,7 @@ import createCache from '@emotion/cache';
  * Create an Emotion cache instance for MUI integration
  * @see https://emotion.sh/docs/@emotion/cache
  */
-export function createEmotionCache() {
+export function createEmotionCache(): ReturnType<typeof createCache> {
   /**
    * @function createCache
    * @param {object} options

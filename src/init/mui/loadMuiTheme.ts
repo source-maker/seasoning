@@ -1,8 +1,8 @@
 import { createTheme, responsiveFontSizes, ThemeOptions } from '@mui/material';
 import ja from 'date-fns/locale/ja';
-import { defaultTheme } from './themes/default.theme';
+import { theme } from './themes/empty.theme';
 
-const theme = createTheme(defaultTheme as ThemeOptions, ja);
+const initTheme = createTheme(theme as ThemeOptions, ja);
 
 // eslint-disable-next-line import/no-default-export
-export default responsiveFontSizes(theme);
+export default responsiveFontSizes(initTheme);

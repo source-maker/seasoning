@@ -1,7 +1,7 @@
 import { alpha } from '@mui/material';
 import { cyan, grey, pink } from '@mui/material/colors';
 
-export const crimsonTheme = {
+export const theme = {
   palette: {
     mode: 'dark',
     primary: {

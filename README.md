@@ -79,11 +79,10 @@ Create the following `.env.local` file for storing sensitive keys and credential
 touch .env.local
 ```
 
-you can copy/paste the following template for your `.env.local` file. Make sure to update it appropriately for your project and environment:
+It is highly recommended to copy/paste the following template into your server environment. 
+Make sure to configure these variables appropriately for your project:
 
 ```
-ENV=local
-
 # Change this to your own server URL
 NEXT_PUBLIC_BACKEND_DOMAIN=http://127.0.0.1:8888/
 
@@ -92,16 +91,12 @@ NEXTAUTH_URL=http://127.0.0.1:3000
 
 # secret key to be used with nextAuth jwt token
 NEXTAUTH_SECRET=ReplaceWithAnyRandomString
-
-# App Public Details
-NEXT_PUBLIC_NAME=$npm_package_name
-NEXT_PUBLIC_VERSION=$npm_package_version
 ```
 
 Notes:
 
 - `http://127.0.0.1:8888/` is the default base url for the Django backend boilerplate.
-- The application name and version is set within `package.json` as dynamic environment variables, accessible with `process.env.NEXT_PUBLIC_NAME` and `process.env.NEXT_PUBLIC_VERSION`.
+
 
 ## Starting The Local Servers
 
@@ -138,6 +133,8 @@ The objective is to help you understand the organization of the project, making 
 The root directory of the project contains several important subdirectories and files. Here's an overview:
 
 - **.storybook/:** This directory configures the Storybook environment, initializing external libraries like MUI (Material UI) and React Hook Form. This setup allows the rendering of various components within the Storybook showcase.
+
+- **designsystems/:** This directory stores useful components organized by design system. This is useful to copy into your project's `src` directory to use for development. These components are typically only rendered and viewed from Storybook.
 
 - **public/:** This directory is used to store files that are publicly accessible, such as images. These files are available to be served to clients upon request.
 
@@ -215,9 +212,79 @@ Each layout file is structured in the following order:
 
 # Development Guidelines
 
-## Creating a Custom MUI Theme
+## Choosing a Design System
 
-By default, this boilerplate is based on MUI.<br />This means global styling is achieved via theme files that contain the extension `*.theme.ts`.<br />
+Selecting a design system is highly dependent on your team and project requirements, so Seasoning offers the flexibility to select the design system that best suits your needs.
+
+By default, Seasoning comes equipped with the following:
+
+- **Material UI (MUI)** - An opinionated design system based on Google's Material Design. It is ideal for quick demos, minimum viable products (MVPs), B2B applications, or projects where a unique UI design is not a high priority.
+
+- **BaseUI + Tailwind** - A headless component approach that provides standards for accessibility while giving designers and developers complete control over the design. It is ideal for projects requiring customized UIs, Figma-driven projects, and unique component crafting. 
+
+**Important:** It's crucial to note that while Seasoning offers the flexibility to choose between design systems, only one system should be selected for a given project. 
+
+Utilizing multiple design systems can lead to conflicts and an increased application bundle size. 
+
+Therefore, we highly your team to select the preferred design system early on in the development process, and then remove the other design systems from the project.
+
+### Toggling A Design System
+These design systems can be easily toggled so team's do not have to necessarily commit to a design system right away. 
+
+This also allows Storybook to render the various design systems for quick development.
+
+To toggle, you only need to set the appropriate boolean in the `./app.config.json` file:
+
+```
+{
+  "enableMui": true,
+  "enableTailwind": false 
+}
+```
+**note** - when you enable or disable Tailwind, it will require the server to restart for changes to take effect.
+
+### Design System Template Components
+
+Seasoning comes with template components for each design system to enhance development speed.
+
+These components are stored in the `./designsystems` directory, and can be previewed from within storybook.
+
+All components in this directory are configured to be ignored by your editor to prevent accidental import of a similarly named component from other design systems.
+
+**Important** If you remove any packages related to a design system, it is important to remove related design systems from this directory since they will no long render in Storybook. 
+
+### How to Remove Material UI (MUI)
+If your team has chosen to not use MUI, you may opt to remove it completely from the project.
+To do so, please do the following:
+
+1. Delete the `MuiProvider.tsx` file from the `providers` directory. Then remove the import of this provider at the top of the `_app.tsx` file.
+
+2. Remove the if statements and var that relate to `enableMui` variable from the `_document.tsx` file.
+
+3. Remove all `MUI` and `emotion` related packages from the `package.json` file. BUT make sure not to remove `@mui/base` if you are going with the BaseUI/Tailwind approach!
+
+4. In the `.storybook` directory, remove the `with-mui-theme.decorator.js` file, the `initMuiThemes.ts` file, and all Mui related code in the `preview.js` file.
+
+5. Remove the `./designsystems/mui` directory
+
+### How to Remove BaseUI/Tailwind
+
+If your team decides to use MUI, then you can safely remove BaseUI+Tailwind from the project. 
+Here are the steps to do this:
+
+1. Remove the BaseUI package from the project with `npm uninstall @mui/base`.
+
+2. Remove the tailwind related packages with `npm uninstall tailwindcss postcss autoprefixer`.
+
+3. Delete the `tailwind.config.js` file, `postcss.config.js` file, and the `tailwind-init.css` file. Make sure to remove the `tailwind-init.css` import from the top of `_app.tsx` file.
+
+4. Remove the `"predev"` and `"prebuild"` scripts from the `package.json` file, and remove the `./scripts/generateTailwindCSS.js` file.
+
+5. Delete any design systems that use these packages from the `designsystems` directory.
+
+### Creating a Custom MUI Theme
+
+MUI themes allow global styling via theme files that contain the extension `*.theme.ts`.<br />
 These theme files essentially hold a large object that overrides MUI's default palette (colors), typography, spacing, components, and more. You can refer to the MUI documentation for configuration options:
 
 https://mui.com/material-ui/customization/theming/
@@ -290,13 +357,20 @@ Once executed, the types will be generated. Endpoints can be accessed by importi
 
 ## Internationalization (i18n)
 
-Our application supports multiple languages using the next-i18next library. Here's a simplified guide on how it works:
+Seasoning supports multiple languages using the next-i18next library. Here's a simplified guide on how it works:
 
 ### Passing Translations to Pages
 
-For each Next.js page, we need to pass the translations. We do this by calling the `serverSideTranslations` function in `getStaticProps` or `getServerSideProps`:
+For each Next.js page, we need to pass the translations. 
+
+To do this, we simply need to pass the `serverSideTranslations` function to either:
+-  `getStaticProps`
+- `getServerSideProps`
+
+Here is an example of how this looks:
 
 ```jsx
+// `getStaticProps` or `getServerSideProps` are typically at the bottom of the NextJS Page file.
 export async function getStaticProps(context) {
   // Extract the locale identifier from the URL
   const { locale } = context;
@@ -311,7 +385,7 @@ export async function getStaticProps(context) {
 ```
 
 ### Consuming Translations in Components
-Once pages can access translations, any component rendered in the page can utilize the translations by importing the useTranslation hook from next-i18next. Pass the name of the json file(s) for the translations you wish to consume:
+Once pages can access translations, any component rendered in the page can utilize the translations by importing the `useTranslation`` hook from `next-i18next``. Pass the name of the json file(s) for the translations you wish to consume:
 
 ```jsx
   // lets get translations from common.json and home.json
