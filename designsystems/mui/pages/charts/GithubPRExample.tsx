@@ -15,12 +15,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import { Stack } from '@mui/system';
 import { Octokit } from 'octokit';
 import { format } from 'date-fns';
 import { formatIsoDate } from '@/helpers/dateHelpers';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 
 type ChartData = {
   date: string;
@@ -207,16 +207,16 @@ export default function LineCharts3Example() {
   return (
     <Container sx={{ my: 5 }}>
       <Box sx={{ mb: 5 }}>
-        <BrothTypography variant="h4" baseline>
+        <MuiTypography variant="h4" baseline>
           Pull Request History
-        </BrothTypography>
-        <BrothTypography>
+        </MuiTypography>
+        <MuiTypography>
           Instructions: Set an environment variable
           `NEXT_PUBLIC_GITHUB_PERSONAL_KEY` with a Github personal access token.
           <br />
           Enter the owner and repo of a Github repository your account has
           access to to see the pull request history.
-        </BrothTypography>
+        </MuiTypography>
         <Stack spacing={2} direction={'row'}>
           <MuiTextField
             label="Owner"
@@ -296,23 +296,23 @@ export default function LineCharts3Example() {
                         value={noteText}
                         onChange={(e) => setNoteText(e.target.value)}
                       />
-                      <BrothButton
+                      <MuiButton
                         onClick={() => handleNoteSave(row.date, noteText)}
                       >
                         Save
-                      </BrothButton>
+                      </MuiButton>
                     </Stack>
                   ) : (
                     <>
                       <div>{row.note}</div>
-                      <BrothButton
+                      <MuiButton
                         onClick={() => {
                           setEditing(row.date);
                           setNoteText(row?.note || '');
                         }}
                       >
                         Edit
-                      </BrothButton>
+                      </MuiButton>
                     </>
                   )}
                 </TableCell>

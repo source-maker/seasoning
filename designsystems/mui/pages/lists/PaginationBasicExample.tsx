@@ -10,7 +10,7 @@ import {
 
 import { generateFakerData } from '../../helpers/fakerHelpers';
 import BrothImage from '@/components/image/BrothImage';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { limitLength } from '../../helpers/stringHelpers';
 import { ChangeEvent, useMemo, useState } from 'react';
 
@@ -65,13 +65,13 @@ export default function PaginationBasicExample() {
                 height="400"
               />
               <CardContent>
-                <BrothTypography gutterBottom variant="h6" baseline>
+                <MuiTypography gutterBottom variant="h6" baseline>
                   {item.title}
-                </BrothTypography>
+                </MuiTypography>
 
-                <BrothTypography variant="body2" color="text.secondary">
+                <MuiTypography variant="body2" color="text.secondary">
                   {limitLength(item.description, 50)}
-                </BrothTypography>
+                </MuiTypography>
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>

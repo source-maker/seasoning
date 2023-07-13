@@ -3,10 +3,10 @@ import Container from '@mui/material/Container';
 import AppBarBasic from '@/components/appbar/AppBarBasic';
 import { Alert, Grid } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { BrothButton } from '@/components/button/BrothButton';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiButton } from '@/components/button/MuiButton';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothImage from '@/components/image/BrothImage';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 import SendIcon from '@mui/icons-material/Send';
 import BrothLink from '@/components/link/BrothLink';
 import { useForm } from 'react-hook-form';
@@ -42,15 +42,15 @@ const HeroSignup: NextPage = () => {
               Broth is out! See what&apos;s new
             </Alert>
             <div>
-              <BrothTypography variant="h1" baseline>
+              <MuiTypography variant="h1" baseline>
                 Broth Framework
-              </BrothTypography>
+              </MuiTypography>
 
-              <BrothTypography variant="body1">
+              <MuiTypography variant="body1">
                 Here at Broth, we focus on markets where technology, innovation,
                 and capital can unlock long-term value and drive economic
                 growth.
-              </BrothTypography>
+              </MuiTypography>
 
               <Grid
                 spacing={2}
@@ -58,7 +58,7 @@ const HeroSignup: NextPage = () => {
                 container
               >
                 <Grid item xs={12} md={8}>
-                  <BrothTextField
+                  <MuiTextField
                     label="Your Email"
                     fullWidth
                     placeholder="example@example.com"
@@ -72,14 +72,14 @@ const HeroSignup: NextPage = () => {
                   />
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <BrothButton
+                  <MuiButton
                     variant="contained"
                     endIcon={<SendIcon />}
                     textfieldHeight
                     fullWidth
                   >
                     Try for Free
-                  </BrothButton>
+                  </MuiButton>
                 </Grid>
               </Grid>
             </div>

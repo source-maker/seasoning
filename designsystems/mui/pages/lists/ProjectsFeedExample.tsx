@@ -15,7 +15,7 @@ import {
   TextField,
   useTheme,
 } from '@mui/material';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import DropdownButton from '@/components/button/DropdownButton';
 import { grey } from '@mui/material/colors';
 import BrothImage from '@/components/image/BrothImage';
@@ -47,7 +47,7 @@ export default function ProjectsFeedExample() {
             placeholder="Search Projects"
           />
           <ButtonGroup variant="contained">
-            <BrothButton>Add New Project</BrothButton>
+            <MuiButton>Add New Project</MuiButton>
             <DropdownButton
               id="dropdown-project-options"
               options={
@@ -106,9 +106,9 @@ export default function ProjectsFeedExample() {
               </ListItem>
             ))}
           </List>
-          <BrothButton variant="outlined" fullWidth>
+          <MuiButton variant="outlined" fullWidth>
             Load More
-          </BrothButton>
+          </MuiButton>
         </Box>
       </Container>
     </Box>

@@ -6,11 +6,11 @@ import { MoreHoriz } from '@mui/icons-material';
 import { Box, Container, Stack } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SocialCard from '@/components/card/SocialCard';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothImage from '@/components/image/BrothImage';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 
 function srcset(image: string, size: number, rows, cols = 1) {
   return {
@@ -73,14 +73,14 @@ export default function CardListExample() {
             subheader="2 hours ago"
             content={
               <>
-                <BrothTypography variant="body2" color="text.secondary">
+                <MuiTypography variant="body2" color="text.secondary">
                   It is a long established fact that a reader will be distracted
                   by the readable content of a page when looking at its layout.
                   The point of using Lorem Ipsum is that it has a more-or-less
                   normal distribution of letters, as opposed to using
                   &apos;Content here, content here&apos;, making it look like
                   readable English.
-                </BrothTypography>
+                </MuiTypography>
                 <BrothImage
                   alt="test"
                   layout="responsive"
@@ -115,14 +115,14 @@ export default function CardListExample() {
             subheader="4 hours ago"
             content={
               <>
-                <BrothTypography variant="body2" color="text.secondary">
+                <MuiTypography variant="body2" color="text.secondary">
                   It is a long established fact that a reader will be distracted
                   by the readable content of a page when looking at its layout.
                   The point of using Lorem Ipsum is that it has a more-or-less
                   normal distribution of letters, as opposed to using
                   &apos;Content here, content here&apos;, making it look like
                   readable English.
-                </BrothTypography>
+                </MuiTypography>
                 <QuiltedImageList />
               </>
             }
@@ -147,7 +147,7 @@ export default function CardListExample() {
           />
         </Stack>
       </Box>
-      <BrothButton fullWidth>Load More</BrothButton>
+      <MuiButton fullWidth>Load More</MuiButton>
     </Container>
   );
 }

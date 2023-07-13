@@ -6,7 +6,7 @@ import { BrandLogo } from '../../components/asset/BrandLogo';
 import { useAuth } from '../../hooks/useAuth';
 import { Loading } from '../../components/asset/Loading';
 import BrothLink from '../../components/link/BrothLink';
-import { BrothTypography } from '../../components/typography/BrothTypography';
+import { MuiTypography } from '../../components/typography/MuiTypography';
 import { LoginForm } from '../../features/authorization/LoginForm';
 
 const LoginCenteredExample: NextPage = () => {
@@ -48,12 +48,12 @@ const LoginCenteredExample: NextPage = () => {
       }}
     >
       <BrandLogo />
-      <BrothTypography variant="h3" component="h1" textAlign="center" baseline>
+      <MuiTypography variant="h3" component="h1" textAlign="center" baseline>
         Sign in to your account
-      </BrothTypography>
-      <BrothTypography variant="body1" textAlign="center">
+      </MuiTypography>
+      <MuiTypography variant="body1" textAlign="center">
         Or <BrothLink href="#">start your 14-day free trial</BrothLink>
-      </BrothTypography>
+      </MuiTypography>
       <LoginForm />
     </Container>
   );

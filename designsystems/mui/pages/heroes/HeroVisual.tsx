@@ -3,9 +3,9 @@ import Container from '@mui/material/Container';
 import AppBarBasic from '@/components/appbar/AppBarBasic';
 import { Alert, Grid, Stack } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import { ArrowForward, Videocam } from '@mui/icons-material';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothImage from '@/components/image/BrothImage';
 
 const HeroVisual: NextPage = () => {
@@ -38,14 +38,14 @@ const HeroVisual: NextPage = () => {
               Broth is out! See what&apos;s new
             </Alert>
             <div>
-              <BrothTypography variant="h1" baseline>
+              <MuiTypography variant="h1" baseline>
                 Design tool for companies
-              </BrothTypography>
+              </MuiTypography>
 
-              <BrothTypography variant="body1">
+              <MuiTypography variant="body1">
                 From web design to dashboards, companies around the world use
                 Broth to simplify their design experience.
-              </BrothTypography>
+              </MuiTypography>
 
               <Stack
                 justifyContent="start"
@@ -55,20 +55,20 @@ const HeroVisual: NextPage = () => {
                 spacing={2}
                 direction={{ xs: 'column', sm: 'row' }}
               >
-                <BrothButton
+                <MuiButton
                   variant="contained"
                   size="large"
                   endIcon={<ArrowForward />}
                 >
                   Learn More
-                </BrothButton>
-                <BrothButton
+                </MuiButton>
+                <MuiButton
                   variant="outlined"
                   size="large"
                   startIcon={<Videocam />}
                 >
                   Watch Video
-                </BrothButton>
+                </MuiButton>
               </Stack>
             </div>
           </Grid>

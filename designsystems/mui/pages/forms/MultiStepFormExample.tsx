@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BrothButton } from '@/components/button/BrothButton';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiButton } from '@/components/button/MuiButton';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { Box, Container, Grid, Paper, Step } from '@mui/material';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import yup from '@/init/yup';
@@ -8,7 +8,7 @@ import { useSnackbar } from '@/hooks/useSnackbar';
 import { BrothStepper } from '@/components/stepper/BrothStepper';
 import { BrothStepLabel } from '@/components/stepper/BrothStepLabel';
 import { Stack } from '@mui/system';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const steps: {
@@ -35,12 +35,12 @@ function Step1() {
   return (
     <>
       <Grid item xs={12} md={12}>
-        <BrothTypography component="h2" variant="h5">
+        <MuiTypography component="h2" variant="h5">
           Shipping Address
-        </BrothTypography>
+        </MuiTypography>
       </Grid>
       <Grid item xs={12} md={6}>
-        <BrothTextField
+        <MuiTextField
           name="lastName"
           label="Last Name"
           control={control}
@@ -48,7 +48,7 @@ function Step1() {
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <BrothTextField
+        <MuiTextField
           name="firstName"
           label="First Name"
           control={control}
@@ -56,7 +56,7 @@ function Step1() {
         />
       </Grid>
       <Grid item xs={12} md={12}>
-        <BrothTextField
+        <MuiTextField
           name="address"
           label="Address"
           control={control}
@@ -73,13 +73,13 @@ function Step2() {
   return (
     <>
       <Grid item xs={12} md={12}>
-        <BrothTypography component="h2" variant="h5">
+        <MuiTypography component="h2" variant="h5">
           Payment Method
-        </BrothTypography>
+        </MuiTypography>
       </Grid>
       <Grid item xs={12} md={12}>
         {/* TODO: have redacted, spaced functionality to textfield for credit cards*/}
-        <BrothTextField
+        <MuiTextField
           name="creditCard"
           label="Credit Card Number"
           control={control}
@@ -87,16 +87,11 @@ function Step2() {
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <BrothTextField
-          name="csv"
-          label="CSV Code"
-          control={control}
-          fullWidth
-        />
+        <MuiTextField name="csv" label="CSV Code" control={control} fullWidth />
       </Grid>
       <Grid item xs={12} md={6}>
         {/* TODO: add regex to autoinsert / and nums for expiration date format */}
-        <BrothTextField
+        <MuiTextField
           name="expirationDate"
           label="Expiration Date"
           control={control}
@@ -113,19 +108,19 @@ function Step3() {
   return (
     <>
       <Grid item xs={12} md={12}>
-        <BrothTypography component="h2" variant="h5" baseline>
+        <MuiTypography component="h2" variant="h5" baseline>
           Review Order
-        </BrothTypography>
-        <BrothTypography variant="body1">
+        </MuiTypography>
+        <MuiTypography variant="body1">
           Please check your order details below:
-        </BrothTypography>
-        <BrothTypography variant="body1">
+        </MuiTypography>
+        <MuiTypography variant="body1">
           <b>Last Name:</b> {getValues('lastName')} <br />
           <b>First Name:</b> {getValues('firstName')} <br />
           <b>Address:</b> {getValues('address')} <br />
           <b>Credit Card:</b> {getValues('creditCard')} <br />
           <b>Expiration Date:</b> {getValues('expirationDate')} <br />
-        </BrothTypography>
+        </MuiTypography>
       </Grid>
     </>
   );
@@ -227,9 +222,9 @@ export default function MultiStepFormExample() {
   return (
     <Container maxWidth="md">
       <Box py={8}>
-        <BrothTypography component="h1" variant="h3">
+        <MuiTypography component="h1" variant="h3">
           Cart Checkout
-        </BrothTypography>
+        </MuiTypography>
 
         {/* Stepper Navigation */}
         <BrothStepper activeStep={currentStep}>
@@ -253,17 +248,17 @@ export default function MultiStepFormExample() {
                   {/* Action Bar */}
                   <Stack direction="row" spacing={1}>
                     {!isLastStep() && !isFirstStep() && (
-                      <BrothButton onClick={decreaseStep}>Back</BrothButton>
+                      <MuiButton onClick={decreaseStep}>Back</MuiButton>
                     )}
                     {!isLastStep() && (
-                      <BrothButton onClick={incrementStep}>Next</BrothButton>
+                      <MuiButton onClick={incrementStep}>Next</MuiButton>
                     )}
                     {isLastStep() && (
                       <>
-                        <BrothButton type="submit">Place Order</BrothButton>
-                        <BrothButton onClick={restartForm} variant="outlined">
+                        <MuiButton type="submit">Place Order</MuiButton>
+                        <MuiButton onClick={restartForm} variant="outlined">
                           Restart
-                        </BrothButton>
+                        </MuiButton>
                       </>
                     )}
                   </Stack>

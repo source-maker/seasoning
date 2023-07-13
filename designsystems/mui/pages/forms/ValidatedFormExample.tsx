@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BrothButton } from '@/components/button/BrothButton';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiButton } from '@/components/button/MuiButton';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import {
   Box,
   Container,
@@ -57,13 +57,13 @@ export default function ValidatedFormExample() {
   return (
     <Container maxWidth="md">
       <Box py={8}>
-        <BrothTypography variant="h3" component="h1">
+        <MuiTypography variant="h3" component="h1">
           Update Product
-        </BrothTypography>
+        </MuiTypography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container direction="row" spacing={2}>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Name"
                 name="name"
                 control={control}
@@ -73,7 +73,7 @@ export default function ValidatedFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Brand"
                 name="brand"
                 control={control}
@@ -83,7 +83,7 @@ export default function ValidatedFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Price"
                 name="price"
                 type="number"
@@ -105,7 +105,7 @@ export default function ValidatedFormExample() {
               </RHFSelect>
             </Grid>
             <Grid item xs={12}>
-              <BrothTextField
+              <MuiTextField
                 label="Description"
                 name="description"
                 control={control}
@@ -117,10 +117,10 @@ export default function ValidatedFormExample() {
             </Grid>
             <Grid item xs={12}>
               <Stack direction="row" spacing={2}>
-                <BrothButton type="submit" size="large">
+                <MuiButton type="submit" size="large">
                   Update Product
-                </BrothButton>
-                <BrothButton
+                </MuiButton>
+                <MuiButton
                   variant="outlined"
                   color="error"
                   startIcon={<DeleteIcon />}
@@ -128,7 +128,7 @@ export default function ValidatedFormExample() {
                   onClick={() => handleDelete()}
                 >
                   Delete
-                </BrothButton>
+                </MuiButton>
               </Stack>
             </Grid>
           </Grid>

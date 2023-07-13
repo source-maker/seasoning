@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BrothButton } from '@/components/button/BrothButton';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiButton } from '@/components/button/MuiButton';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { Box, Container, Grid, Stack } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useForm } from 'react-hook-form';
@@ -74,18 +74,18 @@ export default function AddressFormExample() {
   return (
     <Container maxWidth="md">
       <Box py={8}>
-        <BrothTypography variant="h3" component="h1">
+        <MuiTypography variant="h3" component="h1">
           Shipping Address
-        </BrothTypography>
-        <BrothTypography>
+        </MuiTypography>
+        <MuiTypography>
           Enter a Japanese postal code (eg: 1640001), and some fields will be
           filled in automatically.
-        </BrothTypography>
+        </MuiTypography>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container direction="row" spacing={2}>
             <Grid item xs={12} md={12}>
-              <BrothTextField
+              <MuiTextField
                 label="Zipcode (郵便番号)"
                 name="zip_code"
                 control={control}
@@ -94,7 +94,7 @@ export default function AddressFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Prefecture (都道府県)"
                 name="state"
                 control={control}
@@ -103,7 +103,7 @@ export default function AddressFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="City (市区町村)"
                 name="city"
                 control={control}
@@ -112,7 +112,7 @@ export default function AddressFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Street (町域・番地)"
                 name="block"
                 control={control}
@@ -121,7 +121,7 @@ export default function AddressFormExample() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <BrothTextField
+              <MuiTextField
                 label="Building Number (マンション名・号室)"
                 name="building"
                 control={control}
@@ -131,10 +131,10 @@ export default function AddressFormExample() {
             </Grid>
             <Grid item xs={12}>
               <Stack direction="row" spacing={2}>
-                <BrothButton type="submit" size="large">
+                <MuiButton type="submit" size="large">
                   Submit
-                </BrothButton>
-                <BrothButton
+                </MuiButton>
+                <MuiButton
                   variant="outlined"
                   color="info"
                   startIcon={<DeleteIcon />}
@@ -142,7 +142,7 @@ export default function AddressFormExample() {
                   onClick={() => handleDelete()}
                 >
                   Clear
-                </BrothButton>
+                </MuiButton>
               </Stack>
             </Grid>
           </Grid>

@@ -5,7 +5,7 @@ import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { BrothImageArrayButton } from '@/components/button/BrothImageArrayButton';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothImage from '@/components/image/BrothImage';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -58,12 +58,12 @@ const MultipleImageFormExample: NextPage = () => {
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <Grid container direction="row" spacing={1}>
           <Grid item xs={12}>
-            <BrothTypography variant="h3" component="h1">
+            <MuiTypography variant="h3" component="h1">
               Upload Images
-            </BrothTypography>
-            <BrothTypography variant="body1">
+            </MuiTypography>
+            <MuiTypography variant="body1">
               Select one or more images to upload.
-            </BrothTypography>
+            </MuiTypography>
           </Grid>
           {watch('images')?.map((image, i) => (
             <Grid key={i} item xs={6} sm={2} sx={{ textAlign: 'center' }}>

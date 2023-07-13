@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import yup from '@/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { getMime } from '../../helpers/fileHelpers';
 
@@ -61,7 +61,7 @@ const ImageUploadFormExample: NextPage = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <BrothTextField
+            <MuiTextField
               name="name"
               label="Name"
               control={control}
@@ -69,7 +69,7 @@ const ImageUploadFormExample: NextPage = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <BrothTextField
+            <MuiTextField
               name="email"
               label="Email"
               control={control}

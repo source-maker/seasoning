@@ -8,7 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Container, Divider, ListSubheader } from '@mui/material';
 import GitHub from '@mui/icons-material/GitHub';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 
 function generate(element: React.ReactElement) {
   return [0, 1, 2, 3, 4].map((value) =>
@@ -59,9 +59,9 @@ export default function ActivityFeedExample() {
               </>
             )}
           </List>
-          <BrothButton variant="outlined" fullWidth>
+          <MuiButton variant="outlined" fullWidth>
             Load More
-          </BrothButton>
+          </MuiButton>
         </Box>
       </Container>
     </Box>

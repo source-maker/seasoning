@@ -21,10 +21,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { Container, Stack } from '@mui/material';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { BrothTypography } from '@/components/typography/BrothTypography';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
+import { MuiTypography } from '@/components/typography/MuiTypography';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 import { useForm } from 'react-hook-form';
 
 interface Data {
@@ -238,22 +238,22 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         }),
       }}
     >
-      <BrothTypography
+      <MuiTypography
         sx={{ flex: '1 1 100%' }}
         variant="h5"
         id="tableTitle"
         baseline
       >
         Table Title
-      </BrothTypography>
-      <BrothTypography
+      </MuiTypography>
+      <MuiTypography
         sx={{ flex: '1 1 100%', pb: 2 }}
         variant="body2"
         id="tableDescription"
         baseline
       >
         Additional description if required
-      </BrothTypography>
+      </MuiTypography>
       <Toolbar
         disableGutters
         sx={{
@@ -267,13 +267,13 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           </Typography>
         ) : (
           <Stack direction="row" spacing={1}>
-            <BrothTextField
+            <MuiTextField
               label="Search"
               placeholder="Name, email, etc.."
               size="medium"
               control={control}
             />
-            <BrothTextField label="Attribute" size="medium" control={control} />
+            <MuiTextField label="Attribute" size="medium" control={control} />
             <Tooltip title="Filter list">
               <IconButton
                 sx={{
@@ -295,10 +295,10 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         ) : (
           <Stack direction="row" spacing={1}>
             <Tooltip title="Filter list">
-              <BrothButton variant="contained">Action</BrothButton>
+              <MuiButton variant="contained">Action</MuiButton>
             </Tooltip>
             <Tooltip title="Filter list">
-              <BrothButton variant="outlined">Action</BrothButton>
+              <MuiButton variant="outlined">Action</MuiButton>
             </Tooltip>
             <Tooltip title="Filter list">
               <IconButton>

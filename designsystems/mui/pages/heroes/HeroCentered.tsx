@@ -3,9 +3,9 @@ import Container from '@mui/material/Container';
 import AppBarBasic from '@/components/appbar/AppBarBasic';
 import { Alert, Box, Grid, Stack } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import { ArrowForward, Videocam } from '@mui/icons-material';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothImage from '@/components/image/BrothImage';
 
 const HeroCentered: NextPage = () => {
@@ -24,14 +24,14 @@ const HeroCentered: NextPage = () => {
             Broth is out! See what&apos;s new
           </Alert>
           <div>
-            <BrothTypography variant="h1" align="center" baseline>
+            <MuiTypography variant="h1" align="center" baseline>
               We invest in the worlds potential
-            </BrothTypography>
+            </MuiTypography>
 
-            <BrothTypography variant="body1" align="center">
+            <MuiTypography variant="body1" align="center">
               Here at Broth, we focus on markets where technology, innovation,
               and capital can unlock long-term value and drive economic growth.
-            </BrothTypography>
+            </MuiTypography>
 
             <Stack
               justifyContent="center"
@@ -39,27 +39,27 @@ const HeroCentered: NextPage = () => {
               spacing={1}
               direction={{ xs: 'column', sm: 'row' }}
             >
-              <BrothButton
+              <MuiButton
                 variant="contained"
                 size="large"
                 sx={{ m: 2 }}
                 endIcon={<ArrowForward />}
               >
                 Learn More
-              </BrothButton>
-              <BrothButton
+              </MuiButton>
+              <MuiButton
                 variant="outlined"
                 size="large"
                 sx={{ m: 2 }}
                 startIcon={<Videocam />}
               >
                 Watch Video
-              </BrothButton>
+              </MuiButton>
             </Stack>
           </div>
 
           <Box textAlign="center">
-            <BrothTypography variant="h3">Featured In</BrothTypography>
+            <MuiTypography variant="h3">Featured In</MuiTypography>
             <Grid container spacing={4} columns={{ xs: 4, sm: 12, md: 12 }}>
               <Grid item xs={4}>
                 <BrothImage

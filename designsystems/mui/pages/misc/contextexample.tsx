@@ -1,5 +1,5 @@
-import { BrothButton } from '@/components/button/BrothButton';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiButton } from '@/components/button/MuiButton';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { ExampleContext, ExampleProvider } from '@/providers/ExampleProvider';
 import { Box, Stack } from '@mui/material';
 import { NextPage } from 'next';
@@ -12,23 +12,20 @@ export const LeftComponent = () => {
 
   return (
     <Box>
-      <BrothTypography variant="h4">Left Component</BrothTypography>
-      <BrothTypography>Number: {number}</BrothTypography>
+      <MuiTypography variant="h4">Left Component</MuiTypography>
+      <MuiTypography>Number: {number}</MuiTypography>
       <Stack spacing={2}>
-        <BrothButton
-          color={color}
-          onClick={() => setNumber((prev) => prev + 1)}
-        >
+        <MuiButton color={color} onClick={() => setNumber((prev) => prev + 1)}>
           Increment Number
-        </BrothButton>
-        <BrothButton
+        </MuiButton>
+        <MuiButton
           color={color}
           onClick={() =>
             setColor((prev) => (prev === 'primary' ? 'secondary' : 'primary'))
           }
         >
           Toggle Color
-        </BrothButton>
+        </MuiButton>
       </Stack>
     </Box>
   );
@@ -40,23 +37,20 @@ export const RightComponent = () => {
   const [color, setColor] = colorState;
   return (
     <Box>
-      <BrothTypography variant="h4">Right Component</BrothTypography>
-      <BrothTypography>Number: {number}</BrothTypography>
+      <MuiTypography variant="h4">Right Component</MuiTypography>
+      <MuiTypography>Number: {number}</MuiTypography>
       <Stack spacing={2}>
-        <BrothButton
-          color={color}
-          onClick={() => setNumber((prev) => prev + 1)}
-        >
+        <MuiButton color={color} onClick={() => setNumber((prev) => prev + 1)}>
           Increment Number
-        </BrothButton>
-        <BrothButton
+        </MuiButton>
+        <MuiButton
           color={color}
           onClick={() =>
             setColor((prev) => (prev === 'primary' ? 'secondary' : 'primary'))
           }
         >
           Toggle Color
-        </BrothButton>
+        </MuiButton>
       </Stack>
     </Box>
   );
@@ -66,10 +60,10 @@ const ContextExample: NextPage = () => {
   return (
     <ExampleProvider>
       <Box sx={{ mx: 'auto' }}>
-        <BrothTypography variant="h2" textAlign="center">
+        <MuiTypography variant="h2" textAlign="center">
           ContextAPI Example
-        </BrothTypography>
-        <BrothTypography textAlign="center">
+        </MuiTypography>
+        <MuiTypography textAlign="center">
           This is an example on how you can share state between components by
           using the Context stored in the <code>/services/context</code>{' '}
           directory.
@@ -79,7 +73,7 @@ const ContextExample: NextPage = () => {
           <br />
           Then within each component, import the <code>ExampleContext</code> to
           consume the state values.
-        </BrothTypography>
+        </MuiTypography>
 
         <Stack
           direction="row"

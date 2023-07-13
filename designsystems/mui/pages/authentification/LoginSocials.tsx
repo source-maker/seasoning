@@ -15,11 +15,11 @@ import { LoginForm } from '@/features/authorization/LoginForm';
 import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import { grey } from '@mui/material/colors';
 
 const LoginSocials: NextPage = () => {
@@ -67,17 +67,12 @@ const LoginSocials: NextPage = () => {
         }}
       >
         <BrandLogo />
-        <BrothTypography
-          variant="h3"
-          component="h1"
-          textAlign="center"
-          baseline
-        >
+        <MuiTypography variant="h3" component="h1" textAlign="center" baseline>
           Sign in to your account
-        </BrothTypography>
-        <BrothTypography variant="body1" textAlign="center" baseline>
+        </MuiTypography>
+        <MuiTypography variant="body1" textAlign="center" baseline>
           Or <BrothLink href="#">start your 14-day free trial</BrothLink>
-        </BrothTypography>
+        </MuiTypography>
         <Paper
           sx={{
             p: {
@@ -95,15 +90,15 @@ const LoginSocials: NextPage = () => {
           <Divider sx={{ py: 4 }}>Or continue with</Divider>
 
           <Stack spacing={2} direction="row">
-            <BrothButton aria-label="facebook" variant="outlined" fullWidth>
+            <MuiButton aria-label="facebook" variant="outlined" fullWidth>
               <FacebookIcon />
-            </BrothButton>
-            <BrothButton aria-label="twitter" variant="outlined" fullWidth>
+            </MuiButton>
+            <MuiButton aria-label="twitter" variant="outlined" fullWidth>
               <TwitterIcon />
-            </BrothButton>
-            <BrothButton aria-label="github" variant="outlined" fullWidth>
+            </MuiButton>
+            <MuiButton aria-label="github" variant="outlined" fullWidth>
               <GitHubIcon />
-            </BrothButton>
+            </MuiButton>
           </Stack>
         </Paper>
       </Box>
