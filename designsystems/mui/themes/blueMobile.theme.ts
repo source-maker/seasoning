@@ -226,7 +226,7 @@ export const theme = {
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
-          '& .BrothTypography-root.Mui-disabled': {
+          '& .MuiTypography-root.Mui-disabled': {
             // color: customPalette.font.main,
           },
         },
