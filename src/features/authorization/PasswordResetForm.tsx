@@ -4,8 +4,8 @@ import {
   PasswordResetResolver,
 } from '@/schemas/PasswordResetSchema';
 import { Button } from '@mui/material';
-import { BrothTextField } from '../../components/textfield/BrothTextField';
 import BrothLink from '@/components/link/BrothLink';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 
 // TODO: decide password reset functionality in demo or not
 export function PasswordResetForm() {
@@ -21,7 +21,7 @@ export function PasswordResetForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <BrothTextField<PasswordResetType>
+        <MuiTextField<PasswordResetType>
           id="username"
           name="username"
           type="email"

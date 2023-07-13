@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { Loading } from '@/components/asset/Loading';
 import { useForm } from 'react-hook-form';
 import { swaggerClient } from '@/init/swaggerClient';
@@ -9,6 +8,7 @@ import { Stack } from '@mui/system';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { useTranslation } from 'next-i18next';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 
 export function EditCustomerInfoForm() {
   const { data: currentUser } = useCurrentUser();
@@ -47,21 +47,21 @@ export function EditCustomerInfoForm() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
-          <BrothTextField
+          <MuiTextField
             label={t('name')}
             name="name"
             control={control}
             placeholder="John Doe"
             fullWidth
           />
-          <BrothTextField
+          <MuiTextField
             label={t('password')}
             name="password"
             control={control}
             type="password"
             fullWidth
           />
-          <BrothTextField
+          <MuiTextField
             label={t('money')}
             name="money"
             control={control}

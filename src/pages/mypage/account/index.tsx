@@ -2,7 +2,7 @@ import { Button, Container } from '@mui/material';
 import { Box } from '@mui/system';
 import type { NextPage } from 'next';
 import { Loading } from '@/components/asset/Loading';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothLink from '@/components/link/BrothLink';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -15,27 +15,23 @@ const Account: NextPage = () => {
 
   return (
     <Container>
-      <BrothTypography variant="h1" textAlign={'center'}>
+      <MuiTypography variant="h1" textAlign={'center'}>
         {t('title')}
-      </BrothTypography>
+      </MuiTypography>
 
       <Box>
         <Box sx={{ marginBottom: '1rem' }}>
-          <BrothTypography sx={{ fontWeight: 700 }}>
-            {t('name')}:
-          </BrothTypography>
-          <BrothTypography variant="body1" color="text.secondary">
+          <MuiTypography sx={{ fontWeight: 700 }}>{t('name')}:</MuiTypography>
+          <MuiTypography variant="body1" color="text.secondary">
             {currentUser?.name}
-          </BrothTypography>
+          </MuiTypography>
         </Box>
 
         <Box sx={{ marginBottom: '1rem' }}>
-          <BrothTypography sx={{ fontWeight: 700 }}>
-            {t('money')}:
-          </BrothTypography>
-          <BrothTypography variant="body1" color="text.secondary">
+          <MuiTypography sx={{ fontWeight: 700 }}>{t('money')}:</MuiTypography>
+          <MuiTypography variant="body1" color="text.secondary">
             {currentUser.money ? `¥${currentUser.money}` : 'N/A'}
-          </BrothTypography>
+          </MuiTypography>
         </Box>
 
         <Button

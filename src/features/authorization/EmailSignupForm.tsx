@@ -4,13 +4,13 @@ import { PasswordInput } from '../../components/textfield/PasswordInput';
 import { useRouter } from 'next/router';
 import { mutate } from 'swr';
 import { useState } from 'react';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { swaggerClient } from '@/init/swaggerClient';
 import { User } from '@/init/swagger';
 import { Stack } from '@mui/system';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { useTranslation } from 'next-i18next';
 import { useSignupSchema } from '@/schemas/SignupSchema';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 
 EmailSignupForm.defaultProps = {
   onClose: () => null,
@@ -49,7 +49,7 @@ export function EmailSignupForm() {
       <Stack spacing={2}>
         {error && <Alert severity="error">{error}</Alert>}
 
-        <BrothTextField
+        <MuiTextField
           name="name"
           label={t('email')}
           control={control}

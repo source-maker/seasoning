@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DrawerProvider } from '@/providers/DrawerProvider';
-import { AppPropsWithLayout } from '@/types/next-page';
+import { AppPropsWithLayout } from '@/types/types';
 import { DefaultLayout } from '@/layouts/default/DefaultLayout';
 import { SwaggerProvider } from '@/providers/SwaggerProvider';
 import { SnackbarProvider } from '@/providers/SnackbarProvider';

@@ -1,25 +1,25 @@
 import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
-import { BrothTypography } from '@/components/typography/BrothTypography';
 import BrothLink from '@/components/link/BrothLink';
-import { BrothButton } from '@/components/button/BrothButton';
+import { MuiButton } from '@/components/button/MuiButton';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 
 const EmailSignupComplete: NextPage = () => {
   const { t } = useTranslation('auth');
   return (
     <Container maxWidth="md">
-      <BrothTypography variant="h1" textAlign={'center'} baseline>
+      <MuiTypography variant="h1" textAlign={'center'} baseline>
         {t('success_create_title')}
-      </BrothTypography>
-      <BrothTypography textAlign={'center'}>
+      </MuiTypography>
+      <MuiTypography textAlign={'center'}>
         {t('success_create_message')}
-      </BrothTypography>
+      </MuiTypography>
 
       <Box textAlign="center">
         <BrothLink href="/">
-          <BrothButton> {t('success_create_return_btn')}</BrothButton>
+          <MuiButton> {t('success_create_return_btn')}</MuiButton>
         </BrothLink>
       </Box>
     </Container>

@@ -1,7 +1,7 @@
 import { DashboardHeader } from './DashboardHeader';
 import { ReactElement, ReactNode } from 'react';
 import { DashboardFooter } from './DashboardFooter';
-import { NextPageWithLayout } from '@/types/next-page';
+import { NextPageWithLayout } from '@/types/types';
 import { Box } from '@mui/system';
 import { SideDrawer } from '@/components/drawer/SideDrawer';
 

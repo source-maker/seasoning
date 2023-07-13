@@ -8,13 +8,13 @@ import {
   FormControlLabel,
   FormGroup,
 } from '@mui/material';
-import { BrothTextField } from '@/components/textfield/BrothTextField';
 import { PasswordInput } from '@/components/textfield/PasswordInput';
 import { useState } from 'react';
 import BrothLink from '@/components/link/BrothLink';
 import { signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { LoginPostType, useLoginSchema } from '@/schemas/LoginSchema';
+import { MuiTextField } from '@/components/textfield/MuiTextField';
 
 export function LoginForm({
   callBackPath = '/mypage',
@@ -57,7 +57,7 @@ export function LoginForm({
       )}
 
       <div>
-        <BrothTextField<LoginPostType>
+        <MuiTextField<LoginPostType>
           name="username"
           label={t('email')}
           autoComplete="username"

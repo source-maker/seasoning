@@ -2,8 +2,8 @@ import { Container, Typography } from '@mui/material';
 import { DashboardLayout } from '@/layouts/dashboard/DashboardLayout';
 import { Loading } from '@/components/asset/Loading';
 
-import { BrothTypography } from '@/components/typography/BrothTypography';
-import { NextPageWithLayout } from '@/types/next-page';
+import { MuiTypography } from '@/components/typography/MuiTypography';
+import { NextPageWithLayout } from '@/types/types';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const Biz: NextPageWithLayout = () => {
@@ -22,13 +22,13 @@ const Biz: NextPageWithLayout = () => {
         >
           Welcome Back!
         </Typography>
-        <BrothTypography textAlign={'center'}>
+        <MuiTypography textAlign={'center'}>
           This is a business account page for{' '}
           <strong>{currentUser?.name}</strong>.
-        </BrothTypography>
-        <BrothTypography textAlign={'center'}>
+        </MuiTypography>
+        <MuiTypography textAlign={'center'}>
           The following are your shops:
-        </BrothTypography>
+        </MuiTypography>
       </Container>
     </>
   );

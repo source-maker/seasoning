@@ -1,13 +1,13 @@
 // stories/DefaultLayout.stories.js
 import React from 'react';
 import { DefaultLayout } from 'src/layouts/default/DefaultLayout';
-import { showcaseParameters } from '../../../stories/examples/showcaseParameters';
+import { storyPageParameters } from '../../../.storybook/storyPageParameters';
 import { Box } from '@mui/system';
 
 export default {
-  title: 'Showcase/Layouts',
+  title: 'MaterialUI/Pages/Layouts',
   component: DefaultLayout,
-  parameters: showcaseParameters,
+  parameters: storyPageParameters,
 };
 
 const dummybox = {

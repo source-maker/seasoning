@@ -6,9 +6,9 @@ import { LoginForm } from '@/features/authorization/LoginForm';
 import { useAuth } from '@/hooks/useAuth';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import BrothLink from '@/components/link/BrothLink';
-import { NextPageWithLayout } from '@/types/next-page';
+import { NextPageWithLayout } from '@/types/types';
 
 const BizLogin: NextPageWithLayout = () => {
   const { isLogin, isAdmin } = useAuth();
@@ -42,17 +42,12 @@ const BizLogin: NextPageWithLayout = () => {
         justifyContent="center"
       >
         <BrandLogo />
-        <BrothTypography
-          variant="h3"
-          component="h1"
-          textAlign="center"
-          baseline
-        >
+        <MuiTypography variant="h3" component="h1" textAlign="center" baseline>
           Sign in to your account
-        </BrothTypography>
-        <BrothTypography variant="body1" textAlign="center">
+        </MuiTypography>
+        <MuiTypography variant="body1" textAlign="center">
           Or <BrothLink href="#">start your 14-day free trial</BrothLink>
-        </BrothTypography>
+        </MuiTypography>
         <LoginForm callBackPath="/biz" isBizLogin={true} />
       </Box>
     </Container>

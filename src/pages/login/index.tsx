@@ -6,7 +6,7 @@ import { BrandLogo } from '@/components/asset/BrandLogo';
 import { LoginForm } from '@/features/authorization/LoginForm';
 import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/components/asset/Loading';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
@@ -48,9 +48,9 @@ const Login: NextPage = () => {
         justifyContent="center"
       >
         <BrandLogo />
-        <BrothTypography variant="h3" component="h1" textAlign="center">
+        <MuiTypography variant="h3" component="h1" textAlign="center">
           {t('signin_title')}
-        </BrothTypography>
+        </MuiTypography>
 
         {router.query['error'] && (
           <Alert
