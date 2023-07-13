@@ -10,8 +10,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@a110/storybook-expand-all',
     '@tomfreudenberg/next-auth-mock/storybook',
+    // '@a110/storybook-expand-all',
     {
       name: 'storybook-addon-next',
       options: {
@@ -68,26 +68,6 @@ module.exports = {
       ...config.resolve.alias,
       'next-i18next': 'react-i18next',
     };
-
-    // Exclude next-i18next from being processed by webpack
-    // config.module.rules.push({
-    //   test: /next-i18next/,
-    //   use: 'null-loader',
-    // });
-
-    // const nullLoaderRule = {
-    //   test: /next-i18next/,
-    //   use: 'null-loader',
-    // };
-
-    // Add null-loader rule if it doesn't exist already
-    // if (
-    //   !config.module.rules.some(
-    //     (rule) => rule.test && rule.test.toString() === '/next-i18next/'
-    //   )
-    // ) {
-    //   config.module.rules.push(nullLoaderRule);
-    // }
 
     return config;
   },
