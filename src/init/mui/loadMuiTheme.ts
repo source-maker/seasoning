@@ -1,6 +1,6 @@
+import { theme } from '@/styles/default.theme';
 import { createTheme, responsiveFontSizes, ThemeOptions } from '@mui/material';
 import ja from 'date-fns/locale/ja';
-import { theme } from './themes/empty.theme';
 
 const initTheme = createTheme(theme as ThemeOptions, ja);
 
