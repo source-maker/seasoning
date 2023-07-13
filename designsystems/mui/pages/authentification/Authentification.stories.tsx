@@ -1,13 +1,14 @@
-import LoginCenteredExample from 'src/pages/showcase/authentification/LoginCenteredExample';
-import LoginSocials from 'src/pages/showcase/authentification/LoginSocials';
-import PasswordReset from 'src/pages/showcase/authentification/passwordReset';
-import PasswordResetSuccess from 'src/pages/showcase/authentification/passwordResetSuccess';
-import { showcaseParameters } from './showcaseParameters';
+import React from 'react';
+import LoginCenteredExample from './LoginCenteredExample';
+import LoginSocials from './LoginSocials';
+import PasswordReset from './passwordReset';
+import PasswordResetSuccess from './passwordResetSuccess';
+import { storyPageParameters } from '../../../../.storybook/storyPageParameters';
 
 export default {
-  title: 'Showcase/Authentification',
+  title: 'MaterialUI/Pages/Authentification',
   parameters: {
-    ...showcaseParameters,
+    ...storyPageParameters,
     nextAuthMock: {
       session: {
         data: {
