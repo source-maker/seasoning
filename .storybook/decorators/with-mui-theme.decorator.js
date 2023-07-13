@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CssBaseline, responsiveFontSizes, ThemeProvider } from '@mui/material';
-import { themes } from './initMuiThemes';
+import { themes } from '../initMuiThemes';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import ja from 'date-fns/locale/ja';
