@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       }}
     >
       <BrandLogo />
-      <MuiTypography variant="h1" baseline>
+      <MuiTypography variant="h2" component="h1" baseline>
         <strong>{t('app_name')}</strong>
       </MuiTypography>
       <MuiTypography variant="h4" component="h2">
