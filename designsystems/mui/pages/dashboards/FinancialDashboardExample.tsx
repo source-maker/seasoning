@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { Box, Container, Grid, Stack } from '@mui/material';
 import { useTheme } from '@mui/material';
 import BrothDashboardPaper from '../../components/paper/BrothDashboardPaper';
-import BrothLineChart from '../../components/chart/BrothLineChart';
+import BrothLineChart from '../../../global/components/charts/LineChart';
 import { MuiTypography } from '../../components/typography/MuiTypography';
 import { formatYen } from '../../helpers/stringHelpers';
 import faker from 'faker';

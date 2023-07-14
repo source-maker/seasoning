@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
-import AppBarBasic from '@/components/appbar/AppBarBasic';
+import AppBarBasic from '../../components/appbar/AppBarBasic';
 import { Alert, Grid } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { MuiButton } from '@/components/button/MuiButton';
-import { MuiTypography } from '@/components/typography/MuiTypography';
-import BrothImage from '@/components/image/BrothImage';
-import { MuiTextField } from '@/components/textfield/MuiTextField';
+import { MuiButton } from '../../components/button/MuiButton';
+import { MuiTypography } from '../../components/typography/MuiTypography';
+import BrothImage from '../../components/image/BrothImage';
+import { MuiTextField } from '../../components/textfield/MuiTextField';
 import SendIcon from '@mui/icons-material/Send';
-import BrothLink from '@/components/link/BrothLink';
+import BrothLink from '../../components/link/BrothLink';
 import { useForm } from 'react-hook-form';
 
 const HeroSignup: NextPage = () => {

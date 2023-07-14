@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
-import AppBarBasic from '@/components/appbar/AppBarBasic';
+import AppBarBasic from '../../components/appbar/AppBarBasic';
 import { Alert, Box, Grid, Stack } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { MuiButton } from '@/components/button/MuiButton';
+import { MuiButton } from '../../components/button/MuiButton';
 import { ArrowForward, Videocam } from '@mui/icons-material';
-import { MuiTypography } from '@/components/typography/MuiTypography';
-import BrothImage from '@/components/image/BrothImage';
+import { MuiTypography } from '../../components/typography/MuiTypography';
+import BrothImage from '../../components/image/BrothImage';
 
 const HeroCentered: NextPage = () => {
   return (

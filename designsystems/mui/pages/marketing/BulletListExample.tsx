@@ -1,4 +1,4 @@
-import { BulletList } from '@/components/list/BulletList';
+import { BulletList } from '../../components/list/BulletList';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import CallIcon from '@mui/icons-material/Call';
 import HomeIcon from '@mui/icons-material/Home';

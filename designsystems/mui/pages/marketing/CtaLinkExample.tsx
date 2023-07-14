@@ -1,5 +1,5 @@
-import BrothLink from '@/components/link/BrothLink';
-import CtaLink from '@/components/link/CtaLink';
+import BrothLink from '../../components/link/BrothLink';
+import CtaLink from '../../components/link/CtaLink';
 import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 
 export default function CtaLinkExample() {

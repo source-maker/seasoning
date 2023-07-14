@@ -5,12 +5,12 @@ import IconButton from '@mui/material/IconButton';
 import { MoreHoriz } from '@mui/icons-material';
 import { Box, Container, Stack } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import SocialCard from '@/components/card/SocialCard';
-import { MuiTypography } from '@/components/typography/MuiTypography';
-import BrothImage from '@/components/image/BrothImage';
+import SocialCard from '../../components/card/SocialCard';
+import { MuiTypography } from '../../components/typography/MuiTypography';
+import BrothImage from '../../components/image/BrothImage';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import { MuiButton } from '@/components/button/MuiButton';
+import { MuiButton } from '../../components/button/MuiButton';
 
 function srcset(image: string, size: number, rows, cols = 1) {
   return {

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { MuiButton } from '@/components/button/MuiButton';
-import { MuiTypography } from '@/components/typography/MuiTypography';
+import { MuiButton } from '../../components/button/MuiButton';
+import { MuiTypography } from '../../components/typography/MuiTypography';
 import { Box, Container, Grid, Paper, Step } from '@mui/material';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
-import yup from '@/init/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
-import { BrothStepper } from '@/components/stepper/BrothStepper';
-import { BrothStepLabel } from '@/components/stepper/BrothStepLabel';
+import yup from '../../../global/init/yup';
+import { useSnackbar } from '../../hooks/useSnackbar';
+import { BrothStepper } from '../../components/stepper/BrothStepper';
+import { BrothStepLabel } from '../../components/stepper/BrothStepLabel';
 import { Stack } from '@mui/system';
-import { MuiTextField } from '@/components/textfield/MuiTextField';
+import { MuiTextField } from '../../components/textfield/MuiTextField';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const steps: {

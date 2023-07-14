@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { MuiButton } from '@/components/button/MuiButton';
-import { MuiTextField } from '@/components/textfield/MuiTextField';
-import { MuiTypography } from '@/components/typography/MuiTypography';
+import { MuiButton } from '../../components/button/MuiButton';
+import { MuiTextField } from '../../components/textfield/MuiTextField';
+import { MuiTypography } from '../../components/typography/MuiTypography';
 import {
   Box,
   Container,
@@ -12,10 +12,10 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useForm } from 'react-hook-form';
-import { RHFSelect } from '@/components/select/RHFSelect';
-import yup from '@/init/yup';
+import { RHFSelect } from '../../components/select/RHFSelect';
+import yup from '../../../global/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { useSnackbar } from '../../hooks/useSnackbar';
 
 interface formTypes {
   name: string;

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { MuiButton } from '@/components/button/MuiButton';
-import { MuiTextField } from '@/components/textfield/MuiTextField';
-import { MuiTypography } from '@/components/typography/MuiTypography';
+import { MuiButton } from '../../components/button/MuiButton';
+import { MuiTextField } from '../../components/textfield/MuiTextField';
+import { MuiTypography } from '../../components/typography/MuiTypography';
 import { Box, Container, Grid, Stack } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useForm } from 'react-hook-form';
-import yup from '@/init/yup';
+import yup from '../../../global/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
-import { YubinBangoCore } from '@/init/yubinbango-core';
+import { useSnackbar } from '../../hooks/useSnackbar';
+import { YubinBangoCore } from '../../../global/init/yubinbango-core';
 
 interface formTypes {
   zip_code: string;

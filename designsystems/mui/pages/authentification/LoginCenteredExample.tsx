@@ -7,7 +7,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { Loading } from '../../components/asset/Loading';
 import BrothLink from '../../components/link/BrothLink';
 import { MuiTypography } from '../../components/typography/MuiTypography';
-import { LoginForm } from '../../features/authorization/LoginForm';
+import { LoginForm } from '../../../global/features/authorization/LoginForm';
 
 const LoginCenteredExample: NextPage = () => {
   const { isLogin } = useAuth();

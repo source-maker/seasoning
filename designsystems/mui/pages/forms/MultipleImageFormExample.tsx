@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import { Box, Button, Container, Divider, Grid, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import yup from '@/init/yup';
+import yup from '../../../global/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from '@/hooks/useSnackbar';
-import { BrothImageArrayButton } from '@/components/button/BrothImageArrayButton';
-import { MuiTypography } from '@/components/typography/MuiTypography';
-import BrothImage from '@/components/image/BrothImage';
+import { useSnackbar } from '../../hooks/useSnackbar';
+import { BrothImageArrayButton } from '../../components/button/BrothImageArrayButton';
+import { MuiTypography } from '../../components/typography/MuiTypography';
+import BrothImage from '../../components/image/BrothImage';
 import CircularProgress from '@mui/material/CircularProgress';
 
 interface formTypes {

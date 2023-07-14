@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 
 import { generateFakerData } from '../../helpers/fakerHelpers';
-import BrothImage from '@/components/image/BrothImage';
-import { MuiTypography } from '@/components/typography/MuiTypography';
+import BrothImage from '../../components/image/BrothImage';
+import { MuiTypography } from '../../components/typography/MuiTypography';
 import { limitLength } from '../../helpers/stringHelpers';
 import { ChangeEvent, useMemo, useState } from 'react';
 

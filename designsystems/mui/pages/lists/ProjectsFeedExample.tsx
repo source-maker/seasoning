@@ -15,10 +15,10 @@ import {
   TextField,
   useTheme,
 } from '@mui/material';
-import { MuiButton } from '@/components/button/MuiButton';
-import DropdownButton from '@/components/button/DropdownButton';
+import { MuiButton } from '../../components/button/MuiButton';
+import DropdownButton from '../../components/button/DropdownButton';
 import { grey } from '@mui/material/colors';
-import BrothImage from '@/components/image/BrothImage';
+import BrothImage from '../../components/image/BrothImage';
 import { StarOutline } from '@mui/icons-material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 

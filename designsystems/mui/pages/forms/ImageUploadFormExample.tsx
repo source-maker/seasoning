@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import { Button, Container, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import yup from '@/init/yup';
+import yup from '../../../global/init/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { BrothAvatarEditButton } from '@/components/button/BrothAvatarEditButton';
-import { MuiTextField } from '@/components/textfield/MuiTextField';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { BrothAvatarEditButton } from '../../components/button/BrothAvatarEditButton';
+import { MuiTextField } from '../../components/textfield/MuiTextField';
+import { useSnackbar } from '../../hooks/useSnackbar';
 import { getMime } from '../../helpers/fileHelpers';
 
 interface formTypes {

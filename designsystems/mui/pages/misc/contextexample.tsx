@@ -1,6 +1,9 @@
-import { MuiButton } from '@/components/button/MuiButton';
-import { MuiTypography } from '@/components/typography/MuiTypography';
-import { ExampleContext, ExampleProvider } from '@/providers/ExampleProvider';
+import { MuiButton } from '../../components/button/MuiButton';
+import { MuiTypography } from '../../components/typography/MuiTypography';
+import {
+  ExampleContext,
+  ExampleProvider,
+} from '../../../global/providers/ExampleProvider';
 import { Box, Stack } from '@mui/material';
 import { NextPage } from 'next';
 import { useContext } from 'react';

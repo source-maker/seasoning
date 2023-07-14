@@ -1,9 +1,9 @@
-import BrothCard from '@/components/card/BrothCard';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, Container, Grid } from '@mui/material';
+import BrothCard from '../../components/card/BrothCard';
 
 export default function BrothCardExample() {
   return (
