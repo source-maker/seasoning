@@ -7,7 +7,7 @@ import { Breakpoint, Stack } from '@mui/material';
 import BrothLink from '../link/BrothLink';
 import { ReactNode } from 'react';
 
-function AppBarAdvance({
+function MuiAppBar({
   logo,
   title,
   leftMenu,
@@ -44,7 +44,13 @@ function AppBarAdvance({
               }}
             >
               {logo}
-              <Typography variant="h6">{title}</Typography>
+
+              <Typography
+                variant="h6"
+                sx={{ display: { xs: 'none', sm: 'block' } }}
+              >
+                {title}
+              </Typography>
             </BrothLink>
           </Stack>
 
@@ -60,4 +66,4 @@ function AppBarAdvance({
     </AppBar>
   );
 }
-export default AppBarAdvance;
+export default MuiAppBar;
