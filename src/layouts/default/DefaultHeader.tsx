@@ -65,7 +65,7 @@ export function DefaultHeader({ title }: { title?: string }) {
             <>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Profile" />
                 </IconButton>
               </Tooltip>
               <Menu
