@@ -15,7 +15,7 @@ const Account: NextPage = () => {
 
   return (
     <Container>
-      <MuiTypography variant="h1" textAlign={'center'}>
+      <MuiTypography variant="h2" component="h1">
         {t('title')}
       </MuiTypography>
 
@@ -34,11 +34,7 @@ const Account: NextPage = () => {
           </MuiTypography>
         </Box>
 
-        <Button
-          href={'/mypage/account/personal-details'}
-          component={BrothLink}
-          variant="contained"
-        >
+        <Button href={'/mypage/edit'} component={BrothLink} variant="contained">
           {t('edit_btn')}
         </Button>
       </Box>

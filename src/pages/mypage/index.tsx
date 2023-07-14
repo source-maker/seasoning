@@ -36,11 +36,7 @@ const MyPage: NextPage = () => {
         )}
       </MuiTypography>
 
-      <Button
-        href={'/mypage/account/personal-details'}
-        component={BrothLink}
-        variant="contained"
-      >
+      <Button href={'/mypage/edit'} component={BrothLink} variant="contained">
         {t('edit_account_btn')}
       </Button>
     </Container>
