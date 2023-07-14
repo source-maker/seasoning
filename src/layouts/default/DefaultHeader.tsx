@@ -1,4 +1,4 @@
-import AppBarAdvance from '@/components/appbar/AppBarAdvance';
+import MuiAppBar from '@/components/appbar/MuiAppBar';
 import { BrandLogo } from '@/components/asset/BrandLogo';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -37,7 +37,7 @@ export function DefaultHeader({ title }: { title?: string }) {
   };
 
   return (
-    <AppBarAdvance
+    <MuiAppBar
       title={title}
       logo={<BrandLogo sx={{ width: '2rem', marginRight: 8 }} />}
       leftMenu={
