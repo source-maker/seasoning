@@ -7,7 +7,7 @@ import { AuthProvider } from '@/providers/AuthProvider';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { SessionProvider } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DrawerProvider } from '@/providers/DrawerProvider';
@@ -15,34 +15,17 @@ import { AppPropsWithLayout } from '@/types/types';
 import { DefaultLayout } from '@/layouts/default/DefaultLayout';
 import { SwaggerProvider } from '@/providers/SwaggerProvider';
 import { SnackbarProvider } from '@/providers/SnackbarProvider';
-import { appWithTranslation, i18n } from 'next-i18next';
+import { appWithTranslation } from 'next-i18next';
 import { MuiProvider } from '@/providers/MuiProvider';
-import i18next from 'i18next';
-import { i18n as i18nConfig } from '../../next-i18next.config';
+import useLanguage from '@/hooks/useLanguage';
 
 function MyApp(props: AppPropsWithLayout) {
   const { Component } = props;
   const [loading] = useState(false);
   const router = useRouter();
-  const defaultLocale = i18nConfig.defaultLocale;
 
-  // Change language if userLang is set
-  useEffect(() => {
-    // get selected lang from local storage or browser
-    const selectedLang =
-      localStorage.getItem('userLang') || window.navigator.language;
-
-    // normalize the user's chosen locale (eg. en-US => en)
-    const normalizedLang = selectedLang.split('-')[0];
-
-    if (i18next.language !== normalizedLang) {
-      i18n?.changeLanguage(normalizedLang);
-    }
-
-    // If the router locale mismatches the user's chosen locale, fix route path
-    if (defaultLocale === normalizedLang && router.locale !== normalizedLang)
-      router.push(router.asPath, undefined, { locale: normalizedLang });
-  }, [router, defaultLocale]);
+  // handle language change logic
+  useLanguage();
 
   // Render default layout if no layout is provided
   const getLayout =
