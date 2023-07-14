@@ -10,7 +10,7 @@ import { useSnackbar } from '@/hooks/useSnackbar';
 import { useTranslation } from 'next-i18next';
 import { MuiTextField } from '@/components/textfield/MuiTextField';
 
-export function EditCustomerInfoForm() {
+export function EditUserForm() {
   const { data: currentUser } = useCurrentUser();
   const { openSnackbar } = useSnackbar();
   const { t } = useTranslation('account');
@@ -52,13 +52,6 @@ export function EditCustomerInfoForm() {
             name="name"
             control={control}
             placeholder="John Doe"
-            fullWidth
-          />
-          <MuiTextField
-            label={t('password')}
-            name="password"
-            control={control}
-            type="password"
             fullWidth
           />
           <MuiTextField
