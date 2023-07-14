@@ -1,7 +1,7 @@
 /**
  * Storybook Component Preview Section Configuration
  */
-import { withMuiTheme } from './with-mui-theme.decorator.js';
+import { withMuiTheme } from './decorators/with-mui-theme.decorator.js';
 
 // Load Roboto fonts
 import '@fontsource/roboto/300.css';
@@ -9,8 +9,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
-import { withRHF } from './RHF.decorator.js';
-import { withNexti18next } from './nexti18next.decorator.js';
+import { withRHF } from './decorators/RHF.decorator.js';
+import { withNexti18next } from './decorators/nexti18next.decorator.js';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

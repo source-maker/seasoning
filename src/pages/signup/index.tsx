@@ -1,10 +1,10 @@
 import { BrandLogo } from '@/components/asset/BrandLogo';
-import { BrothTypography } from '@/components/typography/BrothTypography';
 import { EmailSignupForm } from '@/features/authorization/EmailSignupForm';
 import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 
 const EmailSignup: NextPage = () => {
   const { t } = useTranslation('auth');
@@ -17,9 +17,9 @@ const EmailSignup: NextPage = () => {
         justifyContent="center"
       >
         <BrandLogo />
-        <BrothTypography variant="h3" component="h1" textAlign="center">
+        <MuiTypography variant="h3" component="h1" textAlign="center">
           {t('signup_title')}
-        </BrothTypography>
+        </MuiTypography>
 
         <EmailSignupForm />
       </Box>

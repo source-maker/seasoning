@@ -1,4 +1,4 @@
-import AppBarAdvance from '@/components/appbar/AppBarAdvance';
+import MuiAppBar from '@/components/appbar/MuiAppBar';
 import { BrandLogo } from '@/components/asset/BrandLogo';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -37,7 +37,7 @@ export function DashboardHeader({ title }: { title?: string }) {
   };
 
   return (
-    <AppBarAdvance
+    <MuiAppBar
       title={title || t('app_name')}
       logo={<BrandLogo sx={{ width: '2rem', marginRight: 8 }} />}
       leftMenu={
@@ -65,7 +65,7 @@ export function DashboardHeader({ title }: { title?: string }) {
             <>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Profile" />
                 </IconButton>
               </Tooltip>
               <Menu

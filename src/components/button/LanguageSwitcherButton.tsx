@@ -34,6 +34,12 @@ const LanguageSwitcherButton = () => {
       // For other locales, include the locale in the URL
       router.push(router.pathname, router.asPath, { locale: language });
     }
+
+    // Save the user's language preference
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('userLang', language);
+    }
+
     handleClose();
   };
 

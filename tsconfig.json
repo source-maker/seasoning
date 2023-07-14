@@ -31,11 +31,6 @@
       "@/layouts/*": ["src/layouts/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".storybook/initMuiThemes.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".storybook/**/*.ts"],
   "exclude": ["node_modules", ".next", "designsystems"]
 }

@@ -253,6 +253,18 @@ All components in this directory are configured to be ignored by your editor to 
 
 **Important** If you remove any packages related to a design system, it is important to remove related design systems from this directory since they will no long render in Storybook. 
 
+### Ignoring the `DesignSystems`` Directory
+
+You may find it a nuisance to have to search and distinquish between components in your `src` directory vs the components in the `designsystems` directory.
+
+As a resolution, you can configure VS Code to ignore this directory in file searches by setting the following in your `./.vscode/settings.json` file:
+
+```
+  "search.exclude": {
+    "**/designsystems": true
+  }
+  ```
+
 ### How to Remove Material UI (MUI)
 If your team has chosen to not use MUI, you may opt to remove it completely from the project.
 To do so, please do the following:

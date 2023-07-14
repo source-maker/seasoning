@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 
 export function BrandLogo({
   sx = {
-    width: '10vw',
+    width: '5rem',
     marginLeft: 'auto',
     marginRight: 'auto',
   },

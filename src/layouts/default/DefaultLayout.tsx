@@ -36,7 +36,7 @@ export function DefaultLayout({
       >
         <DefaultHeader title={pageOptions?.title || t('app_name')} />
         <SideDrawer />
-        <Container>
+        <Container maxWidth="md">
           <main style={{ display: 'contents' }}>{children}</main>
         </Container>
         <DefaultFooter />

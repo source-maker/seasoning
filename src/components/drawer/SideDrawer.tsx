@@ -1,5 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
 import {
+  Avatar,
   Box,
   Button,
   Drawer,
@@ -82,8 +83,10 @@ export function SideDrawer() {
             <CloseIcon />
           </IconButton>
         </Box>
+
         {isLogin() ? (
           <Stack spacing={2} m={2}>
+            <Avatar alt="Profile" sx={{ mx: 'auto', width: 56, height: 56 }} />
             <Typography variant="h6" sx={{ textAlign: 'center' }}>
               {currentUser?.name}
             </Typography>
@@ -114,12 +117,16 @@ export function SideDrawer() {
             </Button>
           </Stack>
         )}
+
+        {/* List Items for Authenticated Users */}
         {isLogin() && (
           <DrawerItems
             headerText={t('header_your_account')}
             items={authenticatedDrawer}
           />
         )}
+
+        {/* List Items for All Users */}
         <DrawerItems
           headerText={t('header_general_info')}
           items={publicDrawerItems}

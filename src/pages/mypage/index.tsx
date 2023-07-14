@@ -1,6 +1,6 @@
 import { Button, Container, Typography } from '@mui/material';
 import type { NextPage } from 'next';
-import { BrothTypography } from '@/components/typography/BrothTypography';
+import { MuiTypography } from '@/components/typography/MuiTypography';
 import { Loading } from '@/components/asset/Loading';
 import BrothLink from '@/components/link/BrothLink';
 import { useSession } from 'next-auth/react';
@@ -27,20 +27,16 @@ const MyPage: NextPage = () => {
       >
         {t('welcome')}
       </Typography>
-      <BrothTypography textAlign={'center'}>
+      <MuiTypography textAlign={'center'}>
         {convertStringToJSX(
           t('welcome_message', {
             name: currentUser?.name,
             balance: `¥${currentUser?.money}`,
           })
         )}
-      </BrothTypography>
+      </MuiTypography>
 
-      <Button
-        href={'/mypage/account/personal-details'}
-        component={BrothLink}
-        variant="contained"
-      >
+      <Button href={'/mypage/edit'} component={BrothLink} variant="contained">
         {t('edit_account_btn')}
       </Button>
     </Container>

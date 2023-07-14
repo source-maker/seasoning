@@ -1,14 +1,14 @@
 // stories/DashboardLayout.stories.js
 import React from 'react';
 import { DashboardLayout } from 'src/layouts/dashboard/DashboardLayout';
-import { showcaseParameters } from '../../../stories/examples/showcaseParameters';
+import { storyPageParameters } from '../../../.storybook/storyPageParameters';
 import { Box } from '@mui/system';
-import { NextPageWithLayout } from '@/types/next-page';
+import { NextPageWithLayout } from '@/types/types';
 
 export default {
-  title: 'Showcase/Layouts',
+  title: 'MaterialUI/Pages/Layouts',
   component: DashboardLayout,
-  parameters: showcaseParameters,
+  parameters: storyPageParameters,
 };
 
 const dummybox = {

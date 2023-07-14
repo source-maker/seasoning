@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import theme from '@/init/mui/loadMuiTheme';
 import config from '../../app.config.json';
-import { createEmotionCache } from '@/init/mui/emotion';
+import { createEmotionCache } from '@/init/mui/initMuiEmotion';
 
 // Conditionally import MUI
 const enableMui = config.enableMui;
