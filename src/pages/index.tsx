@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       <MuiTypography variant="h1" baseline>
         <strong>{t('app_name')}</strong>
       </MuiTypography>
-      <MuiTypography variant="h3">
+      <MuiTypography variant="h4" component="h2">
         {convertStringToJSX(t('app_description'))}
       </MuiTypography>
 
@@ -46,19 +46,21 @@ const Home: NextPage = () => {
             {t('home:dashboard_btn')}
           </MuiButton>
         ) : (
-          <MuiButton LinkComponent={BrothLink} href="/login" fullWidth>
-            {t('home:login_btn')}
-          </MuiButton>
+          <>
+            <MuiButton LinkComponent={BrothLink} href="/login" fullWidth>
+              {t('home:login_btn')}
+            </MuiButton>
+            <MuiButton
+              variant="contained"
+              LinkComponent={BrothLink}
+              href="/signup"
+              fullWidth
+            >
+              {t('home:create_account_btn')}
+            </MuiButton>
+          </>
         )}
 
-        <MuiButton
-          variant="contained"
-          LinkComponent={BrothLink}
-          href="/signup"
-          fullWidth
-        >
-          {t('home:create_account_btn')}
-        </MuiButton>
         <MuiButton
           variant="outlined"
           LinkComponent={BrothLink}
