@@ -4,7 +4,6 @@ import '@/styles/globals.css';
 import Head from 'next/head';
 import { SWRConfig } from 'swr';
 import { AuthProvider } from '@/providers/AuthProvider';
-import { RouteGuardProvider } from '@/providers/RouteGuardProvider';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { SessionProvider } from 'next-auth/react';
@@ -59,33 +58,31 @@ function MyApp(props: AppPropsWithLayout) {
                   >
                     <CircularProgress color="primary" />
                   </Backdrop>
-                  <RouteGuardProvider>
-                    <SnackbarProvider>
-                      <DrawerProvider>
-                        <AnimatePresence>
-                          <motion.div
-                            initial="pageInitial"
-                            animate="pageAnimate"
-                            variants={{
-                              pageInitial: {
-                                opacity: 0,
-                              },
-                              pageAnimate: {
-                                opacity: 1,
-                              },
-                              pageExit: {
-                                backgroundColor: 'white',
-                                filter: `invert()`,
-                                opacity: 0,
-                              },
-                            }}
-                          >
-                            {getLayout(<Component {...props.pageProps} />)}
-                          </motion.div>
-                        </AnimatePresence>
-                      </DrawerProvider>
-                    </SnackbarProvider>
-                  </RouteGuardProvider>
+                  <SnackbarProvider>
+                    <DrawerProvider>
+                      <AnimatePresence>
+                        <motion.div
+                          initial="pageInitial"
+                          animate="pageAnimate"
+                          variants={{
+                            pageInitial: {
+                              opacity: 0,
+                            },
+                            pageAnimate: {
+                              opacity: 1,
+                            },
+                            pageExit: {
+                              backgroundColor: 'white',
+                              filter: `invert()`,
+                              opacity: 0,
+                            },
+                          }}
+                        >
+                          {getLayout(<Component {...props.pageProps} />)}
+                        </motion.div>
+                      </AnimatePresence>
+                    </DrawerProvider>
+                  </SnackbarProvider>
                 </>
               </AuthProvider>
             </SwaggerProvider>

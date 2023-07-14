@@ -1,4 +1,6 @@
-// SnackbarContext.tsx
+/**
+ * MUI Snackbar provider
+ */
 import React, { createContext, useState, ReactNode } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
