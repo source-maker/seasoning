@@ -1,5 +1,4 @@
 import {
-  Divider,
   List,
   ListItem,
   ListItemIcon,
@@ -65,14 +64,13 @@ export function DrawerItems(props: Props) {
   };
 
   return (
-    <List>
+    <List dense>
       <ListSubheader>{props.headerText}</ListSubheader>
-      <Divider />
 
       {props.items.map((item) => (
         <Fragment key={item.title}>
           {item.onClick ? (
-            <ListItem key={item.title} onClick={item.onClick}>
+            <ListItem key={item.title} onClick={item.onClick} disablePadding>
               <ListItemButton>
                 <ListItemIcon>{getIcon(item.icon)}</ListItemIcon>
                 <ListItemText primary={item.title} />
@@ -80,7 +78,7 @@ export function DrawerItems(props: Props) {
             </ListItem>
           ) : (
             <BrothLink href={item.href}>
-              <ListItem key={item.title}>
+              <ListItem key={item.title} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>{getIcon(item.icon)}</ListItemIcon>
                   <ListItemText primary={item.title} />
@@ -88,7 +86,6 @@ export function DrawerItems(props: Props) {
               </ListItem>
             </BrothLink>
           )}
-          <Divider />
         </Fragment>
       ))}
     </List>
