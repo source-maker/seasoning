@@ -31,7 +31,7 @@ const Login: NextPage = () => {
       if (router.query['returnUrl']) {
         router.push(router.query['returnUrl'] as string);
       } else {
-        router.push('/mypage');
+        router.push('/');
       }
     }
   }, [currentLoggedIn, router]);

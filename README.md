@@ -447,6 +447,17 @@ Read the following link for more information on strict mode:
 
 [Strict Mode](https://ja.reactjs.org/docs/strict-mode.html)
 
+## Protecting Routes (RouteGuard)
+
+Seasoning provides server side route guard protection at `./middleware.ts`.
+
+We opted for auth protection on all routes, requiring developers to whitelist the paths that can be accessed publicly, without authentication.
+
+You can modify the `whiteListConfig` array with the path names that you wish to whitelist.
+
+If your app does not need route protection, you simply need to remove the `./middleware.ts` file.
+
+
 # Storybook
 
 Seasoning comes equipped with Storybook to centralize your project's components into a UI library/design system.

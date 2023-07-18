@@ -15,15 +15,12 @@ import { signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { LoginPostType, useLoginSchema } from '@/schemas/LoginSchema';
 import { MuiTextField } from '@/components/textfield/MuiTextField';
+import { useRouter } from 'next/router';
 
-export function LoginForm({
-  callBackPath = '/mypage',
-}: {
-  callBackPath?: string;
-  isBizLogin?: boolean;
-}) {
+export function LoginForm() {
   const { t } = useTranslation('auth');
   const { LoginPostResolver, LoginPostSchema } = useLoginSchema();
+  const router = useRouter();
 
   const { handleSubmit, control } = useForm<InferType<typeof LoginPostSchema>>({
     resolver: LoginPostResolver,
@@ -36,6 +33,9 @@ export function LoginForm({
   const [error] = useState<string>('');
 
   const onSubmit = async (data: InferType<typeof LoginPostSchema>) => {
+    // check if returnUrl query param has been set in url, if not, default to index '/'
+    const callBackPath = (router.query.returnUrl as string) || '/';
+
     signIn('django-credentials', {
       username: data.username,
       password: data.password,
