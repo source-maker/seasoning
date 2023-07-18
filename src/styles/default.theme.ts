@@ -4,13 +4,14 @@
  * @see https://zenoo.github.io/mui-theme-creator/
 
  */
+import { darken } from '@mui/material';
 import { cyan, blue } from '@mui/material/colors';
 
 export const theme = {
   palette: {
     mode: 'light',
     primary: {
-      main: blue['900'],
+      main: darken(blue['900'], 0.3),
     },
     secondary: {
       main: cyan['200'],
