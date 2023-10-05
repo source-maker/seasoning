@@ -5,6 +5,7 @@ import { theme as darkTheme } from '../designsystems/mui/themes/dark.theme';
 import { theme as blueMobileThemeOptions } from '../designsystems/mui/themes/blueMobile.theme';
 import { theme as defaultTheme } from '../designsystems/mui/themes/default.theme';
 import { theme as crimsonTheme } from '../designsystems/mui/themes/crimson.theme';
+import { theme as appleTheme } from '../designsystems/mui/themes/apple.theme';
 
 /**
  * List of themes for use in storybook
@@ -40,6 +41,12 @@ export const storyThemes = {
     title: 'Blue Mobile Theme',
     left: '📱',
     theme: createTheme(blueMobileThemeOptions as ThemeOptions, ja),
+  },
+  apple: {
+    value: 'apple',
+    title: 'Apple Theme',
+    left: '📱',
+    theme: createTheme(appleTheme as ThemeOptions, ja),
   },
 };
 

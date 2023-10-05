@@ -8,6 +8,13 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
+// Load Noto Sans JP fonts
+import '@fontsource/noto-sans-jp/300.css';
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/500.css';
+import '@fontsource/noto-sans-jp/700.css';
+
 import '@fontsource/material-icons';
 import { withRHF } from './decorators/RHF.decorator.js';
 import { withNexti18next } from './decorators/nexti18next.decorator.js';
@@ -49,6 +56,7 @@ export const globalTypes = {
         { value: 'dark', left: '🌙', title: 'Dark' },
         { value: 'crimson', left: '🔴', title: 'Crimson' },
         { value: 'blueMobile', left: '📱', title: 'Blue Mobile' },
+        { value: 'apple', left: '', title: 'Apple' },
       ],
     },
     previewTabs: {
