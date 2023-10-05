@@ -4,11 +4,12 @@ import {
   FormHelperText,
   Switch,
   SxProps,
+  SwitchProps,
 } from '@mui/material';
 import { Controller } from 'react-hook-form';
 import { TaggableInputLabel } from '../inputlabel/TaggableInputLabel';
 
-interface ICheckBoxFieldProps {
+interface ISwitchboxProps extends SwitchProps {
   name: string;
   control: any; //eslint-disable-line @typescript-eslint/no-explicit-any
   label: string | React.ReactNode;
@@ -27,13 +28,14 @@ export function RHFSwitchbox({
   name,
   control,
   label,
+  color,
   formGroupSx,
   disabled = false,
   inputLabel,
   renderValue,
   customizeValue,
   ...rest
-}: ICheckBoxFieldProps) {
+}: ISwitchboxProps) {
   return (
     <Controller
       name={name}
@@ -58,7 +60,7 @@ export function RHFSwitchbox({
                       return field.onChange(e.target.checked);
                     }
                   }}
-                  color="secondary"
+                  color={color}
                   disabled={disabled}
                   {...rest}
                 />

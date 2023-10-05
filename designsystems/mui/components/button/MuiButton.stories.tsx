@@ -42,7 +42,7 @@ Playground.argTypes = {
   },
 };
 
-export const Variants: ComponentStory<typeof Button> = () => (
+export const Variants: ComponentStory<typeof MuiButton> = () => (
   <Stack spacing={2} maxWidth={300}>
     <MuiButton variant="text">Text Button</MuiButton>
     <MuiButton variant="contained">Contained Button</MuiButton>
@@ -50,7 +50,7 @@ export const Variants: ComponentStory<typeof Button> = () => (
   </Stack>
 );
 
-export const Colors: ComponentStory<typeof Button> = () => (
+export const Colors: ComponentStory<typeof MuiButton> = () => (
   <Stack spacing={2} maxWidth={300}>
     <MuiButton variant="contained">Primary</MuiButton>
     <MuiButton variant="contained" color="secondary">
@@ -65,7 +65,7 @@ export const Colors: ComponentStory<typeof Button> = () => (
   </Stack>
 );
 
-export const Sizes: ComponentStory<typeof Button> = () => (
+export const Sizes: ComponentStory<typeof MuiButton> = () => (
   <Stack spacing={2} maxWidth={300}>
     <MuiButton variant="contained" size="small">
       Small

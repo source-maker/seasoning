@@ -55,11 +55,11 @@ export function RHFDatePicker<T extends FieldValues = never>({
                 console.log('updating date:', dayjs(e).format('YYYY-MM-DD'));
                 onChange(dayjs(e).format('YYYY-MM-DD'));
               }}
+              ref={ref}
               disableFuture={disableFuture}
               minDate={minDate}
               inputFormat="yyyy年MM月dd日"
               mask="____年__月__日"
-              toolbarTitle="誕生日"
               toolbarFormat="yyyy年MM月dd日"
               maxDate={maxDate}
               renderInput={(params) => (
@@ -68,13 +68,11 @@ export function RHFDatePicker<T extends FieldValues = never>({
                   id={name}
                   name={name}
                   required={required}
-                  inputRef={ref}
-                  type={type}
+                  type={type || params.type}
                   onBlur={onBlur}
                   error={invalid}
-                  autoComplete="username"
                   helperText={error ? error?.message : ''}
-                  InputProps={InputProps}
+                  InputProps={InputProps || params.InputProps}
                   {...rest} //sxとか
                 />
               )}
